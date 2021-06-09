@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.anyKey)
             Move();
-            Debug.Log(Input.anyKey);
+            //Debug.Log(Input.anyKey); PREVIOUS BUG TOOL
             
     }
 
