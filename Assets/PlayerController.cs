@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
-        right = Quaternion.Euler (new Vector3(0,90,0)) * forward;
+        right = Quaternion.Euler(new Vector3(0,90,0)) * forward;
     }
 
     // Update is called once per frame
@@ -23,11 +23,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.anyKey)
             Move();
+            Debug.Log(Input.anyKey);
+            
     }
 
     void Move()
     {
-        Vector3 direction = new Vector3(Input.GetAxis("HorziontalKey"),0, Input.GetAxis("VerticalKey"));
+        Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"),0, Input.GetAxis("VerticalKey"));
         Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
         Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
 
