@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerPlan : MonoBehaviour
 {
+    public TimeManager timeManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,9 @@ public class PlayerPlan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            timeManager.SlowTime();
+        }
     }
 }
