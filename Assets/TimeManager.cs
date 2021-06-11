@@ -9,7 +9,8 @@ public class TimeManager : MonoBehaviour
 
     void Update() 
     {
-        Time.timeScale += (1f / slowdownLength) * Time.deltaTime; //returns time to normal
+        Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime; //slowly returns to normal
+        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f); //limits time dilation
     }
 
     public void SlowTime()
