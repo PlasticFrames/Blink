@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThirdPersonDash : MonoBehaviour
+public class PlayDash : MonoBehaviour
 {
-    ThirdPersonMovement moveScript;
+    PlayMove moveScript;
 
     public float dashSpeed;
     public float dashTime;
@@ -12,13 +12,13 @@ public class ThirdPersonDash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveScript = GetComponent<ThirdPersonMovement>();
+        moveScript = GetComponent<PlayMove>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetMouseButtonDown(0))
         {
             StartCoroutine(Dash());
         }
