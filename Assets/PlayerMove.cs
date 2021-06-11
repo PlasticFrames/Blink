@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayMove : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;

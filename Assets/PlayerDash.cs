@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayDash : MonoBehaviour
+public class PlayerDash: MonoBehaviour
 {
-    PlayMove moveScript;
+    PlayerMove moveScript;
 
     public float dashSpeed;
     public float dashTime;
@@ -12,7 +12,7 @@ public class PlayDash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveScript = GetComponent<PlayMove>();
+        moveScript = GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
