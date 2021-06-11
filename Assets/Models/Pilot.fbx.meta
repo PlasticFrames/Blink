@@ -1,89 +1,8 @@
 fileFormatVersion: 2
-guid: deeb56594c71fa545953a21c8d0ffa67
+guid: e70e28dcfecae4e4a9cce65c26896196
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable:
-  - first:
-      74: 4419486922940786515
-    second: USMedicMan_Rig_CarDrive
-  - first:
-      74: -8607371228301408234
-    second: USMedicMan_Rig_CrouchIdleRifle
-  - first:
-      74: -670922258331090674
-    second: USMedicMan_Rig_DeathHeadShotRifle
-  - first:
-      74: 8442318882838473229
-    second: USMedicMan_Rig_DeathRifle
-  - first:
-      74: 1083093060482656051
-    second: USMedicMan_Rig_GrenadeThrow2
-  - first:
-      74: 6566565070088858433
-    second: USMedicMan_Rig_Gun
-  - first:
-      74: -3944430205387935603
-    second: USMedicMan_Rig_HitReactionRifle
-  - first:
-      74: 6825851003962606877
-    second: USMedicMan_Rig_IdleRifle1
-  - first:
-      74: -4389160391570280894
-    second: USMedicMan_Rig_IdleRifle2
-  - first:
-      74: 7206332455208084154
-    second: USMedicMan_Rig_JumpRifle
-  - first:
-      74: 2533980495020903649
-    second: USMedicMan_Rig_KnifeIdle
-  - first:
-      74: 5483652192041050333
-    second: USMedicMan_Rig_KnifeStab
-  - first:
-      74: -2448981896988958179
-    second: USMedicMan_Rig_KnifeStab2
-  - first:
-      74: 7697014337737378462
-    second: USMedicMan_Rig_MachineGun
-  - first:
-      74: 1642483583989316163
-    second: USMedicMan_Rig_MedicalAdministering
-  - first:
-      74: 7598895543634243333
-    second: USMedicMan_Rig_Pilot
-  - first:
-      74: -6942949104437748564
-    second: USMedicMan_Rig_Piloting
-  - first:
-      74: -2492782864924955877
-    second: USMedicMan_Rig_ProneRifle
-  - first:
-      74: -5493146091753179067
-    second: USMedicMan_Rig_Rece
-  - first:
-      74: -7482029621467215345
-    second: USMedicMan_Rig_RunRifle
-  - first:
-      74: 712268006077633923
-    second: USMedicMan_Rig_Shotgun
-  - first:
-      74: 6429775334901663215
-    second: USMedicMan_Rig_TosGrenade
-  - first:
-      74: -3947706037243566190
-    second: USMedicMan_Rig_TposeRifle
-  - first:
-      74: 666991651833307885
-    second: USMedicMan_Rig_Walking
-  - first:
-      74: -4712398598428290165
-    second: USMedicMan_Rig_WalkRifle
-  - first:
-      74: -6863492639445831961
-    second: USMedicMan_RigPilotingSwitch
-  - first:
-      74: -170328903944958035
-    second: USPilot_Rig|USPilotRig_TposeRifle
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -115,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -166,7 +85,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.01
+    globalScale: 0.099999994
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
