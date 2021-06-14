@@ -6,6 +6,8 @@ public class PlayerPlan : MonoBehaviour
 {
     public TimeManager timeManager;
 
+    public bool isPlanning;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,12 @@ public class PlayerPlan : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isPlanning = !isPlanning;
+
+        }
+
+        if (isPlanning)
         {
             timeManager.SlowTime();
         }
