@@ -10,21 +10,9 @@ public class TimeManager : MonoBehaviour
     public float slowdownFactor = 0.05f;
     public float slowdownLength = 2f;
 
-    public bool timeStopped = false;
-
     void Update() 
     {
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f); //limits time dilation
-
-        if (timeStopped)
-        {
-            StopTime();
-        }
-
-        else
-        {
-            StartTime();
-        }
         
         /*if (Input.GetKeyDown(KeyCode.Return))
         {

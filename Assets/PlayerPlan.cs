@@ -11,7 +11,7 @@ public class PlayerPlan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,18 +19,17 @@ public class PlayerPlan : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isPlanning = !isPlanning; //Toggles plan mode
-
+            isPlanning = !isPlanning;
         }
 
         if (isPlanning)
         {
-            timeManager.timeStopped = true;
+            timeManager.StopTime();
         }
 
         else
         {
-            timeManager.timeStopped = false;
+            timeManager.StartTime();
         }
     }
 }

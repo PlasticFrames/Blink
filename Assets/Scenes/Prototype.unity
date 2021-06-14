@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a68e9e4b59901d42a26244b80fc8d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPlan: {fileID: 0}
   slowdownFactor: 0.05
   slowdownLength: 2
 --- !u!4 &1586439649
@@ -432,7 +433,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e70e28dcfecae4e4a9cce65c26896196, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e70e28dcfecae4e4a9cce65c26896196, type: 3}
       propertyPath: m_LocalPosition.x
@@ -476,7 +477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e70e28dcfecae4e4a9cce65c26896196, type: 3}
       propertyPath: m_Name
-      value: Pilot
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 5514128457261756149, guid: e70e28dcfecae4e4a9cce65c26896196, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -789,6 +790,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeManager: {fileID: 1586439648}
+  dashRange: {fileID: 0}
+  isPlanning: 0
 --- !u!1 &2127100985
 GameObject:
   m_ObjectHideFlags: 0
