@@ -27,5 +27,10 @@ public class PlayerPlan : MonoBehaviour
         {
             timeManager.SlowTime();
         }
+
+        else
+        {
+            timeManager.NormalTime();
+        }
     }
 }
