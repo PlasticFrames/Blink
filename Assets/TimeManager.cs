@@ -5,19 +5,16 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public PlayerPlan playerPlan;
+
     public float slowdownFactor = 0.05f;
     public float slowdownLength = 2f;
 
-    public bool timeStopped;
+    public bool timeStopped = false;
 
     void Update() 
     {
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f); //limits time dilation
-
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            timeStopped = !timeStopped;
-        }
 
         if (timeStopped)
         {
@@ -26,27 +23,32 @@ public class TimeManager : MonoBehaviour
 
         else
         {
-            NormTime();
+            StartTime();
         }
-    }
-
-    public void SlowTime()
-    {
-        if (!timeStopped)
+        
+        /*if (Input.GetKeyDown(KeyCode.Return))
         {
-            Time.timeScale = slowdownFactor;
-            Time.fixedDeltaTime = Time.timeScale * 0.02f; //smooths updates 
-        }
-
+            SlowTime();
+        }*/
     }
 
     public void StopTime()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
     }
 
-    public void NormTime()
+    public void StartTime()
     {
-        Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime; //slowly returns to normal
+        Time.timeScale = 1f;;
     }
+
+    /*public void SlowTime()
+    {
+        if (!timeStopped)
+        {
+            Time.timeScale = slowdownFactor;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f; //smooths updates
+            Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime; //eases return
+        }
+    }*/
 }

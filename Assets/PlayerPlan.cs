@@ -25,12 +25,12 @@ public class PlayerPlan : MonoBehaviour
 
         if (isPlanning)
         {
-            timeManager.SlowTime();
+            timeManager.timeStopped = true;
         }
 
         else
         {
-            timeManager.NormTime();
+            timeManager.timeStopped = false;
         }
     }
 }
