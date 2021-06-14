@@ -19,7 +19,7 @@ public class PlayerPlan : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isPlanning = !isPlanning;
+            isPlanning = !isPlanning; //Toggles plan mode
 
         }
 
@@ -30,7 +30,7 @@ public class PlayerPlan : MonoBehaviour
 
         else
         {
-            timeManager.NormalTime();
+            timeManager.NormTime();
         }
     }
 }
