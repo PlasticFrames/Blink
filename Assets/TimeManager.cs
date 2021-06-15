@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public PlayerPlan playerPlan;
+    public PlayerDash dashScript;
 
     public float slowdownFactor = 0.05f;
     public float slowdownLength = 2f;
@@ -18,7 +18,27 @@ public class TimeManager : MonoBehaviour
         {
             SlowTime();
         }*/
+
+        if (dashScript.isPlanning)
+        {
+            StopTime();
+        }
+
+        else
+        {
+            StartTime();
+        }
     }
+    
+    /*public void SlowTime()
+    {
+        if (!timeStopped)
+        {
+            Time.timeScale = slowdownFactor;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f; //smooths updates
+            Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime; //eases return
+        }
+    }*/
 
     public void StopTime()
     {
@@ -29,14 +49,4 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale = 1f;;
     }
-
-    /*public void SlowTime()
-    {
-        if (!timeStopped)
-        {
-            Time.timeScale = slowdownFactor;
-            Time.fixedDeltaTime = Time.timeScale * 0.02f; //smooths updates
-            Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime; //eases return
-        }
-    }*/
 }

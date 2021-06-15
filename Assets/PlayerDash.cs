@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,12 @@ public class PlayerDash: MonoBehaviour
 {
     PlayerMove moveScript;
 
+    public Vector3 playerPos;
+
     public float dashSpeed;
     public float dashTime;
+
+    public bool isPlanning;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +23,11 @@ public class PlayerDash: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isPlanning = !isPlanning;
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
             StartCoroutine(Dash());
@@ -35,4 +45,13 @@ public class PlayerDash: MonoBehaviour
             yield return null;
         }
     }
-}
+} 
+/*
+1. store player position
+2. detect mouse click
+3. first dash
+4. trigger
+5. stack second dash
+6. stack third dash
+7. undo dash
+*/ 
