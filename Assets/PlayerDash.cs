@@ -51,12 +51,14 @@ public class PlayerDash: MonoBehaviour
 
         if (isPlanning)
         {
-            Instantiate(dashAim, Vector3.zero, Quaternion.identity);
+            dashAim.SetActive(true);
             Plan();
         }
         else
         {
-            Destroy(GameObject.FindGameObjectWithTag("Dash UI")); //Not destryoing markers
+            dashAim.SetActive(false);
+            Destroy(GameObject.FindWithTag("Marker"));
+            dashNumber = 0;
         }
 
         if(Input.GetMouseButtonDown(0) && isPlanning)

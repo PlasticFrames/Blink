@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2327183678354249360}
   m_Layer: 0
   m_Name: Dash Mark
-  m_TagString: Dash UI
+  m_TagString: Marker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

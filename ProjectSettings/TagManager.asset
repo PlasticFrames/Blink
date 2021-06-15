@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Ground
   - Marker
-  - Dash UI
   layers:
   - Default
   - TransparentFX
