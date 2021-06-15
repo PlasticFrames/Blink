@@ -9,6 +9,7 @@ public class Dash : MonoBehaviour
     public Vector3 dashDirection;
     public Vector3 mousePosition;
     public Vector3 debugCubePos;
+    public Vector3 dashPosition;
     public Camera cam;
     public float groundZ = 0f;
     public float ease;
@@ -46,7 +47,7 @@ public class Dash : MonoBehaviour
 
         if(distanceFromPlayer < maxDistance)
         {
-
+            dashPosition = debugCube.transform.position;
         }
         
         if (Input.GetMouseButtonDown(1))
