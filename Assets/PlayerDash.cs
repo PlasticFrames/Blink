@@ -153,10 +153,10 @@ public class PlayerDash: MonoBehaviour
 } 
 /*
 1. store player position /
-2. clamp range
-3. first dash
+2. clamp range /
+3. first dash /
 4. trigger
-5. stack second dash
-6. stack third dash
+5. stack second dash /
+6. stack third dash /
 7. undo dash
 */ 
