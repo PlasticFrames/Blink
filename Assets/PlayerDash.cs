@@ -13,11 +13,14 @@ public class PlayerDash: MonoBehaviour
     
     public float groundZ = 0f;
     public float distance;
+    public float distanceFromPlayer;
+    public float maxDistance = 10f;
     public float dashSpeed;
     public float dashTime;
 
     public Vector3 playerPosition;
     public Vector3 mousePosition;
+    public Vector3 dashDirection;
     public Vector3 dashDestination;
 
     public bool isPlanning;
@@ -59,15 +62,19 @@ public class PlayerDash: MonoBehaviour
     void Plan()
     {
         mouseGhost.transform.position = mousePosition;
-        mouseGhost.transform.rotation = transform.rotation;
+        mouseGhost.transform.rotation = transform.rotation; //remove later
+
+        distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
+        dashDirection = playerPosition - GetWorldPosition(groundZ);
+        Vector3 offset = GetWorldPosition(groundZ) - playerPosition;
+        mouseGhost.transform.position = playerPosition + Vector3.ClampMagnitude(offset, maxDistance);
     }
 
-    public Vector3 GetWorldPosition(float z)
+    public Vector3 GetWorldPosition(float z) //
     {
         Ray mousePos = cam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
         ground.Raycast(mousePos, out distance);
-        //mousePosition = mousePos;
         return mousePos.GetPoint(distance);
     }
 
@@ -85,7 +92,7 @@ public class PlayerDash: MonoBehaviour
 } 
 /*
 1. store player position /
-2. detect mouse click
+2. clamp range
 3. first dash
 4. trigger
 5. stack second dash
