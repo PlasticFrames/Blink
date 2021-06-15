@@ -59,12 +59,20 @@ public class PlayerDash: MonoBehaviour
             dashAim.SetActive(false);
             Destroy(GameObject.FindWithTag("Marker"));
             dashNumber = 0;
+            destination1 = Vector3.zero;
+            destination2 = Vector3.zero;
+            destination3 = Vector3.zero;
         }
 
         if(Input.GetMouseButtonDown(0) && isPlanning)
         {
             SetDestination();
             //StartCoroutine(Dash());
+        }
+
+        if (distanceFromPlayer < maxDistance) //WHATTTTTTTTTTT
+        {
+            dashDestination = dashAim.transform.position;
         }
     }
 
@@ -84,11 +92,6 @@ public class PlayerDash: MonoBehaviour
         dashDirection = playerPosition - GetWorldPosition(groundZ);
         Vector3 offset = GetWorldPosition(groundZ) - playerPosition;
         dashAim.transform.position = playerPosition + Vector3.ClampMagnitude(offset, maxDistance);
-
-        if (distanceFromPlayer < maxDistance)
-        {
-            dashDestination = dashAim.transform.position;
-        }
     }
 
     void SetDestination() //find more efficient way to cycle!
@@ -107,7 +110,7 @@ public class PlayerDash: MonoBehaviour
         }
         else if (dashNumber == 2)
         {
-            destination3 = dashDestination; //destinations not always accurate?
+            destination3 = dashDestination;
             IncrementDashNumber();
             SetMarker();
         }
@@ -120,22 +123,19 @@ public class PlayerDash: MonoBehaviour
 
     void SetMarker()
     {
-        if (destination1 != Vector3.zero)
+        if (dashNumber == 1)
         {
             Instantiate(dashMark, destination1, Quaternion.identity);
-            destination1 = Vector3.zero;
         }
 
-        if (destination2 != Vector3.zero)
+        if (dashNumber == 2) //wrong position
         {
             Instantiate(dashMark, destination2, Quaternion.identity);
-            destination2 = Vector3.zero;
         }
 
-        if (destination3 != Vector3.zero)
+        if (dashNumber == 3)
         {
             Instantiate(dashMark, destination3, Quaternion.identity);
-            destination3 = Vector3.zero;
         }
     }
 
