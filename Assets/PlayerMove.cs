@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; //Seems to help camera control
+        //Cursor.lockState = CursorLockMode.Locked; //Seems to help camera control
     }
 
     // Update is called once per frame
