@@ -20,6 +20,7 @@ public class PlayerDash: MonoBehaviour
     public float dashTime;
 
     public int dashNumber = 0;
+    [SerializeField] GameObject[] dashDestinations = new GameObject[3];
 
     public Vector3 playerPosition;
     public Vector3 mousePosition;
@@ -40,8 +41,6 @@ public class PlayerDash: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePosition = GetWorldPosition(groundZ);
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isPlanning = !isPlanning;
@@ -57,15 +56,13 @@ public class PlayerDash: MonoBehaviour
         else
         {
             dashAim.SetActive(false);
-            Destroy(GameObject.FindWithTag("Marker"));
+            //Destroy(GameObject.FindWithTag("Marker"));
             dashNumber = 0;
-            destination1 = Vector3.zero;
-            destination2 = Vector3.zero;
-            destination3 = Vector3.zero;
         }
 
         if(Input.GetMouseButtonDown(0) && isPlanning)
         {
+            mousePosition = GetWorldPosition(groundZ);
             SetDestination();
             //StartCoroutine(Dash());
         }
@@ -96,49 +93,11 @@ public class PlayerDash: MonoBehaviour
 
     void SetDestination() //find more efficient way to cycle!
     {
-        if (dashNumber == 0)
-        {
-            destination1 = dashDestination;
-            IncrementDashNumber();
-            SetMarker();
-        }       
-        else if (dashNumber == 1)
-        {
-            destination2 = dashDestination;
-            IncrementDashNumber();
-            SetMarker();
-        }
-        else if (dashNumber == 2)
-        {
-            destination3 = dashDestination;
-            IncrementDashNumber();
-            SetMarker();
-        }
-    }
-
-    void IncrementDashNumber()
-    {
+        dashDestinations[dashNumber].transform.position = mousePosition;
+        //Instantiate(dashDestinations[dashNumber], mousePosition, Quaternion.identity);
         dashNumber++;
     }
-
-    void SetMarker()
-    {
-        if (dashNumber == 1)
-        {
-            Instantiate(dashMark, destination1, Quaternion.identity);
-        }
-
-        if (dashNumber == 2) //wrong position
-        {
-            Instantiate(dashMark, destination2, Quaternion.identity);
-        }
-
-        if (dashNumber == 3)
-        {
-            Instantiate(dashMark, destination3, Quaternion.identity);
-        }
-    }
-
+    
     IEnumerator Dash()
     {
         float startTime = Time.time;
@@ -148,6 +107,7 @@ public class PlayerDash: MonoBehaviour
             moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
 
             yield return null;
+            //moveDir - playerPos.normalized
         }
     }
 } 
