@@ -28,6 +28,9 @@ public class PlayerDash: MonoBehaviour
 
     public bool isPlanning = false;
 
+    public float smoothTime = 0.3F; //attemption smooth damp
+    private Vector3 velocity = Vector3.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,7 @@ public class PlayerDash: MonoBehaviour
         {
             isPlanning = false;
             Dash();
+            //StartCoroutine(OldDash());
         }
 
         if (isPlanning)
@@ -56,15 +60,14 @@ public class PlayerDash: MonoBehaviour
         else if (!isPlanning)//move into exit plan function?
         {
             dashNumber = 0;
-            dashAim.SetActive(false);
-            //dashWaypoints[dashNumber].SetActive(false); //not deactivating or reactivating 
+            dashAim.SetActive(false); 
         }
 
         if(Input.GetMouseButtonDown(0) && isPlanning)
         {
             dashDestination = dashAim.transform.position;
             SetDestinations();
-            //StartCoroutine(Dash());
+
         }
     }
 
@@ -101,22 +104,26 @@ public class PlayerDash: MonoBehaviour
 
         foreach (GameObject gameObject in dashMarks)
         {
-            transform.position = dashMarks[dashNumber].transform.position;
+            transform.position = dashMarks[dashNumber].transform.position; //returning to previous position if unchanged
+            //transform.position = Vector3.Lerp(transform.position, dashMarks[dashNumber].transform.position, 1);
+            //transform.position = Vector3.SmoothDamp(transform.position, dashMarks[dashNumber].transform.position,  ref velocity, smoothTime);
+            Debug.Log(transform.position);
             dashMarks[dashNumber].SetActive(false);
             dashNumber++;
         }
     }
 
-    /*IEnumerator Dash()
+    IEnumerator OldDash()
     {
         float startTime = Time.time;
 
         while(Time.time < startTime + dashTime)
         {
-            moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+            
+            moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);//moveDir - playerPos.normalized instead?
 
             yield return null;
-            //moveDir - playerPos.normalized
+            
         }
-    }*/
+    }
 } 

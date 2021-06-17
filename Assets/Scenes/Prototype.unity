@@ -1345,6 +1345,7 @@ MonoBehaviour:
   dashOrigin: {x: 0, y: 0, z: 0}
   dashDestination: {x: 0, y: 0, z: 0}
   isPlanning: 0
+  smoothTime: 0.3
 --- !u!1 &2127100985
 GameObject:
   m_ObjectHideFlags: 0
