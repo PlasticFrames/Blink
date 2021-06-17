@@ -25,7 +25,7 @@ public class PlayerDash: MonoBehaviour
     public Vector3 dashOrigin;
     public Vector3 dashDestination;
 
-    public bool isPlanning;
+    public bool isPlanning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,27 +36,33 @@ public class PlayerDash: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning)
         {
-            isPlanning = !isPlanning;
+            isPlanning = true;
             dashOrigin = transform.position;
+            LimitRange();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && isPlanning)
+        {
+            isPlanning = false;
+            Dash();
         }
 
         if (isPlanning)
         {
-            Plan();
+            LimitRange();
         }
-        else //move into exit plan function?
+        else if (!isPlanning)//move into exit plan function?
         {
+            dashNumber = 0;
             dashAim.SetActive(false);
             //dashWaypoints[dashNumber].SetActive(false); //not deactivating or reactivating 
-            dashNumber = 0;
         }
 
         if(Input.GetMouseButtonDown(0) && isPlanning)
         {
             dashDestination = dashAim.transform.position;
-            SetDestination();
+            SetDestinations();
             //StartCoroutine(Dash());
         }
     }
@@ -69,7 +75,7 @@ public class PlayerDash: MonoBehaviour
         return mousePos.GetPoint(distance);
     }
 
-    void Plan()
+    void LimitRange()
     {
         distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
         Vector3 offset = GetWorldPosition(groundZ) - dashOrigin;
@@ -77,7 +83,7 @@ public class PlayerDash: MonoBehaviour
         dashAim.SetActive(true);
     }
 
-    void SetDestination()
+    void SetDestinations()
     {
         dashWaypoints[dashNumber].transform.position = dashDestination;
         dashWaypoints[dashNumber].SetActive(true);
@@ -85,7 +91,12 @@ public class PlayerDash: MonoBehaviour
         dashNumber++;
     }
     
-    IEnumerator Dash()
+    void Dash()
+    {
+
+    }
+
+    /*IEnumerator Dash()
     {
         float startTime = Time.time;
 
@@ -96,5 +107,5 @@ public class PlayerDash: MonoBehaviour
             yield return null;
             //moveDir - playerPos.normalized
         }
-    }
+    }*/
 } 
