@@ -11,7 +11,7 @@ public class PlayerDash: MonoBehaviour
 
     public GameObject dashAim;
 
-    [SerializeField] GameObject[] dashWaypoints = new GameObject[3];
+    [SerializeField] GameObject[] dashMarks = new GameObject[3];
 
     public float groundZ = 0f;
     public float distance;
@@ -21,6 +21,7 @@ public class PlayerDash: MonoBehaviour
     public float dashTime;
 
     public int dashNumber = 0;
+    public int maxDash = 3;
 
     public Vector3 dashOrigin;
     public Vector3 dashDestination;
@@ -67,7 +68,7 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
-    public Vector3 GetWorldPosition(float z) //monitors mouse position
+    public Vector3 GetWorldPosition(float z)
     {
         Ray mousePos = cam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
@@ -85,15 +86,26 @@ public class PlayerDash: MonoBehaviour
 
     void SetDestinations()
     {
-        dashWaypoints[dashNumber].transform.position = dashDestination;
-        dashWaypoints[dashNumber].SetActive(true);
-        dashOrigin = dashWaypoints[dashNumber].transform.position;
-        dashNumber++;
+        if (dashNumber < 3)
+        {
+            dashMarks[dashNumber].transform.position = dashDestination;
+            dashMarks[dashNumber].SetActive(true);
+            dashOrigin = dashMarks[dashNumber].transform.position;
+            dashNumber++;
+        }
     }
     
     void Dash()
     {
+        dashNumber = 0;
 
+        foreach (GameObject gameObject in dashMarks)
+        {
+            Debug.Log(dashMarks[dashNumber].transform.position);
+            transform.position = dashMarks[dashNumber].transform.position;
+            Debug.Log(transform.position);
+            dashNumber++;
+        }
     }
 
     /*IEnumerator Dash()

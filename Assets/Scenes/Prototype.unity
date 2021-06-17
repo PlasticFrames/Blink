@@ -1330,8 +1330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 2127100988}
   dashAim: {fileID: 750205231}
-  dashMark: {fileID: 2327183677683623859}
-  dashWaypoints:
+  dashMarks:
   - {fileID: 2327183677683623859}
   - {fileID: 16429379}
   - {fileID: 843619516}
@@ -1342,6 +1341,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashTime: 0.25
   dashNumber: 0
+  maxDash: 3
   dashOrigin: {x: 0, y: 0, z: 0}
   dashDestination: {x: 0, y: 0, z: 0}
   isPlanning: 0
