@@ -11,7 +11,9 @@ public class PlayerDash: MonoBehaviour
 
     public GameObject dashAim;
     public GameObject dashMark;
-    
+
+    [SerializeField] GameObject[] dashWaypoints = new GameObject[3];
+
     public float groundZ = 0f;
     public float distance;
     public float distanceFromPlayer;
@@ -20,15 +22,12 @@ public class PlayerDash: MonoBehaviour
     public float dashTime;
 
     public int dashNumber = 0;
-    [SerializeField] GameObject[] dashDestinations = new GameObject[3];
 
-    public Vector3 playerPosition;
-    public Vector3 mousePosition;
-    public Vector3 dashDirection;
+    public Vector3 dashOrigin;
     public Vector3 dashDestination;
-    public Vector3 destination1;
-    public Vector3 destination2;
-    public Vector3 destination3;
+    public Vector3 dashDirection;
+
+    public Quaternion dashRotation;
 
     public bool isPlanning;
 
@@ -44,36 +43,29 @@ public class PlayerDash: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isPlanning = !isPlanning;
-            
-            playerPosition = transform.position;
+            dashOrigin = transform.position;
         }
 
         if (isPlanning)
         {
-            dashAim.SetActive(true);
             Plan();
         }
-        else
+        else //move into exit plan function?
         {
             dashAim.SetActive(false);
-            //Destroy(GameObject.FindWithTag("Marker"));
+            dashMark.SetActive(false);
             dashNumber = 0;
         }
 
         if(Input.GetMouseButtonDown(0) && isPlanning)
         {
-            mousePosition = GetWorldPosition(groundZ);
+            dashDestination = dashAim.transform.position;
             SetDestination();
             //StartCoroutine(Dash());
         }
-
-        if (distanceFromPlayer < maxDistance) //WHATTTTTTTTTTT
-        {
-            dashDestination = dashAim.transform.position;
-        }
     }
 
-    public Vector3 GetWorldPosition(float z) //
+    public Vector3 GetWorldPosition(float z) //monitors mouse position
     {
         Ray mousePos = cam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
@@ -83,18 +75,18 @@ public class PlayerDash: MonoBehaviour
 
     void Plan()
     {
-        //dashAim.transform.position = mousePosition;
-
         distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
-        dashDirection = playerPosition - GetWorldPosition(groundZ);
-        Vector3 offset = GetWorldPosition(groundZ) - playerPosition;
-        dashAim.transform.position = playerPosition + Vector3.ClampMagnitude(offset, maxDistance);
+        //dashDirection = dashOrigin - GetWorldPosition(groundZ);
+        Vector3 offset = GetWorldPosition(groundZ) - dashOrigin;
+        dashAim.transform.position = dashOrigin + Vector3.ClampMagnitude(offset, maxDistance);
+        dashAim.SetActive(true);
     }
 
-    void SetDestination() //find more efficient way to cycle!
+    void SetDestination()
     {
-        dashDestinations[dashNumber].transform.position = mousePosition;
-        //Instantiate(dashDestinations[dashNumber], mousePosition, Quaternion.identity);
+        //dashWaypoints[dashNumber].transform.position = dashDestination;
+        //dashWaypoints[dashNumber].SetActive(true);
+        Instantiate(dashWaypoints[dashNumber], dashDestination, Quaternion.identity);
         dashNumber++;
     }
     
@@ -111,12 +103,3 @@ public class PlayerDash: MonoBehaviour
         }
     }
 } 
-/*
-1. store player position /
-2. clamp range /
-3. first dash /
-4. trigger
-5. stack second dash /
-6. stack third dash /
-7. undo dash
-*/ 
