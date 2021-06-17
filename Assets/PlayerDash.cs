@@ -101,9 +101,8 @@ public class PlayerDash: MonoBehaviour
 
         foreach (GameObject gameObject in dashMarks)
         {
-            Debug.Log(dashMarks[dashNumber].transform.position);
             transform.position = dashMarks[dashNumber].transform.position;
-            Debug.Log(transform.position);
+            dashMarks[dashNumber].SetActive(false);
             dashNumber++;
         }
     }
