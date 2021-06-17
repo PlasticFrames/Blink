@@ -10,7 +10,6 @@ public class PlayerDash: MonoBehaviour
     public Camera cam;
 
     public GameObject dashAim;
-    public GameObject dashMark;
 
     [SerializeField] GameObject[] dashWaypoints = new GameObject[3];
 
@@ -25,9 +24,6 @@ public class PlayerDash: MonoBehaviour
 
     public Vector3 dashOrigin;
     public Vector3 dashDestination;
-    public Vector3 dashDirection;
-
-    public Quaternion dashRotation;
 
     public bool isPlanning;
 
@@ -53,7 +49,7 @@ public class PlayerDash: MonoBehaviour
         else //move into exit plan function?
         {
             dashAim.SetActive(false);
-            dashMark.SetActive(false);
+            //dashWaypoints[dashNumber].SetActive(false); //not deactivating or reactivating 
             dashNumber = 0;
         }
 
@@ -76,7 +72,6 @@ public class PlayerDash: MonoBehaviour
     void Plan()
     {
         distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
-        //dashDirection = dashOrigin - GetWorldPosition(groundZ);
         Vector3 offset = GetWorldPosition(groundZ) - dashOrigin;
         dashAim.transform.position = dashOrigin + Vector3.ClampMagnitude(offset, maxDistance);
         dashAim.SetActive(true);
@@ -84,9 +79,9 @@ public class PlayerDash: MonoBehaviour
 
     void SetDestination()
     {
-        //dashWaypoints[dashNumber].transform.position = dashDestination;
-        //dashWaypoints[dashNumber].SetActive(true);
-        Instantiate(dashWaypoints[dashNumber], dashDestination, Quaternion.identity);
+        dashWaypoints[dashNumber].transform.position = dashDestination;
+        dashWaypoints[dashNumber].SetActive(true);
+        dashOrigin = dashWaypoints[dashNumber].transform.position;
         dashNumber++;
     }
     
