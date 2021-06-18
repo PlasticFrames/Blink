@@ -23,6 +23,7 @@ public class PlayerDash: MonoBehaviour
     public int dashNumber = 0;
     public int maxDash = 3;
 
+
     public Vector3 dashOrigin;
     public Vector3 dashDestination;
     public Vector3 markOrigin;
@@ -50,7 +51,7 @@ public class PlayerDash: MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space) && isPlanning)
         {
             isPlanning = false;
-            Dash();
+            TriggerDashes();
             //StartCoroutine(OldDash());
         }
 
@@ -99,15 +100,17 @@ public class PlayerDash: MonoBehaviour
         }
     }
     
-    void Dash()
+    void TriggerDashes()
     {
         dashNumber = 0;
 
         foreach (GameObject gameObject in dashMarks)
         {
-            if(dashMarks[dashNumber].transform.position != Vector3.zero)
+            if (dashMarks[dashNumber].transform.position != Vector3.zero)
             {
-                transform.position = dashMarks[dashNumber].transform.position;
+                //transform.position = dashMarks[dashNumber].transform.position;
+                transform.LookAt(dashMarks[dashNumber].transform.position);
+                StartCoroutine(DashMovement());
                 //transform.position = Vector3.Lerp(transform.position, dashMarks[dashNumber].transform.position, 1);
                 //transform.position = Vector3.SmoothDamp(transform.position, dashMarks[dashNumber].transform.position,  ref velocity, smoothTime);
                 dashMarks[dashNumber].SetActive(false);
@@ -115,6 +118,19 @@ public class PlayerDash: MonoBehaviour
                 dashNumber++;
             }
 
+        }
+
+        IEnumerator DashMovement()
+        {
+            float startTime = Time.time;
+
+            moveScript.moveDir = (dashMarks[dashNumber].transform.position - transform.position).normalized;
+
+            while(Time.time < startTime + dashTime)
+            {
+                moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+                yield return null;
+            }
         }
     }
 
