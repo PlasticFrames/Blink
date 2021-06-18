@@ -25,6 +25,7 @@ public class PlayerDash: MonoBehaviour
 
     public Vector3 dashOrigin;
     public Vector3 dashDestination;
+    public Vector3 markOrigin;
 
     public bool isPlanning = false;
 
@@ -104,12 +105,16 @@ public class PlayerDash: MonoBehaviour
 
         foreach (GameObject gameObject in dashMarks)
         {
-            transform.position = dashMarks[dashNumber].transform.position; //returning to previous position if unchanged
-            //transform.position = Vector3.Lerp(transform.position, dashMarks[dashNumber].transform.position, 1);
-            //transform.position = Vector3.SmoothDamp(transform.position, dashMarks[dashNumber].transform.position,  ref velocity, smoothTime);
-            Debug.Log(transform.position);
-            dashMarks[dashNumber].SetActive(false);
-            dashNumber++;
+            if(dashMarks[dashNumber].transform.position != Vector3.zero)
+            {
+                transform.position = dashMarks[dashNumber].transform.position;
+                //transform.position = Vector3.Lerp(transform.position, dashMarks[dashNumber].transform.position, 1);
+                //transform.position = Vector3.SmoothDamp(transform.position, dashMarks[dashNumber].transform.position,  ref velocity, smoothTime);
+                dashMarks[dashNumber].SetActive(false);
+                dashMarks[dashNumber].transform.position = Vector3.zero; //reset transform for next dash - MOVE TO OWN SCRIPT?
+                dashNumber++;
+            }
+
         }
     }
 
