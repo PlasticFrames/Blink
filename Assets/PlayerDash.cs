@@ -122,10 +122,13 @@ public class PlayerDash: MonoBehaviour
 
         transform.LookAt(dashMarks[dashNumber].transform.position);
         moveScript.moveDir = (dashMarks[dashNumber].transform.position - transform.position).normalized; //manually sets direction
+        //Debug.Log("moveDir manually set to " + moveScript.moveDir);
 
         while(Time.time < startTime + dashTime)
         {
+            Debug.Log("moveDir pre-dash = " + moveScript.moveDir);
             moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+            Debug.Log("moveDir post-dash = " + moveScript.moveDir);
             yield return null;
         }
     }
