@@ -23,15 +23,13 @@ public class PlayerDash: MonoBehaviour
     public int dashNumber = 0;
     public int maxDash = 3;
 
-
     public Vector3 dashOrigin;
     public Vector3 dashDestination;
-    public Vector3 markOrigin;
 
     public bool isPlanning = false;
 
-    public float smoothTime = 0.3F; //attemption smooth damp
-    private Vector3 velocity = Vector3.zero;
+    /*public float smoothTime = 0.3F; //attempted smooth damp
+    private Vector3 velocity = Vector3.zero;*/
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +67,6 @@ public class PlayerDash: MonoBehaviour
         {
             dashDestination = dashAim.transform.position;
             SetDestinations();
-
         }
     }
 
@@ -109,7 +106,6 @@ public class PlayerDash: MonoBehaviour
             if (dashMarks[dashNumber].transform.position != Vector3.zero)
             {
                 //transform.position = dashMarks[dashNumber].transform.position;
-                transform.LookAt(dashMarks[dashNumber].transform.position);
                 StartCoroutine(DashMovement());
                 //transform.position = Vector3.Lerp(transform.position, dashMarks[dashNumber].transform.position, 1);
                 //transform.position = Vector3.SmoothDamp(transform.position, dashMarks[dashNumber].transform.position,  ref velocity, smoothTime);
@@ -117,20 +113,20 @@ public class PlayerDash: MonoBehaviour
                 dashMarks[dashNumber].transform.position = Vector3.zero; //reset transform for next dash - MOVE TO OWN SCRIPT?
                 dashNumber++;
             }
-
         }
+    }
 
-        IEnumerator DashMovement()
+    IEnumerator DashMovement()
+    {
+        float startTime = Time.time;
+
+        transform.LookAt(dashMarks[dashNumber].transform.position);
+        moveScript.moveDir = (dashMarks[dashNumber].transform.position - transform.position).normalized; //manually sets direction
+
+        while(Time.time < startTime + dashTime)
         {
-            float startTime = Time.time;
-
-            moveScript.moveDir = (dashMarks[dashNumber].transform.position - transform.position).normalized;
-
-            while(Time.time < startTime + dashTime)
-            {
-                moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
-                yield return null;
-            }
+            moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 
