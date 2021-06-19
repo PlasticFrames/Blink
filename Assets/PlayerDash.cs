@@ -106,7 +106,7 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
-    IEnumerator LerpDash(Vector3 targetPosition, float duration)
+    IEnumerator LerpDash(Vector3 targetPosition, float duration) //still seems to be smoothing between points?
     {
         float time = 0;
 

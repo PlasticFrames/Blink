@@ -1109,7 +1109,7 @@ MonoBehaviour:
   groundZ: 0
   distance: 0
   distanceFromPlayer: 0
-  maxDistance: 10
+  maxDistance: 15
   dashSpeed: 0.2
   dashNumber: 0
   maxDash: 3
