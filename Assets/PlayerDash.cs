@@ -18,7 +18,6 @@ public class PlayerDash: MonoBehaviour
     public float distanceFromPlayer;
     public float maxDistance = 10f;
     public float dashSpeed;
-    public float dashTime;
 
     public int dashNumber = 0;
     public int maxDash = 3;
@@ -28,13 +27,11 @@ public class PlayerDash: MonoBehaviour
 
     public bool isPlanning = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         moveScript = GetComponent<PlayerMove>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isPlanning)
@@ -101,26 +98,11 @@ public class PlayerDash: MonoBehaviour
         {
             if (dashMarks[dashNumber].transform.position != Vector3.zero)
             {
-                //transform.position = dashMarks[dashNumber].transform.position;
-                //StartCoroutine(DashMovement());
                 StartCoroutine(LerpDash(dashMarks[dashNumber].transform.position, dashSpeed));
                 dashMarks[dashNumber].SetActive(false);
-                dashMarks[dashNumber].transform.position = Vector3.zero;
+                dashMarks[dashNumber].transform.position = Vector3.zero; //reset position to limit next dashes
                 dashNumber++;
             }
-        }
-    }
-
-    IEnumerator DashMovement()
-    {
-        float startTime = Time.time;
-
-        transform.LookAt(dashMarks[dashNumber].transform.position);
-        moveScript.moveDir = (dashMarks[dashNumber].transform.position - transform.position).normalized;
-        while(Time.time < startTime + dashTime)
-        {
-            moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
-            yield return null;
         }
     }
 
