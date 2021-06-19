@@ -103,7 +103,6 @@ public class PlayerDash: MonoBehaviour
             {
                 //transform.position = dashMarks[dashNumber].transform.position;
                 //StartCoroutine(DashMovement());
-                transform.LookAt(dashMarks[dashNumber].transform.position);
                 StartCoroutine(LerpDash(dashMarks[dashNumber].transform.position, dashSpeed));
                 dashMarks[dashNumber].SetActive(false);
                 dashMarks[dashNumber].transform.position = Vector3.zero;
@@ -128,14 +127,14 @@ public class PlayerDash: MonoBehaviour
     IEnumerator LerpDash(Vector3 targetPosition, float duration)
     {
         float time = 0;
-        Vector3 startPosition = transform.position;
 
         while (time < duration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            transform.LookAt(targetPosition);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPosition;
+        transform.position = targetPosition; //snapping
     }
 } 
