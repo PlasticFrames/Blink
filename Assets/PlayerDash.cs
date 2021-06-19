@@ -28,9 +28,6 @@ public class PlayerDash: MonoBehaviour
 
     public bool isPlanning = false;
 
-    /*public float smoothTime = 0.3F; //attempted smooth damp
-    private Vector3 velocity = Vector3.zero;*/
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,14 +47,13 @@ public class PlayerDash: MonoBehaviour
         {
             isPlanning = false;
             TriggerDashes();
-            //StartCoroutine(OldDash());
         }
 
         if (isPlanning)
         {
             LimitRange();
         }
-        else if (!isPlanning)//move into exit plan function?
+        else if (!isPlanning) //MOVE INTO EXIT PLAN FUNCTION?
         {
             dashNumber = 0;
             dashAim.SetActive(false); 
@@ -106,11 +102,11 @@ public class PlayerDash: MonoBehaviour
             if (dashMarks[dashNumber].transform.position != Vector3.zero)
             {
                 //transform.position = dashMarks[dashNumber].transform.position;
-                StartCoroutine(DashMovement());
-                //transform.position = Vector3.Lerp(transform.position, dashMarks[dashNumber].transform.position, 1);
-                //transform.position = Vector3.SmoothDamp(transform.position, dashMarks[dashNumber].transform.position,  ref velocity, smoothTime);
+                //StartCoroutine(DashMovement());
+                transform.LookAt(dashMarks[dashNumber].transform.position);
+                StartCoroutine(LerpDash(dashMarks[dashNumber].transform.position, dashSpeed));
                 dashMarks[dashNumber].SetActive(false);
-                dashMarks[dashNumber].transform.position = Vector3.zero; //reset transform for next dash - MOVE TO OWN SCRIPT?
+                dashMarks[dashNumber].transform.position = Vector3.zero;
                 dashNumber++;
             }
         }
@@ -121,29 +117,25 @@ public class PlayerDash: MonoBehaviour
         float startTime = Time.time;
 
         transform.LookAt(dashMarks[dashNumber].transform.position);
-        moveScript.moveDir = (dashMarks[dashNumber].transform.position - transform.position).normalized; //manually sets direction
-        //Debug.Log("moveDir manually set to " + moveScript.moveDir);
-
+        moveScript.moveDir = (dashMarks[dashNumber].transform.position - transform.position).normalized;
         while(Time.time < startTime + dashTime)
         {
-            Debug.Log("moveDir pre-dash = " + moveScript.moveDir);
             moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
-            Debug.Log("moveDir post-dash = " + moveScript.moveDir);
             yield return null;
         }
     }
 
-    IEnumerator OldDash()
+    IEnumerator LerpDash(Vector3 targetPosition, float duration)
     {
-        float startTime = Time.time;
+        float time = 0;
+        Vector3 startPosition = transform.position;
 
-        while(Time.time < startTime + dashTime)
+        while (time < duration)
         {
-            
-            moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);//moveDir - playerPos.normalized instead?
-
+            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
             yield return null;
-            
         }
+        transform.position = targetPosition;
     }
 } 
