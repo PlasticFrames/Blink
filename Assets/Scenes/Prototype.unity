@@ -1109,11 +1109,11 @@ MonoBehaviour:
   groundZ: 0
   distance: 0
   distanceFromPlayer: 0
-  maxDistance: 15
+  maxDistance: 20
   dashSpeed: 0.2
   dashNumber: 0
   maxDash: 3
-  dashOrigin: {x: 0, y: 0, z: 0}
+  aimOrigin: {x: 0, y: 0, z: 0}
   dashDestination: {x: 0, y: 0, z: 0}
   isPlanning: 0
 --- !u!1 &2127100985
