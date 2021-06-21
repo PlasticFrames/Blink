@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     public float turnSmoothVelocity;
 
     public Vector3 moveDir;
-    public Vector3 velocity;
+    Vector3 velocity;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
+        /*float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         Vector3 dir = new Vector3(h, 0f, v).normalized;
 
@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        }
+        }*/
     }
 
      void FixedUpdate()
