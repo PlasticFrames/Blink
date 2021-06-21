@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            control.Move(moveDir.normalized * speed * Time.deltaTime);
+            control.Move(moveDir * speed * Time.deltaTime).normalized;
         }
     }
 
@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
         if (hit.gameObject.tag == "Enemy")
         {
             Debug.Log("Collided with Enemy");
-            control.SimpleMove((moveDir.normalized * -1) * speed * Time.deltaTime);
+            control.Move((moveDir.normalized * -1) * speed * Time.deltaTime);
             
         }    
     }
