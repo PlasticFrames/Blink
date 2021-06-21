@@ -22,7 +22,7 @@ public class PlayerDash: MonoBehaviour
     public int dashNumber = 0;
     public int maxDash = 3;
 
-    public Vector3 dashOrigin;
+    public Vector3 aimOrigin;
     public Vector3 dashDestination;
 
     public bool isPlanning = false;
@@ -37,13 +37,13 @@ public class PlayerDash: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !isPlanning)
         {
             isPlanning = true;
-            dashOrigin = transform.position;
+            aimOrigin = transform.position;
             LimitRange();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && isPlanning)
         {
             isPlanning = false;
-            TriggerDashes();
+            StartCoroutine(TriggerDashes());
         }
 
         if (isPlanning)
@@ -52,7 +52,6 @@ public class PlayerDash: MonoBehaviour
         }
         else if (!isPlanning) //MOVE INTO EXIT PLAN FUNCTION?
         {
-            dashNumber = 0;
             dashAim.SetActive(false); 
         }
 
@@ -74,8 +73,8 @@ public class PlayerDash: MonoBehaviour
     void LimitRange()
     {
         distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
-        Vector3 offset = GetWorldPosition(groundZ) - dashOrigin;
-        dashAim.transform.position = dashOrigin + Vector3.ClampMagnitude(offset, maxDistance);
+        Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
+        dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
         dashAim.SetActive(true);
     }
 
@@ -85,38 +84,39 @@ public class PlayerDash: MonoBehaviour
         {
             dashMarks[dashNumber].transform.position = dashDestination;
             dashMarks[dashNumber].SetActive(true);
-            dashOrigin = dashMarks[dashNumber].transform.position;
+            aimOrigin = dashMarks[dashNumber].transform.position;
             dashNumber++;
         }
     }
-    
-    void TriggerDashes()
-    {
-        dashNumber = 0;
 
-        foreach (GameObject gameObject in dashMarks)
+    IEnumerator TriggerDashes()
+  {
+    dashNumber = 0;
+    foreach (GameObject gameObject in dashMarks)
+    {
+        if (dashMarks[dashNumber].transform.position != Vector3.zero)
         {
-            if (dashMarks[dashNumber].transform.position != Vector3.zero)
-            {
-                StartCoroutine(LerpDash(dashMarks[dashNumber].transform.position, dashSpeed));
-                dashMarks[dashNumber].SetActive(false);
-                dashMarks[dashNumber].transform.position = Vector3.zero; //reset position to limit next dashes
-                dashNumber++;
-            }
+            yield return LerpDash (dashMarks[dashNumber].transform.position, dashSpeed);
+            dashMarks[dashNumber].SetActive(false);
+            dashMarks[dashNumber].transform.position = Vector3.zero; //reset position to limit next dashes
+            dashNumber++;
         }
     }
+    dashNumber = 0;
+  }
 
-    IEnumerator LerpDash(Vector3 targetPosition, float duration) //still seems to be smoothing between points?
+    IEnumerator LerpDash(Vector3 targetPos, float duration) //still seems to be smoothing between points?
     {
         float time = 0;
-
+        Vector3 startPos = transform.position;
         while (time < duration)
         {
-            transform.LookAt(targetPosition);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, time / duration);
+            transform.LookAt(targetPos);
+            transform.position = Vector3.Lerp(startPos, targetPos, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPosition; //snapping
+        transform.position = targetPos; //snapping
+        
     }
 } 
