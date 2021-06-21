@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
 
-    public Vector3 moveDir;
+    public Vector3 moveDirection;
     Vector3 velocity;
 
     void Start()
@@ -19,13 +19,20 @@ public class PlayerMove : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked; //Seems to help camera control
         GetComponent<Rigidbody>().velocity = velocity * Time.deltaTime;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        /*float h = Input.GetAxisRaw("Horizontal");
+        
+    }
+
+    void FixedUpdate()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+
+        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 dir = new Vector3(h, 0f, v).normalized;
+
+        rb.MovePosition(transform.position + input * Time.deltaTime * speed);
 
         if(dir.magnitude >= 0.1f)
         {
@@ -33,14 +40,7 @@ public class PlayerMove : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        }*/
-    }
-
-     void FixedUpdate()
-    {
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-        rb.MovePosition(transform.position + input * Time.deltaTime * speed);
+            moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
     }
 }
