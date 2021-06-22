@@ -343,8 +343,9 @@ MonoBehaviour:
   enemyCollider: {fileID: 0}
   player: {fileID: 2058666453}
   playerBody: {fileID: 2058666456}
-  nudgeForce: 500
-  nudgeRadius: 10
+  nudgeForce: 10
+  knockMultiplier: 2
+  reactionRadius: 2
 --- !u!54 &512534949
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -426,8 +427,9 @@ MonoBehaviour:
   enemyCollider: {fileID: 0}
   player: {fileID: 2058666453}
   playerBody: {fileID: 2058666456}
-  nudgeForce: 500
-  nudgeRadius: 10
+  nudgeForce: 10
+  knockMultiplier: 2
+  reactionRadius: 2
 --- !u!54 &561458093
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1082,8 +1084,9 @@ MonoBehaviour:
   enemyCollider: {fileID: 0}
   player: {fileID: 2058666453}
   playerBody: {fileID: 2058666456}
-  nudgeForce: 500
-  nudgeRadius: 10
+  nudgeForce: 10
+  knockMultiplier: 2
+  reactionRadius: 2
 --- !u!54 &1794147051
 Rigidbody:
   m_ObjectHideFlags: 0

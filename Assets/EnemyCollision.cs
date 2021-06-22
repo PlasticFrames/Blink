@@ -12,13 +12,12 @@ public class EnemyCollision : MonoBehaviour
     public GameObject player;  
     public Rigidbody playerBody;
 
-    [SerializeField] float nudgeForce;
-    [SerializeField] float nudgeRadius;
+    public float nudgeForce = 10f;
+    public float knockMultiplier = 2f;    
+    public float reactionRadius = 2f;
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Enemy hit");
-
         if (other.gameObject.CompareTag ("Player") && dashScript.isDashing == false)
         {
             RunReaction();
@@ -33,8 +32,18 @@ public class EnemyCollision : MonoBehaviour
     {
         switch (enemyType)
         {
-        case 1: playerBody.AddExplosionForce(nudgeForce, transform.position, nudgeRadius); // TIE TO UNIVERSAL FORCE VARIABLE?
-        break;
+        case 1: 
+            Debug.Log("Base hit");
+            playerBody.AddExplosionForce(nudgeForce, transform.position, reactionRadius, 0, ForceMode.Impulse);
+            break;
+        case 2:
+            Debug.Log("Shield hit"); 
+            playerBody.AddExplosionForce(nudgeForce * knockMultiplier, transform.position, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
+            break;
+        case 3:
+            Debug.Log("Armour hit"); 
+            Destroy(player);
+            break;
         }
     }    
     
@@ -42,8 +51,15 @@ public class EnemyCollision : MonoBehaviour
     {
         switch (enemyType)
         {
-        case 1: Destroy(gameObject);
-        break;
+        case 1: 
+            Destroy(gameObject);
+            break;
+        case 2: 
+            Destroy(gameObject);
+            break;
+        case 3: 
+            Destroy(gameObject);
+            break;
         }
     }
 }
