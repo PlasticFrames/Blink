@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    PlayerMove moveScript;
+    public PlayerDash dashScript;
 
+    public Collider enemyCollider;
     public GameObject player;  
     public Rigidbody playerBody;
 
@@ -19,16 +20,20 @@ public class EnemyCollision : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void OnCollisionEnter(Collision other)
     {
         Debug.Log("Enemy hit");
-    
-        if (other.gameObject.CompareTag ("Player"))
+
+        if (other.gameObject.CompareTag ("Player") && dashScript.isDashing == false)
         {
             playerBody.AddExplosionForce(nudgeForce, transform.position, nudgeRadius); // TIE TO UNIVERSAL FORCE VARIABLE?
+        }
+        else if (other.gameObject.CompareTag ("Player") && dashScript.isDashing == true)
+        {
+            Destroy(gameObject);
         }
     }
 }

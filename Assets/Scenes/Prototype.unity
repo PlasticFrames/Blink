@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 434370815}
   - component: {fileID: 434370816}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,6 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b70b80eb54b634393692e127b1f1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashScript: {fileID: 2058666457}
+  enemyCollider: {fileID: 434370811}
   player: {fileID: 2058666453}
   playerBody: {fileID: 2058666456}
   nudgeForce: 500
@@ -1246,6 +1248,7 @@ MonoBehaviour:
   aimOrigin: {x: 0, y: 0, z: 0}
   dashDestination: {x: 0, y: 0, z: 0}
   isPlanning: 0
+  isDashing: 0
 --- !u!136 &2058666458
 CapsuleCollider:
   m_ObjectHideFlags: 0
