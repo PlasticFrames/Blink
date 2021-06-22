@@ -26,6 +26,7 @@ public class PlayerDash: MonoBehaviour
     public Vector3 dashDestination;
 
     public bool isPlanning = false;
+    public bool isDashing = false;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class PlayerDash: MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space) && isPlanning)
         {
             isPlanning = false;
+            isDashing = true;
             StartCoroutine(TriggerDashes());
         }
 
@@ -103,6 +105,7 @@ public class PlayerDash: MonoBehaviour
         }
     }
     dashNumber = 0;
+    isDashing = false;
   }
 
     IEnumerator LerpDash(Vector3 targetPos, float duration) //still seems to be smoothing between points?
