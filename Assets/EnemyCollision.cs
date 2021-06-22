@@ -10,6 +10,7 @@ public class EnemyCollision : MonoBehaviour
     public Rigidbody playerBody;
 
     [SerializeField] float nudgeForce;
+    [SerializeField] float nudgeRadius;
 
     void Start()
     {
@@ -25,9 +26,9 @@ public class EnemyCollision : MonoBehaviour
     {
         Debug.Log("Enemy hit");
     
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag ("Player"))
         {
-            playerBody.AddForce((transform.position * -1) * nudgeForce);
+            playerBody.AddExplosionForce(nudgeForce, transform.position, nudgeRadius); // TIE TO UNIVERSAL FORCE VARIABLE?
         }
     }
 }
