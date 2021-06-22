@@ -424,6 +424,7 @@ MonoBehaviour:
   playerBody: {fileID: 2058666456}
   nudgeForce: 500
   nudgeRadius: 10
+  enemyType: 1
 --- !u!1 &750205231
 GameObject:
   m_ObjectHideFlags: 0

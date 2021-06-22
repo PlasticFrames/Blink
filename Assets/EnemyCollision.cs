@@ -12,28 +12,37 @@ public class EnemyCollision : MonoBehaviour
 
     [SerializeField] float nudgeForce;
     [SerializeField] float nudgeRadius;
+    [SerializeField] int enemyType; //1 = Base, 2 = shield, 3 = armour
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
-    public void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         Debug.Log("Enemy hit");
 
         if (other.gameObject.CompareTag ("Player") && dashScript.isDashing == false)
         {
-            playerBody.AddExplosionForce(nudgeForce, transform.position, nudgeRadius); // TIE TO UNIVERSAL FORCE VARIABLE?
+            RunReaction();
         }
         else if (other.gameObject.CompareTag ("Player") && dashScript.isDashing == true)
         {
-            Destroy(gameObject);
+            DashReaction();
+        }
+    }
+
+    void RunReaction()
+    {
+        switch (enemyType)
+        {
+        case 1: playerBody.AddExplosionForce(nudgeForce, transform.position, nudgeRadius); // TIE TO UNIVERSAL FORCE VARIABLE?
+        break;
+        }
+    }    
+    
+    void DashReaction()
+    {
+        switch (enemyType)
+        {
+        case 1: Destroy(gameObject);
+        break;
         }
     }
 }
