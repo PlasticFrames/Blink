@@ -18,32 +18,35 @@ public class UIManager : MonoBehaviour
 
     void Update() //BRUTE FORCE SOLUTION WITH LOTS OF ISSUES
     {
-        switch(dashScript.dashNumber)
+        if(dashScript.isDashing == false)
         {
-        case 3: ;
-            dash0.SetActive (true);
-            dash1.SetActive (false);
-            dash2.SetActive (false);
-            dash3.SetActive (false);
-            break;
-        case 2: ;
-            dash0.SetActive (false);
-            dash1.SetActive (true);
-            dash2.SetActive (false);
-            dash3.SetActive (false);
-            break;
-        case 1: ;
-            dash0.SetActive (false);
-            dash1.SetActive (false);
-            dash2.SetActive (true);
-            dash3.SetActive (false);
-            break;
-        case 0: ;
-            dash0.SetActive (false);
-            dash1.SetActive (false);
-            dash2.SetActive (false);
-            dash3.SetActive (true);
-            break;
-        }    
+            switch(dashScript.dashNumber)
+            {
+            case 3: ;
+                dash0.SetActive (true);
+                dash1.SetActive (false);
+                dash2.SetActive (false);
+                dash3.SetActive (false);
+                break;
+            case 2: ;
+                dash0.SetActive (false);
+                dash1.SetActive (true);
+                dash2.SetActive (false);
+                dash3.SetActive (false);
+                break;
+            case 1: ;
+                dash0.SetActive (false);
+                dash1.SetActive (false);
+                dash2.SetActive (true);
+                dash3.SetActive (false);
+                break;
+            case 0: ;
+                dash0.SetActive (false);
+                dash1.SetActive (false);
+                dash2.SetActive (false);
+                dash3.SetActive (true);
+                break;
+            }    
+        }
     }
 }
