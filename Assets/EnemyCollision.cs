@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
+    [SerializeField] int enemyType; //1 = Base, 2 = shield, 3 = armour
+
     public PlayerDash dashScript;
 
     public Collider enemyCollider;
@@ -12,7 +14,6 @@ public class EnemyCollision : MonoBehaviour
 
     [SerializeField] float nudgeForce;
     [SerializeField] float nudgeRadius;
-    [SerializeField] int enemyType; //1 = Base, 2 = shield, 3 = armour
 
     void OnCollisionEnter(Collision other)
     {
