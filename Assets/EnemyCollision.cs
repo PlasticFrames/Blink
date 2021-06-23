@@ -51,7 +51,7 @@ public class EnemyCollision : MonoBehaviour
         case 3:
             Debug.Log("Armour hit"); 
             dashScript.dashCharges--;
-            dashScript.maxDash--; //ORB REPRESENTING CHARGES / TEMPORARILY REDUCE CHARGES
+            dashScript.maxDash--; //ORB REPRESENTING CHARGES
             break;
         }
     }    
@@ -59,14 +59,14 @@ public class EnemyCollision : MonoBehaviour
     void DashReaction()
     {
         forceOrigin = player.transform.position;
-        
+
         switch (enemyType)
         {
         case 1: 
             Destroy(gameObject);
             break;
         case 2: 
-            enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//CREATE EXPLOSION AT POINT OF COLLISION?
+            enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             break;
         case 3: 
             enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP

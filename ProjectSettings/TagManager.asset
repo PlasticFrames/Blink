@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dash UI
   - Enemy
+  - Dash Charge
   layers:
   - Default
   - TransparentFX
