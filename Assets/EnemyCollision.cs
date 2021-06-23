@@ -17,29 +17,36 @@ public class EnemyCollision : MonoBehaviour
     public float knockMultiplier = 2f;    
     public float reactionRadius = 2f;
 
+    public Vector3 forceOrigin;
+
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag ("Player") && dashScript.isDashing == false)
+        if (other.gameObject.CompareTag ("Player"))
         {
-            RunReaction();
-        }
-        else if (other.gameObject.CompareTag ("Player") && dashScript.isDashing == true)
-        {
-            DashReaction();
+            if  (dashScript.isDashing == false)
+            {
+                RunReaction();
+            }
+            else if (dashScript.isDashing == true)
+            {
+                DashReaction();
+            }
         }
     }
 
     void RunReaction()
     {
+        forceOrigin = transform.position;
+
         switch (enemyType)
         {
         case 1: 
             Debug.Log("Base hit");
-            playerBody.AddExplosionForce(nudgeForce, transform.position, reactionRadius, 0, ForceMode.Impulse);
+            playerBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             break;
         case 2:
             Debug.Log("Shield hit"); 
-            playerBody.AddExplosionForce(nudgeForce * knockMultiplier, transform.position, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
+            playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
             break;
         case 3:
             Debug.Log("Armour hit"); 
@@ -51,16 +58,18 @@ public class EnemyCollision : MonoBehaviour
     
     void DashReaction()
     {
+        forceOrigin = player.transform.position;
+        
         switch (enemyType)
         {
         case 1: 
             Destroy(gameObject);
             break;
         case 2: 
-            enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, player.transform.position, reactionRadius, 0, ForceMode.Impulse); //SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
+            enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//CREATE EXPLOSION AT POINT OF COLLISION?
             break;
         case 3: 
-            enemyBody.AddExplosionForce(nudgeForce, player.transform.position, reactionRadius, 0, ForceMode.Impulse);
+            enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
             break;
         }
     }
