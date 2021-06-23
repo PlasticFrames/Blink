@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargeDash : MonoBehaviour
+public class DashRecharge : MonoBehaviour
 {
     public PlayerDash dashScript;
 
-    public Rigidbody chargeBody;
+    public Rigidbody rechargeBody;
 
     void Start()
     {
@@ -18,9 +18,14 @@ public class ChargeDash : MonoBehaviour
 
     }
 
+    void OnEnable() 
+    {
+
+    }
+
     void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject.CompareTag ("Player") && chargeBody.IsSleeping())
+        if (other.gameObject.CompareTag ("Player") && rechargeBody.IsSleeping())
         {
             if (dashScript.dashCharges < 3)
             {
