@@ -36,7 +36,7 @@ public class PlayerDash: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning)
+        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && dashCharges > 0)
         {
             isPlanning = true;
             aimOrigin = transform.position;
@@ -53,7 +53,7 @@ public class PlayerDash: MonoBehaviour
         {
             LimitRange();
         }
-        else if (!isPlanning) //MOVE INTO EXIT PLAN FUNCTION?
+        else if (!isPlanning)
         {
             dashAim.SetActive(false); 
         }
