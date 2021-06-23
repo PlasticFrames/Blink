@@ -7,22 +7,19 @@ public class EnemyCollision : MonoBehaviour
     [SerializeField] int enemyType; //1 = Base, 2 = shield, 3 = armour
 
     public PlayerDash dashScript;
+    public DashRecharge rechargeScript;
 
     public GameObject player;
-    public GameObject rechargeSpawn;
     public GameObject dashRecharge; 
      
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
-    public Rigidbody rechargeBody;
 
     float nudgeForce = 10f;
     float knockMultiplier = 2f;    
     float reactionRadius = 2f;
-    float rechargeForce = 1000f;
 
     public Vector3 forceOrigin;
-    public Vector3 rechargeDirection;
     public Vector3 spawnOffset;
 
     void Start() 
@@ -59,24 +56,19 @@ public class EnemyCollision : MonoBehaviour
             Debug.Log("Shield hit"); 
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
             break;
-            case 3:
-                Debug.Log("Armour hit");
-                dashScript.dashCharges--;
-                dashScript.maxDash--; //ORB REPRESENTING CHARGES
-                SpawnRecharge();
-                break;
+        case 3:
+            Debug.Log("Armour hit");
+            playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+            dashScript.dashCharges--;
+            dashScript.maxDash--;
+    
+            if(dashScript.dashCharges > 0)
+            {
+                Instantiate(dashRecharge, player.transform.position + spawnOffset, Quaternion.identity);
+                rechargeScript.rechargeDirection = (player.transform.position - transform.position).normalized;
+            }    
+            break;
         }
-    }
-
-    void SpawnRecharge()
-    {
-        rechargeDirection = (player.transform.position - transform.position).normalized;
-
-        if(dashScript.dashCharges > 0)
-        {
-            Instantiate(dashRecharge, player.transform.position + spawnOffset, Quaternion.identity);
-            rechargeBody.AddForce(rechargeDirection * rechargeForce, ForceMode.Impulse);
-        }    
     }
 
     void DashReaction()

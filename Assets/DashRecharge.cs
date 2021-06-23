@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,10 @@ public class DashRecharge : MonoBehaviour
     public PlayerDash dashScript;
 
     public Rigidbody rechargeBody;
+
+    public Vector3 rechargeDirection;
+
+    [SerializeField] float rechargeForce;
 
     void Start()
     {
@@ -20,18 +25,21 @@ public class DashRecharge : MonoBehaviour
 
     void OnEnable() 
     {
+        rechargeBody.AddForce(rechargeDirection * rechargeForce, ForceMode.Impulse);
+        Cooldown();
+    }
 
+    private void Cooldown()
+    {
+        //();
     }
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject.CompareTag ("Player") && rechargeBody.IsSleeping())
+        if (other.gameObject.CompareTag ("Player"))
         {
-            if (dashScript.dashCharges < 3)
-            {
-                dashScript.dashCharges++;
-                Destroy(gameObject);
-            }
+            dashScript.dashCharges++;
+            Destroy(gameObject);
         }
     }
 }
