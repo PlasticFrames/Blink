@@ -125,7 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671277d60638c584c98603dafcfed1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
+  inactiveColour: {r: 1, g: 0, b: 0, a: 0.5019608}
+  activeColour: {r: 0, g: 1, b: 1, a: 0.5019608}
+  materialToChange: {fileID: 2100000, guid: ddcf8b14aa9b49b4a97b040100fa9307, type: 2}
   dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   rechargeBody: {fileID: 4583364281525056026}
-  rechargeDirection: {x: 0.108522035, y: -0.7262873, z: 0.6787708}
-  rechargeForce: 10
+  rechargeDirection: {x: -0.35129482, y: -0.7548965, z: -0.5538259}
+  rechargeForce: 100

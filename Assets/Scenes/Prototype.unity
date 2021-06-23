@@ -2216,6 +2216,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 750205231}
     - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+      propertyPath: maxDash
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+      propertyPath: dashCharges
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: dashMarks.Array.data[0]
       value: 
       objectReference: {fileID: 2327183677683623859}
@@ -2227,5 +2235,9 @@ PrefabInstance:
       propertyPath: dashMarks.Array.data[2]
       value: 
       objectReference: {fileID: 843619516}
+    - target: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c24ead6d98d5cce48aef417350188a59, type: 3}

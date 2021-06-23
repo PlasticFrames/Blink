@@ -81,7 +81,7 @@ public class PlayerDash: MonoBehaviour
         dashAim.SetActive(true);
     }
 
-    void SetDestinations()
+    void SetDestinations() //DISABLE AIM VS MAX DASH?
     {
         if (dashCharges > 0)
         {
