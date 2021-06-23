@@ -11,6 +11,7 @@ public class EnemyCollision : MonoBehaviour
     public Collider enemyCollider;
     public GameObject player;  
     public Rigidbody playerBody;
+    public Rigidbody enemyBody;
 
     public float nudgeForce = 10f;
     public float knockMultiplier = 2f;    
@@ -56,10 +57,10 @@ public class EnemyCollision : MonoBehaviour
             Destroy(gameObject);
             break;
         case 2: 
-            Destroy(gameObject);
+            enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, player.transform.position, reactionRadius, 0, ForceMode.Impulse); //SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
             break;
         case 3: 
-            Destroy(gameObject);
+            enemyBody.AddExplosionForce(nudgeForce, player.transform.position, reactionRadius, 0, ForceMode.Impulse);
             break;
         }
     }
