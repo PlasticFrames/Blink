@@ -42,7 +42,8 @@ public class EnemyCollision : MonoBehaviour
             break;
         case 3:
             Debug.Log("Armour hit"); 
-            Destroy(player);
+            dashScript.dashCharges--;
+            dashScript.maxDash--; //ORB REPRESENTING CHARGES / TEMPORARILY REDUCE CHARGES
             break;
         }
     }    

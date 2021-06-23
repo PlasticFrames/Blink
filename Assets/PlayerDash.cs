@@ -7,7 +7,7 @@ public class PlayerDash: MonoBehaviour
 {
     PlayerMove moveScript;
 
-    public Camera cam;
+    public Camera runCam;
 
     public GameObject dashAim;
 
@@ -19,8 +19,9 @@ public class PlayerDash: MonoBehaviour
     public float maxDistance = 10f;
     public float dashSpeed;
 
-    public int dashNumber = 0;
+    public int dashCharges = 3;
     public int maxDash = 3;
+    public int currentDash = 0;
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
@@ -66,7 +67,7 @@ public class PlayerDash: MonoBehaviour
 
     public Vector3 GetWorldPosition(float z)
     {
-        Ray mousePos = cam.ScreenPointToRay(Input.mousePosition);
+        Ray mousePos = runCam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
         ground.Raycast(mousePos, out distance);
         return mousePos.GetPoint(distance);
@@ -82,29 +83,31 @@ public class PlayerDash: MonoBehaviour
 
     void SetDestinations()
     {
-        if (dashNumber < 3)
+        if (dashCharges > 0)
         {
-            dashMarks[dashNumber].transform.position = dashDestination;
-            dashMarks[dashNumber].SetActive(true);
-            aimOrigin = dashMarks[dashNumber].transform.position;
-            dashNumber++;
+            dashMarks[currentDash].transform.position = dashDestination;
+            dashMarks[currentDash].SetActive(true);
+            aimOrigin = dashMarks[currentDash].transform.position;
+            currentDash++;
+            dashCharges--;
         }
     }
 
     IEnumerator TriggerDashes()
   {
-    dashNumber = 0;
+    currentDash = 0;
     foreach (GameObject gameObject in dashMarks)
     {
-        if (dashMarks[dashNumber].transform.position != Vector3.zero)
+        if (dashMarks[currentDash].transform.position != Vector3.zero)
         {
-            yield return LerpDash (dashMarks[dashNumber].transform.position, dashSpeed);
-            dashMarks[dashNumber].SetActive(false);
-            dashMarks[dashNumber].transform.position = Vector3.zero; //reset position to limit next dashes
-            dashNumber++;
+            yield return LerpDash (dashMarks[currentDash].transform.position, dashSpeed);
+            dashMarks[currentDash].SetActive(false);
+            dashMarks[currentDash].transform.position = Vector3.zero; //reset position to limit next dashes
+            currentDash++;
         }
     }
-    dashNumber = 0;
+    currentDash = 0;
+    dashCharges = maxDash;
     isDashing = false;
   }
 
