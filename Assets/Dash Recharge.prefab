@@ -131,5 +131,5 @@ MonoBehaviour:
   materialToChange: {fileID: 2100000, guid: ddcf8b14aa9b49b4a97b040100fa9307, type: 2}
   dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   rechargeBody: {fileID: 4583364281525056026}
-  rechargeDirection: {x: -0.35129482, y: -0.7548965, z: -0.5538259}
+  rechargeDirection: {x: -0.64238906, y: -0.75281763, z: 0.14353366}
   rechargeForce: 100

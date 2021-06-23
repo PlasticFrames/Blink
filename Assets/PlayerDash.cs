@@ -13,6 +13,8 @@ public class PlayerDash: MonoBehaviour
 
     [SerializeField] GameObject[] dashMarks = new GameObject[3];
 
+    public Renderer aimRenderer;
+
     public float groundZ = 0f;
     public float distance;
     public float distanceFromPlayer;
@@ -26,8 +28,8 @@ public class PlayerDash: MonoBehaviour
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
 
-    public bool isPlanning = false;
-    public bool isDashing = false;
+    public bool isPlanning;
+    public bool isDashing;
 
     void Start()
     {
@@ -55,14 +57,20 @@ public class PlayerDash: MonoBehaviour
         }
         else if (!isPlanning)
         {
-            dashAim.SetActive(false); 
+            ShowAim();
+            aimRenderer.enabled = false;
         }
 
-        if(Input.GetMouseButtonDown(0) && isPlanning)
+        if (Input.GetMouseButtonDown(0) && isPlanning)
         {
             dashDestination = dashAim.transform.position;
             SetDestinations();
         }
+    }
+
+    private void ShowAim()
+    {
+        dashAim.SetActive(false);
     }
 
     public Vector3 GetWorldPosition(float z)
@@ -79,6 +87,7 @@ public class PlayerDash: MonoBehaviour
         Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
         dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
         dashAim.SetActive(true);
+        aimRenderer.enabled = true;
     }
 
     void SetDestinations() //DISABLE AIM VS MAX DASH?
@@ -94,22 +103,22 @@ public class PlayerDash: MonoBehaviour
     }
 
     IEnumerator TriggerDashes()
-  {
-    currentDash = 0;
-    foreach (GameObject gameObject in dashMarks)
     {
-        if (dashMarks[currentDash].transform.position != Vector3.zero)
+        currentDash = 0;
+        foreach (GameObject gameObject in dashMarks)
         {
-            yield return LerpDash (dashMarks[currentDash].transform.position, dashSpeed);
-            dashMarks[currentDash].SetActive(false);
-            dashMarks[currentDash].transform.position = Vector3.zero; //reset position to limit next dashes
-            currentDash++;
+            if (dashMarks[currentDash].transform.position != Vector3.zero)
+            {
+                yield return LerpDash (dashMarks[currentDash].transform.position, dashSpeed);
+                dashMarks[currentDash].SetActive(false);
+                dashMarks[currentDash].transform.position = Vector3.zero; //reset position to limit next dashes
+                currentDash++;
+            }
         }
+        currentDash = 0;
+        dashCharges = maxDash;
+        isDashing = false;
     }
-    currentDash = 0;
-    dashCharges = maxDash;
-    isDashing = false;
-  }
 
     IEnumerator LerpDash(Vector3 targetPos, float duration) //still seems to be smoothing between points?
     {
@@ -122,7 +131,6 @@ public class PlayerDash: MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPos; //snapping
-        
+        transform.position = targetPos; //snaps to next position      
     }
 } 

@@ -1037,12 +1037,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0608798b13d79ac4084bf5220e323db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runCam: {fileID: 0}
-  dashAim: {fileID: 0}
+  runCam: {fileID: 2752528221716177749, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+  dashAim: {fileID: 4810433950971939810, guid: d3ae47403db37134998b37ad33d0fef3, type: 3}
   dashMarks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4431726490762268164, guid: e8349473918065146addf4c4e2b80350, type: 3}
+  - {fileID: 4431726490762268164, guid: e8349473918065146addf4c4e2b80350, type: 3}
+  - {fileID: 4431726490762268164, guid: e8349473918065146addf4c4e2b80350, type: 3}
+  aimRenderer: {fileID: 4810433950971939836, guid: d3ae47403db37134998b37ad33d0fef3, type: 3}
   groundZ: 0
   distance: 0
   distanceFromPlayer: 0
