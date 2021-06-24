@@ -8,6 +8,9 @@ TagManager:
   - Dash Aim
   - Dash Mark
   - Dash Recharge
+  - Base
+  - Shield
+  - Armour
   layers:
   - Default
   - TransparentFX

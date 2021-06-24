@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    [SerializeField] int enemyType; //1 = Base, 2 = shield, 3 = armour
-
+    public EnemySwitcher switcherScript;
     public PlayerDash dashScript;
     public DashRecharge rechargeScript;
 
@@ -24,6 +23,7 @@ public class EnemyCollision : MonoBehaviour
 
     void Start() 
     {
+        switcherScript = GetComponent<EnemySwitcher>();
         dashScript = GetComponent<PlayerDash>();
         rechargeScript = GetComponent<DashRecharge>();
         player = GameObject.FindWithTag("Player");
@@ -52,7 +52,7 @@ public class EnemyCollision : MonoBehaviour
     {
         forceOrigin = transform.position;
 
-        switch (enemyType)
+        switch (switcherScript.enemyType)
         {
         case 1: 
             Debug.Log("Base hit");
@@ -81,7 +81,7 @@ public class EnemyCollision : MonoBehaviour
     {
         forceOrigin = player.transform.position;
 
-        switch (enemyType)
+        switch (switcherScript.enemyType)
         {
         case 1: 
             Destroy(gameObject);
