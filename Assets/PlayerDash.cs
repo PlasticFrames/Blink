@@ -111,7 +111,6 @@ public class PlayerDash: MonoBehaviour
 
     IEnumerator LerpDash(Vector3 targetPos, float duration) //still seems to be smoothing between points?
     {
-        Debug.Log("Triggerrr");
         float time = 0;
         Vector3 startPos = transform.position;
         while (time < duration)
