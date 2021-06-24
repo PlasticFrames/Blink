@@ -12,7 +12,6 @@ public class PlayerDash: MonoBehaviour
     public GameObject dashAim;
     public GameObject dashMark;
 
-    //public GameObject[] dashMarks = new GameObject[3];
     public List<Vector3> dashMarks = new List<Vector3>();
 
     public float groundZ = 0f;
@@ -36,7 +35,6 @@ public class PlayerDash: MonoBehaviour
         moveScript = GetComponent<PlayerMove>();
         runCam = Camera.main;
         dashAim = GameObject.FindWithTag("Dash Aim");
-        //GameObject[] dashMarks = GameObject.FindGameObjectsWithTag("Dash Mark");
     }
 
     void Update()
@@ -52,7 +50,7 @@ public class PlayerDash: MonoBehaviour
         {
             isPlanning = false;
             isDashing = true;
-            //StartCoroutine(TriggerDashes());
+            StartCoroutine(TriggerDashes());
         }
 
         if (isPlanning)
@@ -91,30 +89,23 @@ public class PlayerDash: MonoBehaviour
         if (dashCharges > 0)
         {
             Instantiate(dashMark, dashDestination, Quaternion.identity);
-            //dashMarks[currentDash].SetActive(true);
-            //aimOrigin = dashMarks[currentDash].transform.position;
             aimOrigin = dashDestination;
             currentDash++;
             dashCharges--;
         }
-        else if (dashCharges < 1)
-        {
-            dashAim.SetActive(false);
-        }
     }
 
-    /*IEnumerator TriggerDashes()
+    IEnumerator TriggerDashes()
     {
         currentDash = 0;
-        foreach (GameObject gameObject in dashMarks)
+        foreach (var Vector3 in dashMarks)
         {
-            yield return LerpDash (dashMarks[currentDash].transform.position, dashSpeed);
-            //dashMarks[currentDash].SetActive(false);
-            //dashMarks[currentDash].transform.position = Vector3.zero; //reset position to limit next dashes
+            yield return LerpDash (Vector3, dashSpeed);
             currentDash++;
         }
-        currentDash = 0;
+        dashMarks.Clear();
         dashCharges = maxDash;
+        currentDash = 0;
         isDashing = false;
     }
 
@@ -130,6 +121,6 @@ public class PlayerDash: MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPos; //snaps to next position      
-    }*/
+        transform.position = targetPos; //snaps to next position
+    }
 } 
