@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 4431726490762268163}
   - component: {fileID: 4431726490762268161}
   - component: {fileID: 4431726490762268162}
+  - component: {fileID: 2782451947048212092}
   m_Layer: 0
   m_Name: Dash Mark
   m_TagString: Dash Mark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4431726490762268163
 Transform:
   m_ObjectHideFlags: 0
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2782451947048212092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431726490762268164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72be28f02ed0fbd4aae933b69371681c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
