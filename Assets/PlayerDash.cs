@@ -34,6 +34,9 @@ public class PlayerDash: MonoBehaviour
     void Start()
     {
         moveScript = GetComponent<PlayerMove>();
+        runCam = Camera.main;
+        dashAim = GameObject.FindWithTag("Dash Aim");
+        GameObject[] dashMarks = GameObject.FindGameObjectsWithTag("Dash Mark");
     }
 
     void Update()
