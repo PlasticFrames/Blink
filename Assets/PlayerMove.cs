@@ -18,12 +18,9 @@ public class PlayerMove : MonoBehaviour
     {
         playerBody = GetComponent<Rigidbody>();
         runCam = Camera.main.transform;
+
         //Cursor.lockState = CursorLockMode.Locked; //Seems to help camera control
         GetComponent<Rigidbody>().velocity = velocity * Time.deltaTime;
-    }
-    void Update()
-    {
-        
     }
 
     void FixedUpdate()

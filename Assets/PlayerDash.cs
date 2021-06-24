@@ -13,8 +13,6 @@ public class PlayerDash: MonoBehaviour
 
     [SerializeField] GameObject[] dashMarks = new GameObject[3];
 
-    public Renderer aimRenderer;
-
     public float groundZ = 0f;
     public float distance;
     public float distanceFromPlayer;
@@ -56,12 +54,12 @@ public class PlayerDash: MonoBehaviour
 
         if (isPlanning)
         {
+            dashAim.SetActive(true);
             LimitRange();
         }
         else if (!isPlanning)
         {
-            ShowAim();
-            aimRenderer.enabled = false;
+            dashAim.SetActive(false);
         }
 
         if (Input.GetMouseButtonDown(0) && isPlanning)
@@ -69,11 +67,6 @@ public class PlayerDash: MonoBehaviour
             dashDestination = dashAim.transform.position;
             SetDestinations();
         }
-    }
-
-    private void ShowAim()
-    {
-        dashAim.SetActive(false);
     }
 
     public Vector3 GetWorldPosition(float z)
@@ -90,15 +83,13 @@ public class PlayerDash: MonoBehaviour
         Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
         dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
         dashAim.SetActive(true);
-        aimRenderer.enabled = true;
     }
 
     void SetDestinations() //DISABLE AIM VS MAX DASH?
     {
         if (dashCharges > 0)
         {
-            dashMarks[currentDash].transform.position = dashDestination;
-            dashMarks[currentDash].SetActive(true);
+            Instantiate(dashMarks[currentDash], dashDestination, Quaternion.identity);
             aimOrigin = dashMarks[currentDash].transform.position;
             currentDash++;
             dashCharges--;
