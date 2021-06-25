@@ -326,6 +326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+      propertyPath: maxDash
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7065782276431086819, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -791,7 +795,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1586439649}
   - component: {fileID: 1586439648}
-  - component: {fileID: 1586439650}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -828,20 +831,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1586439650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586439647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 025748a6363555a47ba9130c004031f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-  dashRecharge: {fileID: 0}
 --- !u!1001 &1638556496
 PrefabInstance:
   m_ObjectHideFlags: 0

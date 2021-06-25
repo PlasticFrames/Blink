@@ -5,23 +5,25 @@ using UnityEngine;
 
 public class DashRecharge : MonoBehaviour
 {
-    public bool isActive = false;
+    public PlayerDash dashScript;
 
     public Color inactiveColour = new Color (255, 0 , 0, 128);
     public Color activeColour = new Color (0, 255, 255, 128);
 
     public Material materialToChange; 
-
-    public PlayerDash dashScript;
-
     public Rigidbody rechargeBody;
 
+    [SerializeField] float rechargeForce;
     public Vector3 rechargeDirection;
 
-    [SerializeField] float rechargeForce;
+    public bool isActive = false;
 
     void Start()
     {
+        materialToChange = GetComponent<Material>();
+        dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
+        rechargeBody = GetComponent<Rigidbody>();
+        
         rechargeBody.AddForce(rechargeDirection * rechargeForce, ForceMode.Impulse);
         StartCoroutine(DelayActivation());
         //StartCoroutine(LerpColour(activeColour, 5));

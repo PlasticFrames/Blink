@@ -53,6 +53,12 @@ public class PlayerDash: MonoBehaviour
             StartCoroutine(TriggerDashes());
         }
 
+        if (Input.GetMouseButtonDown(0) && isPlanning)
+        {
+            dashDestination = dashAim.transform.position;
+            SetDestinations();
+        }
+
         if (isPlanning)
         {
             LimitRange();
@@ -62,10 +68,13 @@ public class PlayerDash: MonoBehaviour
             dashAim.SetActive(false);
         }
 
-        if (Input.GetMouseButtonDown(0) && isPlanning)
+        if (isPlanning || isDashing)
         {
-            dashDestination = dashAim.transform.position;
-            SetDestinations();
+            moveScript.enabled = false;
+        }
+        else if (!isPlanning && !isDashing)
+        {
+            moveScript.enabled = true;
         }
     }
 
