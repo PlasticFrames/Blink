@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        
+        dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
     }
 
     void Update() //BRUTE FORCE SOLUTION WITH LOTS OF ISSUES

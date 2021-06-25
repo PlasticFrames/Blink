@@ -1019,8 +1019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65adef7be5047e149b92bddd89bb00a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4829200572956947691}
-  cam: {fileID: 0}
+  playerBody: {fileID: 0}
+  runCam: {fileID: 0}
   speed: 7.5
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
@@ -1037,16 +1037,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0608798b13d79ac4084bf5220e323db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runCam: {fileID: 0}
-  dashAim: {fileID: 0}
-  dashMarks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  runCam: {fileID: 2752528221716177749, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+  dashAim: {fileID: 4810433950971939810, guid: d3ae47403db37134998b37ad33d0fef3, type: 3}
+  dashMark: {fileID: 4431726490762268164, guid: e8349473918065146addf4c4e2b80350, type: 3}
+  dashMarks: []
   groundZ: 0
   distance: 0
   distanceFromPlayer: 0
-  maxDistance: 20
+  maxDistance: 15
   dashSpeed: 0.2
   dashCharges: 3
   maxDash: 3
