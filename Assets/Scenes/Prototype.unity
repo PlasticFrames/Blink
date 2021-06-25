@@ -835,9 +835,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1586439649}
   - component: {fileID: 1586439648}
+  - component: {fileID: 1586439650}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -871,6 +872,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586439650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586439647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec9bcbcc2016444fb460a3caac09bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseEnemy: {fileID: 1400212530628869544, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
+  enemyPosition: {x: 0, y: 0, z: 0}
+  enemyRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &1638556496
 PrefabInstance:
   m_ObjectHideFlags: 0

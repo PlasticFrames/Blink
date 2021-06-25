@@ -80,6 +80,9 @@ MonoBehaviour:
   rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
+  baseEnemy: {fileID: 1400212530628869544}
+  shieldEnemy: {fileID: 1400212530628869544, guid: a38748c800d112e468c99c396cceb34d, type: 3}
+  armourEnemy: {fileID: 1400212530628869544, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
   playerBody: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   enemyBody: {fileID: 1400212530628869551}
   nudgeForce: 100

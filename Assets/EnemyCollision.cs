@@ -6,10 +6,15 @@ public class EnemyCollision : MonoBehaviour
 {
     public PlayerDash dashScript;
     public DashRecharge rechargeScript;
+    public SpawnManager spawnScript;
 
     public GameObject player;
-    public GameObject dashRecharge; 
-     
+    public GameObject dashRecharge;
+    public GameObject baseEnemy;
+    public GameObject shieldEnemy;
+    public GameObject armourEnemy;
+         
+    public Collider enemyCollider;
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
 
@@ -25,6 +30,8 @@ public class EnemyCollision : MonoBehaviour
     void Start() 
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
+        spawnScript = GameObject.FindWithTag("Manager").GetComponent<SpawnManager>();
+        enemyCollider = GetComponent<Collider>();
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         enemyBody = GetComponent<Rigidbody>();        
         spawnOffset = new Vector3 (0,2,0);    
@@ -81,14 +88,23 @@ public class EnemyCollision : MonoBehaviour
         case 0: 
             Destroy(gameObject);
             break;
-        case 1:
-            Debug.Log("Break shield");
-            enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
-            break;
-        case 2: 
+            case 1:
+                BreakShield();
+                //enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                break;
+            case 2: 
             Debug.Log("Nudge armour");
             enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
             break;
         }
+    }
+
+    private void BreakShield()
+    {
+        Debug.Log("Shield broken");
+        spawnScript.enemyPosition = transform.position;
+        spawnScript.enemyRotation = Quaternion.identity;
+        Destroy(gameObject);
+        spawnScript.SpawnBase();
     }
 }
