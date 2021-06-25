@@ -269,6 +269,22 @@ PrefabInstance:
       propertyPath: enemyType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869550, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: nudgeForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869550, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: knockMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869551, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869551, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
 --- !u!1001 &121560335
@@ -329,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: maxDash
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+      propertyPath: m_Drag
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7065782276431086819, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: m_Enabled
@@ -395,6 +415,22 @@ PrefabInstance:
       propertyPath: enemyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869550, guid: a38748c800d112e468c99c396cceb34d, type: 3}
+      propertyPath: nudgeForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869550, guid: a38748c800d112e468c99c396cceb34d, type: 3}
+      propertyPath: knockMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869551, guid: a38748c800d112e468c99c396cceb34d, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869551, guid: a38748c800d112e468c99c396cceb34d, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a38748c800d112e468c99c396cceb34d, type: 3}
 --- !u!1001 &491074433
@@ -407,6 +443,10 @@ PrefabInstance:
     - target: {fileID: 4810433950971939810, guid: d3ae47403db37134998b37ad33d0fef3, type: 3}
       propertyPath: m_Name
       value: Dash Aim
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810433950971939837, guid: d3ae47403db37134998b37ad33d0fef3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4810433950971939838, guid: d3ae47403db37134998b37ad33d0fef3, type: 3}
       propertyPath: m_RootOrder
@@ -885,6 +925,22 @@ PrefabInstance:
     - target: {fileID: 1400212530628869545, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869550, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
+      propertyPath: nudgeForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869550, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
+      propertyPath: knockMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869551, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400212530628869551, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}

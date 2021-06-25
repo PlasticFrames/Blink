@@ -22,6 +22,10 @@ public class MarkPosition : MonoBehaviour
         {
             Destroy(gameObject);            
         }
+        else if(!dashScript.isPlanning && !dashScript.isDashing)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void AddPosition()

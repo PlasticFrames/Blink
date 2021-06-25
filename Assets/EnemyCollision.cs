@@ -13,9 +13,9 @@ public class EnemyCollision : MonoBehaviour
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
 
-    float nudgeForce = 10f;
-    float knockMultiplier = 2f;    
-    float reactionRadius = 2f;
+    [SerializeField] float nudgeForce;
+    public float knockMultiplier = 2f;    
+    public float reactionRadius = 2f;
 
     [SerializeField] public int enemyType; //0 = Base, 1 = shield, 2 = armour
 
@@ -81,10 +81,12 @@ public class EnemyCollision : MonoBehaviour
         case 0: 
             Destroy(gameObject);
             break;
-        case 1: 
+        case 1:
+            Debug.Log("Break shield");
             enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             break;
         case 2: 
+            Debug.Log("Nudge armour");
             enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
             break;
         }
