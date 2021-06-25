@@ -26,7 +26,7 @@ public class EnemyCollision : MonoBehaviour
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         player = GameObject.FindWithTag("Player");
-        dashRecharge = GameObject.FindWithTag("Dash Recharge");
+        //dashRecharge = GameObject.FindWithTag("Dash Recharge");
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         enemyBody = GetComponent<Rigidbody>();        
         spawnOffset = new Vector3 (0,2,0);    

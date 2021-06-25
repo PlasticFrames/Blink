@@ -5,11 +5,16 @@ using UnityEngine;
 public class InstantiatePrefabs : MonoBehaviour
 {
     public GameObject player;
+    public GameObject dashRecharge;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        dashRecharge = GameObject.FindWithTag("Dash Recharge");
+
+        StartCoroutine(DestroyPrefabs());
+        DestroyPrefabs();
         //Instantiate(player, Vector3.zero, Quaternion.identity);       
     }
 
@@ -17,5 +22,11 @@ public class InstantiatePrefabs : MonoBehaviour
     void Update()
     {
         
+    }
+
+    IEnumerator DestroyPrefabs()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(GameObject.FindWithTag("Dash Recharge"));
     }
 }

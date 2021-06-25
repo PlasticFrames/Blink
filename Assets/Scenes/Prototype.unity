@@ -841,6 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+  dashRecharge: {fileID: 0}
 --- !u!1001 &1638556496
 PrefabInstance:
   m_ObjectHideFlags: 0
