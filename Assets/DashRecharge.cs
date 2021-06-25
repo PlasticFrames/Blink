@@ -27,11 +27,6 @@ public class DashRecharge : MonoBehaviour
         //StartCoroutine(LerpColour(activeColour, 5));
     }
 
-    void OnEnable() 
-    {
-
-    }
-
     IEnumerator DelayActivation()
     {
         yield return new WaitForSeconds(0.5f);

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    public EnemySwitcher switcherScript;
     public PlayerDash dashScript;
     public DashRecharge rechargeScript;
 
@@ -18,14 +17,14 @@ public class EnemyCollision : MonoBehaviour
     float knockMultiplier = 2f;    
     float reactionRadius = 2f;
 
+    [SerializeField] public int enemyType; //0 = Base, 1 = shield, 2 = armour
+
     public Vector3 forceOrigin;
     public Vector3 spawnOffset;
 
     void Start() 
     {
-        switcherScript = GetComponent<EnemySwitcher>();
-        dashScript = GetComponent<PlayerDash>();
-        rechargeScript = GetComponent<DashRecharge>();
+        dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         player = GameObject.FindWithTag("Player");
         dashRecharge = GameObject.FindWithTag("Dash Recharge");
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
@@ -35,9 +34,9 @@ public class EnemyCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag ("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            if  (dashScript.isDashing == false)
+            if (dashScript.isDashing == false)
             {
                 RunReaction();
             }
@@ -52,18 +51,15 @@ public class EnemyCollision : MonoBehaviour
     {
         forceOrigin = transform.position;
 
-        switch (switcherScript.enemyType)
+        switch (enemyType)
         {
-        case 1: 
-            Debug.Log("Base hit");
+        case 0: 
             playerBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             break;
-        case 2:
-            Debug.Log("Shield hit"); 
+        case 1:
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
             break;
-        case 3:
-            Debug.Log("Armour hit");
+        case 2:
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             dashScript.dashCharges--;
             dashScript.maxDash--;
@@ -71,6 +67,7 @@ public class EnemyCollision : MonoBehaviour
             if(dashScript.dashCharges > 0)
             {
                 Instantiate(dashRecharge, player.transform.position + spawnOffset, Quaternion.identity);
+                rechargeScript = GameObject.FindWithTag("Dash Recharge").GetComponent<DashRecharge>();
                 rechargeScript.rechargeDirection = (player.transform.position - transform.position).normalized;
             }    
             break;
@@ -81,15 +78,15 @@ public class EnemyCollision : MonoBehaviour
     {
         forceOrigin = player.transform.position;
 
-        switch (switcherScript.enemyType)
+        switch (enemyType)
         {
-        case 1: 
+        case 0: 
             Destroy(gameObject);
             break;
-        case 2: 
+        case 1: 
             enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             break;
-        case 3: 
+        case 2: 
             enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
             break;
         }
