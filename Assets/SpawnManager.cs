@@ -13,6 +13,6 @@ public class SpawnManager : MonoBehaviour
     public void SpawnBase()
     {
         Debug.Log("Base spawned?");
-        Instantiate(baseEnemy, Vector3.zero, enemyRotation);
+        Instantiate(baseEnemy, enemyPosition, enemyRotation);
     }
 }

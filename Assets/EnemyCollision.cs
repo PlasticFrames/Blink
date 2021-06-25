@@ -7,6 +7,7 @@ public class EnemyCollision : MonoBehaviour
     public PlayerDash dashScript;
     public DashRecharge rechargeScript;
     public SpawnManager spawnScript;
+    public EnemySwitch switchScript;
 
     public GameObject player;
     public GameObject dashRecharge;
@@ -22,8 +23,6 @@ public class EnemyCollision : MonoBehaviour
     public float knockMultiplier = 2f;    
     public float reactionRadius = 2f;
 
-    [SerializeField] public int enemyType; //0 = Base, 1 = shield, 2 = armour
-
     public Vector3 forceOrigin;
     public Vector3 spawnOffset;
 
@@ -31,6 +30,7 @@ public class EnemyCollision : MonoBehaviour
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         spawnScript = GameObject.FindWithTag("Manager").GetComponent<SpawnManager>();
+        switchScript = GetComponent<EnemySwitch>();
         enemyCollider = GetComponent<Collider>();
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         enemyBody = GetComponent<Rigidbody>();        
@@ -56,7 +56,7 @@ public class EnemyCollision : MonoBehaviour
     {
         forceOrigin = transform.position;
 
-        switch (enemyType)
+        switch (switchScript.enemyType)
         {
         case 0: 
             playerBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
@@ -83,13 +83,13 @@ public class EnemyCollision : MonoBehaviour
     {
         forceOrigin = player.transform.position;
 
-        switch (enemyType)
+        switch (switchScript.enemyType)
         {
         case 0: 
             Destroy(gameObject);
             break;
             case 1:
-                BreakShield();
+                //BreakShield();
                 //enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 break;
             case 2: 
