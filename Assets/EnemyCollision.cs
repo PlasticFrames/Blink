@@ -6,7 +6,6 @@ public class EnemyCollision : MonoBehaviour
 {
     public PlayerDash dashScript;
     public DashRecharge rechargeScript;
-    public SpawnManager spawnScript;
     public EnemySwitch switchScript;
 
     public GameObject player;
@@ -29,7 +28,6 @@ public class EnemyCollision : MonoBehaviour
     void Start() 
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
-        spawnScript = GameObject.FindWithTag("Manager").GetComponent<SpawnManager>();
         switchScript = GetComponent<EnemySwitch>();
         enemyCollider = GetComponent<Collider>();
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
@@ -89,7 +87,7 @@ public class EnemyCollision : MonoBehaviour
             Destroy(gameObject);
             break;
             case 1:
-                //BreakShield();
+                switchScript.enemyType = 0;
                 //enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 break;
             case 2: 
@@ -97,14 +95,5 @@ public class EnemyCollision : MonoBehaviour
             enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
             break;
         }
-    }
-
-    private void BreakShield()
-    {
-        Debug.Log("Shield broken");
-        spawnScript.enemyPosition = transform.position;
-        spawnScript.enemyRotation = Quaternion.identity;
-        Destroy(gameObject);
-        spawnScript.SpawnBase();
     }
 }

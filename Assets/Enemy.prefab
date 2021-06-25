@@ -93,8 +93,9 @@ GameObject:
   - component: {fileID: 1323064653398651428}
   - component: {fileID: 1323064653398651429}
   - component: {fileID: 1323064653398651430}
+  - component: {fileID: 1684181353085774066}
   m_Layer: 0
-  m_Name: Enemy Armour
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,9 +112,9 @@ Transform:
   m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3498855556834690816}
-  - {fileID: 460845559769217439}
   - {fileID: 3722380874994691228}
+  - {fileID: 460845559769217439}
+  - {fileID: 3498855556834690816}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -162,6 +163,7 @@ MonoBehaviour:
   dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
   spawnScript: {fileID: 0}
+  switchScript: {fileID: 0}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
   baseEnemy: {fileID: 1400212530628869544, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
@@ -173,9 +175,24 @@ MonoBehaviour:
   nudgeForce: 100
   knockMultiplier: 3
   reactionRadius: 2
-  enemyType: 2
   forceOrigin: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &1684181353085774066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323064653398651431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d03f6d11cbd4a40bcac29b0eeda381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionScript: {fileID: 0}
+  shield: {fileID: 0}
+  armour: {fileID: 0}
+  enemyType: 2
 --- !u!1 &6491790241310571652
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +223,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1323064653398651435}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4051134362637505378
 MeshFilter:
@@ -287,7 +304,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1323064653398651435}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8288985877367783181
 MeshFilter:
