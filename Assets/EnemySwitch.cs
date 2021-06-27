@@ -11,6 +11,14 @@ public class EnemySwitch : MonoBehaviour
         CheckType();
     }
 
+    void OnCollisionEnter(Collision other) 
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+           CheckType(); 
+        }
+    }
+
     void CheckType()
     {
         switch (enemyType)
@@ -23,10 +31,5 @@ public class EnemySwitch : MonoBehaviour
                 Destroy(gameObject.transform.GetChild(2).gameObject);
                 break;
         }
-    }
-
-    private void OnCollisionEnter(Collision other) 
-    {
-        CheckType();
     }
 }
