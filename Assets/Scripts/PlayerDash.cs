@@ -26,7 +26,6 @@ public class PlayerDash: MonoBehaviour
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
-    public Vector3 enemyDirection;
 
     public bool isPlanning;
     public bool isDashing;

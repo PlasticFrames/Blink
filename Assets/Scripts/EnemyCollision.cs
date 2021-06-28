@@ -19,12 +19,12 @@ public class EnemyCollision : MonoBehaviour
     public float reactionRadius = 2f;
 
     public Vector3 forceOrigin;
-    public Vector3 spawnPosition;
 
     void Start() 
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
+        player = GameObject.FindWithTag("Player");
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         enemyBody = GetComponent<Rigidbody>();          
     }
@@ -71,7 +71,7 @@ public class EnemyCollision : MonoBehaviour
 
     void SpawnRecharge()
     {
-        Instantiate(dashRecharge, player.transform.position, Quaternion.identity);
+        Instantiate(dashRecharge, player.transform.position + (Vector3.up * 2), Quaternion.identity);
         rechargeScript = GameObject.FindWithTag("Dash Recharge").GetComponent<DashRecharge>();
         rechargeScript.rechargeDirection = (player.transform.position - transform.position).normalized;
     }

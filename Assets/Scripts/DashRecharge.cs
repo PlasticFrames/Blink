@@ -6,8 +6,6 @@ using UnityEngine;
 public class DashRecharge : MonoBehaviour
 {
     public PlayerDash dashScript;
-    
-    public GameObject player;
 
     public Color inactiveColour = new Color (255, 0 , 0, 128);
     public Color activeColour = new Color (0, 255, 255, 128);
@@ -26,7 +24,7 @@ public class DashRecharge : MonoBehaviour
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         rechargeBody = GetComponent<Rigidbody>();
 
-        //rechargeBody.AddForce(rechargeDirection * rechargeForce, ForceMode.Impulse);
+        rechargeBody.AddForce(rechargeDirection * rechargeForce, ForceMode.Impulse);
         StartCoroutine(DelayActivation());
         //StartCoroutine(LerpColour(activeColour, 5));
     }
