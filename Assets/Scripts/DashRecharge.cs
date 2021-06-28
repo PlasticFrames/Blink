@@ -27,7 +27,6 @@ public class DashRecharge : MonoBehaviour
         rechargeBody = GetComponent<Rigidbody>();
 
         //rechargeBody.AddForce(rechargeDirection * rechargeForce, ForceMode.Impulse);
-        //rechargeBody.AddForce(dashScript.enemyDirection * rechargeForce);
         StartCoroutine(DelayActivation());
         //StartCoroutine(LerpColour(activeColour, 5));
     }
