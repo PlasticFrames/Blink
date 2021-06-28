@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
+    [SerializeField] float verticalBoost;
 
     public Vector3 moveDirection;
     Vector3 velocity;
@@ -28,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical") * verticalBoost);
         Vector3 dir = new Vector3(h, 0f, v).normalized;
 
         if(dir.magnitude >= 0.1f)

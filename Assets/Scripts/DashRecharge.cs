@@ -10,7 +10,6 @@ public class DashRecharge : MonoBehaviour
 
     public Color inactiveColour = new Color (255, 0 , 0, 128);
     public Color activeColour = new Color (0, 255, 255, 128);
-
     public Material materialToChange; 
     public Rigidbody rechargeBody;
 
