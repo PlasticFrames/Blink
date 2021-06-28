@@ -10,11 +10,7 @@ public class EnemyCollision : MonoBehaviour
 
     public GameObject player;
     public GameObject dashRecharge;
-    public GameObject baseEnemy;
-    public GameObject shieldEnemy;
-    public GameObject armourEnemy;
          
-    public Collider enemyCollider;
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
 
@@ -29,7 +25,6 @@ public class EnemyCollision : MonoBehaviour
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
-        enemyCollider = GetComponent<Collider>();
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         enemyBody = GetComponent<Rigidbody>();        
         spawnOffset = new Vector3 (0,2,0);    
@@ -63,15 +58,16 @@ public class EnemyCollision : MonoBehaviour
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
             break;
         case 2:
+            //dashScript.enemyDirection = player.transform.position - transform.position;
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             dashScript.dashCharges--;
             dashScript.maxDash--;
     
-            if(dashScript.dashCharges > 0)
+            if(dashScript.dashCharges >= 0)
             {
-                Instantiate(dashRecharge, player.transform.position + spawnOffset, Quaternion.identity);
-                rechargeScript = GameObject.FindWithTag("Dash Recharge").GetComponent<DashRecharge>();
-                rechargeScript.rechargeDirection = (player.transform.position - transform.position).normalized;
+                Instantiate(dashRecharge, player.transform.position, Quaternion.identity);
+                //rechargeScript = GameObject.FindWithTag("Dash Recharge").GetComponent<DashRecharge>();
+                //rechargeScript.rechargeDirection = (player.transform.position - transform.position).normalized;
             }    
             break;
         }

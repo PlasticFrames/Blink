@@ -162,14 +162,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  spawnScript: {fileID: 0}
-  switchScript: {fileID: 0}
+  switchScript: {fileID: 1684181353085774066}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  baseEnemy: {fileID: 1400212530628869544, guid: 7006a1cb5454f6f43aef177ba865aa7c, type: 3}
-  shieldEnemy: {fileID: 1400212530628869544, guid: a38748c800d112e468c99c396cceb34d, type: 3}
-  armourEnemy: {fileID: 1323064653398651431}
-  enemyCollider: {fileID: 0}
   playerBody: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   enemyBody: {fileID: 1323064653398651429}
   nudgeForce: 100
@@ -189,9 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d03f6d11cbd4a40bcac29b0eeda381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionScript: {fileID: 0}
-  shield: {fileID: 0}
-  armour: {fileID: 0}
   enemyType: 2
 --- !u!1 &6491790241310571652
 GameObject:

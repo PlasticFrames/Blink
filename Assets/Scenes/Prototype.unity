@@ -578,6 +578,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2752528221716177749, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+      propertyPath: orthographic size
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
 --- !u!4 &1196691317 stripped
@@ -1001,7 +1005,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 15
+    OrthographicSize: 30
     NearClipPlane: 0.01
     FarClipPlane: 5000
     Dutch: 0

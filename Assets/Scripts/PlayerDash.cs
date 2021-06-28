@@ -26,6 +26,7 @@ public class PlayerDash: MonoBehaviour
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
+    public Vector3 enemyDirection;
 
     public bool isPlanning;
     public bool isDashing;
@@ -43,7 +44,6 @@ public class PlayerDash: MonoBehaviour
         {
             isPlanning = true;
             aimOrigin = transform.position;
-            dashAim.SetActive(true);
             LimitRange();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && isPlanning)
@@ -78,7 +78,7 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
-    public Vector3 GetWorldPosition(float z)
+    public Vector3 GetWorldPosition(float z) //Retrieves mouse position on ground
     {
         Ray mousePos = runCam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
@@ -86,14 +86,15 @@ public class PlayerDash: MonoBehaviour
         return mousePos.GetPoint(distance);
     }
 
-    void LimitRange()
+    void LimitRange() //Displays dash aim and clamps to player/mark
     {
         distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
         Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
         dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
+        dashAim.SetActive(true); //DISABLE AIM VS MAX DASH?
     }
 
-    void SetDestinations() //DISABLE AIM VS MAX DASH?
+    void SetDestinations() //Instantiates mark at aim position and increments charges
     {
         if (dashCharges > 0)
         {
@@ -104,7 +105,7 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
-    IEnumerator TriggerDashes()
+    IEnumerator TriggerDashes() //Resets int for loop, triggers dashes and clears marks
     {
         currentDash = 0;
         foreach (var Vector3 in dashMarks)
@@ -118,7 +119,7 @@ public class PlayerDash: MonoBehaviour
         isDashing = false;
     }
 
-    IEnumerator LerpDash(Vector3 targetPos, float duration) //still seems to be smoothing between points?
+    IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes
     {
         float time = 0;
         Vector3 startPos = transform.position;
