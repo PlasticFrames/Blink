@@ -9,8 +9,7 @@ public class EnemyCollision : MonoBehaviour
     public EnemySwitch switchScript;
 
     public GameObject player;
-    public GameObject dashRecharge;
-         
+    public GameObject dashRecharge;        
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
 
@@ -20,13 +19,15 @@ public class EnemyCollision : MonoBehaviour
 
     public Vector3 forceOrigin;
 
+    public LineRenderer debug;
+
     void Start() 
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
         player = GameObject.FindWithTag("Player");
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
-        enemyBody = GetComponent<Rigidbody>();          
+        enemyBody = GetComponent<Rigidbody>();       
     }
 
     void OnCollisionEnter(Collision other)
@@ -63,17 +64,10 @@ public class EnemyCollision : MonoBehaviour
     
             if(dashScript.dashCharges >= 0)
                 {
-                    SpawnRecharge();
+                    Instantiate(dashRecharge, player.transform.position + (Vector3.up * 2), Quaternion.identity);
                 }
             break;
         }
-    }
-
-    void SpawnRecharge()
-    {
-        Instantiate(dashRecharge, player.transform.position + (Vector3.up * 2), Quaternion.identity);
-        rechargeScript = GameObject.FindWithTag("Dash Recharge").GetComponent<DashRecharge>();
-        rechargeScript.rechargeDirection = (player.transform.position - transform.position).normalized;
     }
 
     void DashReaction()

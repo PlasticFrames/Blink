@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DashRecharge : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class DashRecharge : MonoBehaviour
     public Rigidbody rechargeBody;
 
     [SerializeField] float rechargeForce;
-    public Vector3 rechargeDirection;
 
     public bool isActive = false;
 
@@ -24,14 +24,9 @@ public class DashRecharge : MonoBehaviour
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         rechargeBody = GetComponent<Rigidbody>();
 
-        rechargeBody.AddForce(rechargeDirection * rechargeForce, ForceMode.Impulse);
+        rechargeBody.AddForce(Random.insideUnitCircle.normalized * rechargeForce, ForceMode.Impulse);
         StartCoroutine(DelayActivation());
         //StartCoroutine(LerpColour(activeColour, 5));
-    }
-
-    void Update()
-    {
-        Debug.Log(transform.position);
     }
 
     IEnumerator DelayActivation() //Stops player collecting charge immediately
