@@ -19,8 +19,6 @@ public class EnemyCollision : MonoBehaviour
 
     public Vector3 forceOrigin;
 
-    public LineRenderer debug;
-
     void Start() 
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();

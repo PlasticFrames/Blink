@@ -94,6 +94,8 @@ GameObject:
   - component: {fileID: 1323064653398651429}
   - component: {fileID: 1323064653398651430}
   - component: {fileID: 1684181353085774066}
+  - component: {fileID: 3113545503038941500}
+  - component: {fileID: 4387034829356540041}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -171,7 +173,7 @@ MonoBehaviour:
   knockMultiplier: 3
   reactionRadius: 2
   forceOrigin: {x: 0, y: 0, z: 0}
-  spawnOffset: {x: 0, y: 0, z: 0}
+  debug: {fileID: 0}
 --- !u!114 &1684181353085774066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +187,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 2
+--- !u!114 &3113545503038941500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323064653398651431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3cb887a6b01f9428bac11a3d5e6d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchScript: {fileID: 0}
+--- !u!135 &4387034829356540041
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323064653398651431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6491790241310571652
 GameObject:
   m_ObjectHideFlags: 0
