@@ -235,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4829200572956947685, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4829200572956947685, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: m_LocalRotation.w
@@ -337,6 +337,10 @@ PrefabInstance:
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1684181353085774066, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: enemyType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
@@ -469,6 +473,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1323064653398651429, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: m_Constraints
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651431, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -517,9 +525,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1684181353085774066, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: enemyType
-      value: 0
+    - target: {fileID: 2489189531094128238, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: m_Name
+      value: TargetRotation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
@@ -584,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177749, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: orthographic size
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
@@ -1009,7 +1017,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 30
+    OrthographicSize: 15
     NearClipPlane: 0.01
     FarClipPlane: 5000
     Dutch: 0
