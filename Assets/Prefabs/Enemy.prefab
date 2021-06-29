@@ -117,6 +117,7 @@ Transform:
   - {fileID: 3722380874994691228}
   - {fileID: 460845559769217439}
   - {fileID: 3498855556834690816}
+  - {fileID: 7427714086725111290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -201,6 +202,8 @@ MonoBehaviour:
   switchScript: {fileID: 1684181353085774066}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   bullet: {fileID: 6662743222625947433, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
+  bulletOffset: {fileID: 6482414507979338452}
+  bulletBody: {fileID: -8237422359240510023, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
   yAngle: {x: 0, y: 0.2, z: 0}
   isTriggered: 0
 --- !u!135 &4387034829356540041
@@ -216,6 +219,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6482414507979338452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7427714086725111290}
+  m_Layer: 0
+  m_Name: bulletOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7427714086725111290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6482414507979338452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 1.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1323064653398651435}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6491790241310571652
 GameObject:
   m_ObjectHideFlags: 0

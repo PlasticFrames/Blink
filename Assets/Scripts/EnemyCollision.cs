@@ -61,9 +61,9 @@ public class EnemyCollision : MonoBehaviour
             dashScript.maxDash--;
     
             if(dashScript.dashCharges >= 0)
-                {
-                    Instantiate(dashRecharge, player.transform.position + (Vector3.up * 2), Quaternion.identity);
-                }
+            {
+                Instantiate(dashRecharge, player.transform.position + (Vector3.up * 2), Quaternion.identity);
+            }
             break;
         }
     }

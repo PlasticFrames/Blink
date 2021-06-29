@@ -9,6 +9,9 @@ public class EnemyAttacks : MonoBehaviour
 
     public GameObject player;
     public GameObject bullet;
+    public GameObject bulletOffset;
+
+    public Rigidbody bulletBody;
 
     [SerializeField] public Vector3 yAngle;
 
@@ -19,6 +22,7 @@ public class EnemyAttacks : MonoBehaviour
     {
         switchScript = GetComponent<EnemySwitch>();
         player = GameObject.FindWithTag("Player");
+        bulletOffset = (gameObject.transform.GetChild(4).gameObject);
     }
 
     // Update is called once per frame
@@ -32,8 +36,12 @@ public class EnemyAttacks : MonoBehaviour
         if (isTriggered)
         {
             transform.LookAt(player.transform.position);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
             FireBullets();
-        }  
+        }
     }
 
     void FireBullets()
@@ -41,8 +49,9 @@ public class EnemyAttacks : MonoBehaviour
         switch (switchScript.enemyType)
         {
         case 0: 
-            Instantiate(bullet, transform.position, Quaternion.identity);
-            
+            Rigidbody clone;
+            clone = Instantiate(bulletBody, bulletOffset.transform.position, transform.rotation);
+            clone.velocity = transform.TransformDirection(Vector3.forward * 10);
             break;
         case 1:
             
