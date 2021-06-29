@@ -198,10 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3cb887a6b01f9428bac11a3d5e6d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchScript: {fileID: 0}
-  player: {fileID: 0}
-  targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  targetDirection: {x: 0, y: 0, z: 0}
+  switchScript: {fileID: 1684181353085774066}
+  player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+  bullet: {fileID: 6662743222625947433, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
   yAngle: {x: 0, y: 0.2, z: 0}
   isTriggered: 0
 --- !u!135 &4387034829356540041
@@ -215,7 +214,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6491790241310571652
 GameObject:

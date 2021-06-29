@@ -276,9 +276,8 @@ GameObject:
   - component: {fileID: 4160351611728591649}
   - component: {fileID: 4160351611728591651}
   - component: {fileID: 4160351611728591660}
-  - component: {fileID: 4160351611728591650}
-  - component: {fileID: 105724476052122989}
-  - component: {fileID: -3834640431628178603}
+  - component: {fileID: 2094976402067583442}
+  - component: {fileID: 1512268076483382724}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -352,7 +351,7 @@ MonoBehaviour:
   turnSmoothVelocity: 0
   verticalBoost: 1.5
   moveDirection: {x: 0, y: 0, z: 0}
---- !u!114 &4160351611728591650
+--- !u!114 &2094976402067583442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,15 +365,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runCam: {fileID: 0}
   dashAim: {fileID: 0}
-  dashMark: {fileID: 0}
-  dashMarks:
-  - {x: 3.0443326e+25, y: 7.96e-43, z: 0.000013601778}
-  - {x: 0.00000021176392, y: 5.208996e-39, z: 7.97e-43}
-  - {x: 4.6e-44, y: 0.00000021084342, z: 3.0443326e+25}
+  dashMark: {fileID: 4431726490762268164, guid: e8349473918065146addf4c4e2b80350, type: 3}
+  dashMarks: []
   groundZ: 0
   distance: 0
   distanceFromPlayer: 0
-  maxDistance: 20
+  maxDistance: 15
   dashSpeed: 0.2
   dashCharges: 3
   maxDash: 3
@@ -383,41 +379,7 @@ MonoBehaviour:
   dashDestination: {x: 0, y: 0, z: 0}
   isPlanning: 0
   isDashing: 0
---- !u!114 &105724476052122989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4160351611728591662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5e96440762f6a41a8d1a8aebed20c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runCam: {fileID: 0}
-  dashAim: {fileID: 0}
-  playerObj: {fileID: 0}
-  dashMarks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  groundZ: 0
-  distance: 0
-  distanceFromPlayer: 0
-  maxDistance: 10
-  dashSpeed: 0
-  dashLength1: 0
-  dashLength2: 0
-  dashLength3: 0
-  dashCharges: 3
-  maxDash: 3
-  currentDash: 0
-  aimOrigin: {x: 0, y: 0, z: 0}
-  dashDestination: {x: 0, y: 0, z: 0}
-  isPlanning: 0
-  isDashing: 0
---- !u!114 &-3834640431628178603
+--- !u!114 &1512268076483382724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,8 @@ public class EnemyAttacks : MonoBehaviour
     public EnemySwitch switchScript;
 
     public GameObject player;
+    public GameObject bullet;
 
-    public Quaternion targetRotation;
-
-    public Vector3 targetDirection;
     [SerializeField] public Vector3 yAngle;
 
     public bool isTriggered = false;
@@ -33,8 +32,25 @@ public class EnemyAttacks : MonoBehaviour
         if (isTriggered)
         {
             transform.LookAt(player.transform.position);
-            //transform.rotation = Quaternion.Lerp(transform.rotation, player.transform.rotation, Time.time * 0.1f);
+            FireBullets();
         }  
+    }
+
+    void FireBullets()
+    {
+        switch (switchScript.enemyType)
+        {
+        case 0: 
+            Instantiate(bullet, transform.position, Quaternion.identity);
+            
+            break;
+        case 1:
+            
+            break;
+        case 2: 
+            
+            break;
+        }
     }
 
     void OnTriggerEnter(Collider other) 
@@ -53,23 +69,12 @@ public class EnemyAttacks : MonoBehaviour
         }    
     }
 }
-/*  1.Delay activation
-    2.Player enters range (set to rotate otherwise?)
+/*  1.Delay activation ~
+    2.Player enters range (set to rotate otherwise?) ~
     3.Enemies fire according to type
     4.Destroy projectile against range OR time
     5.Player collision
     6.Player health
 
-    switch (switchScript.enemyType)
-        {
-        case 0: 
-            
-            break;
-        case 1:
-            
-            break;
-        case 2: 
-            
-            break;
-        }
+
 */
