@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3cb887a6b01f9428bac11a3d5e6d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashScript: {fileID: 0}
+  dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   switchScript: {fileID: 1684181353085774066}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   bullet: {fileID: 6662743222625947433, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
