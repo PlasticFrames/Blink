@@ -8,7 +8,10 @@ public class EnemyAttacks : MonoBehaviour
 
     public GameObject player;
 
-    public Vector3 playerDirection;
+    public Quaternion targetRotation;
+
+    public Vector3 targetDirection;
+    [SerializeField] public Vector3 yAngle;
 
     public bool isTriggered = false;
 
@@ -22,6 +25,11 @@ public class EnemyAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isTriggered)
+        {
+            transform.Rotate(yAngle, Space.Self);
+        }
+        
         if (isTriggered)
         {
             transform.LookAt(player.transform.position);

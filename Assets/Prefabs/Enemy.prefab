@@ -200,8 +200,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchScript: {fileID: 0}
   player: {fileID: 0}
-  target: {fileID: 0}
-  playerDirection: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  targetDirection: {x: 0, y: 0, z: 0}
+  yAngle: {x: 0, y: 0.2, z: 0}
   isTriggered: 0
 --- !u!135 &4387034829356540041
 SphereCollider:
