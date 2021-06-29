@@ -211,11 +211,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_Name: pb_Mesh26484
-=======
   m_Name: pb_Mesh20186
->>>>>>> Models
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1125,20 +1121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b70b80eb54b634393692e127b1f1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 1
   dashScript: {fileID: 2058666457}
   rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  switchScript: {fileID: 0}
   player: {fileID: 2058666453}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  baseEnemy: {fileID: 0}
-  shieldEnemy: {fileID: 0}
-  armourEnemy: {fileID: 0}
-  enemyCollider: {fileID: 0}
   playerBody: {fileID: 2058666456}
   enemyBody: {fileID: 512534949}
-  nudgeForce: 0
-  knockMultiplier: 2
-  reactionRadius: 2
   forceOrigin: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &512534949
@@ -1217,20 +1206,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b70b80eb54b634393692e127b1f1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 2
   dashScript: {fileID: 2058666457}
   rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  switchScript: {fileID: 0}
   player: {fileID: 2058666453}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  baseEnemy: {fileID: 0}
-  shieldEnemy: {fileID: 0}
-  armourEnemy: {fileID: 0}
-  enemyCollider: {fileID: 0}
   playerBody: {fileID: 2058666456}
   enemyBody: {fileID: 561458093}
-  nudgeForce: 0
-  knockMultiplier: 2
-  reactionRadius: 2
   forceOrigin: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &561458093
@@ -44977,11 +44959,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_Name: pb_Mesh26426
-=======
   m_Name: pb_Mesh20128
->>>>>>> Models
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -45686,11 +45664,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_Name: pb_Mesh26260
-=======
   m_Name: pb_Mesh19950
->>>>>>> Models
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -48062,20 +48036,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b70b80eb54b634393692e127b1f1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 3
   dashScript: {fileID: 2058666457}
   rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  switchScript: {fileID: 0}
   player: {fileID: 2058666453}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  baseEnemy: {fileID: 0}
-  shieldEnemy: {fileID: 0}
-  armourEnemy: {fileID: 0}
-  enemyCollider: {fileID: 0}
   playerBody: {fileID: 2058666456}
   enemyBody: {fileID: 1794147051}
-  nudgeForce: 0
-  knockMultiplier: 2
-  reactionRadius: 2
   forceOrigin: {x: 0, y: 0, z: 0}
   spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &1794147051
@@ -50057,9 +50024,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< HEAD
-    - target: {fileID: 4829200572956947685, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-=======
     - target: {fileID: -3834640431628178603, guid: 8a7daf396f22f37429c38b04357c93d5, type: 3}
       propertyPath: playerObj
       value: 
@@ -50137,7 +50101,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2127100989}
     - target: {fileID: 4160351611728591661, guid: 8a7daf396f22f37429c38b04357c93d5, type: 3}
->>>>>>> Models
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
@@ -50185,16 +50148,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: runCam
-      value: 
-      objectReference: {fileID: 2127100988}
-    - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: dashAim
-      value: 
-      objectReference: {fileID: 750205231}
-=======
->>>>>>> Models
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a7daf396f22f37429c38b04357c93d5, type: 3}
