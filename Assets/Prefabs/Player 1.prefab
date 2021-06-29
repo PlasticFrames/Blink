@@ -345,11 +345,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65adef7be5047e149b92bddd89bb00a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4160351611728591651}
-  cam: {fileID: 0}
+  playerBody: {fileID: 0}
+  runCam: {fileID: 0}
   speed: 7.5
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
+  verticalBoost: 1.5
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &4160351611728591650
 MonoBehaviour:
@@ -365,10 +366,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runCam: {fileID: 0}
   dashAim: {fileID: 0}
+  dashMark: {fileID: 0}
   dashMarks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {x: 3.0443326e+25, y: 7.96e-43, z: 0.000013601778}
+  - {x: 0.00000021176392, y: 5.208996e-39, z: 7.97e-43}
+  - {x: 4.6e-44, y: 0.00000021084342, z: 3.0443326e+25}
   groundZ: 0
   distance: 0
   distanceFromPlayer: 0
@@ -395,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runCam: {fileID: 0}
   dashAim: {fileID: 0}
+  playerObj: {fileID: 0}
   dashMarks:
   - {fileID: 0}
   - {fileID: 0}
@@ -404,6 +407,9 @@ MonoBehaviour:
   distanceFromPlayer: 0
   maxDistance: 10
   dashSpeed: 0
+  dashLength1: 0
+  dashLength2: 0
+  dashLength3: 0
   dashCharges: 3
   maxDash: 3
   currentDash: 0

@@ -1024,6 +1024,7 @@ MonoBehaviour:
   speed: 7.5
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
+  verticalBoost: 1.5
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &4829200572956947690
 MonoBehaviour:
