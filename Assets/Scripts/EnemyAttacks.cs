@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyAttacks : MonoBehaviour
 {
+    public PlayerDash dashScript;
     public EnemySwitch switchScript;
 
     public GameObject player;
@@ -20,6 +21,7 @@ public class EnemyAttacks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
         player = GameObject.FindWithTag("Player");
         bulletOffset = (gameObject.transform.GetChild(4).gameObject);
@@ -28,19 +30,20 @@ public class EnemyAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isTriggered)
+        if (!isTriggered && !dashScript.isDashing && !dashScript.isPlanning)
         {
             transform.Rotate(yAngle, Space.Self);
         }
         
-        if (isTriggered)
+        if (isTriggered && !dashScript.isDashing && !dashScript.isPlanning)
         {
             transform.LookAt(player.transform.position);
+            FireBullets();
         }
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            FireBullets();
+            
         }
     }
 
