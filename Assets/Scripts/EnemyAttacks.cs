@@ -14,6 +14,8 @@ public class EnemyAttacks : MonoBehaviour
 
     public Rigidbody bulletBody;
 
+    [SerializeField] public float bulletSpeed;
+
     [SerializeField] public Vector3 yAngle;
 
     public bool isTriggered = false;
@@ -38,12 +40,12 @@ public class EnemyAttacks : MonoBehaviour
         if (isTriggered && !dashScript.isDashing && !dashScript.isPlanning)
         {
             transform.LookAt(player.transform.position);
-            FireBullets();
+            
         }
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            
+            FireBullets();
         }
     }
 
@@ -51,12 +53,13 @@ public class EnemyAttacks : MonoBehaviour
     {
         switch (switchScript.enemyType)
         {
-        case 0: 
-            Rigidbody clone;
-            clone = Instantiate(bulletBody, bulletOffset.transform.position, transform.rotation);
-            clone.velocity = transform.TransformDirection(Vector3.forward * 10);
-            break;
-        case 1:
+            case 0:
+                //FrontFire();
+                //BackFire();
+                LeftFire();
+                RightFire();
+                break;
+            case 1:
             
             break;
         case 2: 
@@ -65,6 +68,34 @@ public class EnemyAttacks : MonoBehaviour
         }
     }
 
+    private void FrontFire()
+    {
+        Rigidbody clone;
+        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        clone.velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
+    }
+
+    private void BackFire()
+    {
+        Rigidbody clone;
+        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        clone.velocity = transform.TransformDirection(Vector3.back * bulletSpeed);
+    }
+
+    private void LeftFire()
+    {
+        Rigidbody clone;
+        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        clone.velocity = transform.TransformDirection(Vector3.left * bulletSpeed);
+    }
+
+    private void RightFire()
+    {
+        Rigidbody clone;
+        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        clone.velocity = transform.TransformDirection(Vector3.right * bulletSpeed);
+    }
+    
     void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.CompareTag("Player"))
