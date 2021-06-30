@@ -18,7 +18,7 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float rotationSpeed;
     [SerializeField] public float bulletSpeed;
     [SerializeField] public float fireDelay;
-    public float fireTimer;
+    public float fireTimer = 1;
 
     [SerializeField] public Vector3 yAngle;
 
@@ -47,7 +47,7 @@ public class EnemyAttacks : MonoBehaviour
                 transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
             }
         }
-        
+
         if (isTriggered && !dashScript.isPlanning && !dashScript.isDashing)
         {
             if (fireTimer > 0)
@@ -97,11 +97,12 @@ public class EnemyAttacks : MonoBehaviour
                 RightFire();
                 break;
             case 1:
-            
-            break;
-        case 2: 
-            
-            break;
+                FrontFire();
+                BackFire();
+                break;
+            case 2: 
+                FrontFire();
+                break;
         }
     }
 

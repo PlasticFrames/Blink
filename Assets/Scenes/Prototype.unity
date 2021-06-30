@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalPosition.y
@@ -435,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalRotation.w
@@ -492,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalPosition.y
@@ -613,7 +613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177749, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: orthographic size
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Follow: {fileID: 7571507}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 20
+    OrthographicSize: 30
     NearClipPlane: 0.01
     FarClipPlane: 5000
     Dutch: 0

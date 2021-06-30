@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletDestroy : MonoBehaviour
 {
     public PlayerDash dashScript;
+    public PlayerVariables varScript;
     public EnemyAttacks attackScript;
 
     public Rigidbody bulletBody;
@@ -17,6 +18,7 @@ public class BulletDestroy : MonoBehaviour
     void Start()
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
+        varScript = GameObject.FindWithTag("Player").GetComponent<PlayerVariables>();
         attackScript = GameObject.FindWithTag("Enemy").GetComponent<EnemyAttacks>();
         bulletBody = GetComponent<Rigidbody>();
         fireVelocity = bulletBody.velocity;
@@ -51,7 +53,11 @@ public class BulletDestroy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //Playerhealth -- 
+            if(!dashScript.isDashing && !dashScript.isPlanning)
+            {
+                varScript.playerHealth--;
+                Destroy(gameObject);
+            }
         } 
     }
 }
