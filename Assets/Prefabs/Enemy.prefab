@@ -205,7 +205,11 @@ MonoBehaviour:
   bullet: {fileID: 6662743222625947433, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
   bulletOffset: {fileID: 6482414507979338452}
   bulletBody: {fileID: -8237422359240510023, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
+  target: {fileID: 0}
+  rotationSpeed: 50
   bulletSpeed: 10
+  fireDelay: 1
+  fireSpeed: 1
   yAngle: {x: 0, y: 0.2, z: 0}
   isTriggered: 0
 --- !u!135 &4387034829356540041

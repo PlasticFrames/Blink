@@ -13,8 +13,12 @@ public class EnemyAttacks : MonoBehaviour
     public GameObject bulletOffset;
 
     public Rigidbody bulletBody;
+    public Transform target;
 
+    [SerializeField] public float rotationSpeed;
     [SerializeField] public float bulletSpeed;
+    [SerializeField] public float fireDelay;
+    [SerializeField] public float fireSpeed;
 
     [SerializeField] public Vector3 yAngle;
 
@@ -32,21 +36,51 @@ public class EnemyAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target != null)
+        {
+            Vector3 forward = target.position - transform.position;
+            forward.y = 0; // Optional but will prevent the object to look up or down
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Rotate(yAngle * Time.deltaTime);
+            //transform.Rotate(yAngle, Space.Self);
+        }
+
         if (!isTriggered && !dashScript.isDashing && !dashScript.isPlanning)
         {
-            transform.Rotate(yAngle, Space.Self);
+            //transform.Rotate(yAngle, Space.Self);
         }
         
         if (isTriggered && !dashScript.isDashing && !dashScript.isPlanning)
         {
-            transform.LookAt(player.transform.position);
-            
+            //transform.LookAt(player.transform.position);            
         }
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            FireBullets();
+            
         }
+    }
+
+    void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            target = other.transform;
+            isTriggered = true;
+            InvokeRepeating("FireBullets", fireDelay, fireSpeed);
+        }    
+    }
+    
+    void OnTriggerExit(Collider other) 
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            target = null;
+            isTriggered = false;
+        }    
     }
 
     void FireBullets()
@@ -54,8 +88,8 @@ public class EnemyAttacks : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                //FrontFire();
-                //BackFire();
+                FrontFire();
+                BackFire();
                 LeftFire();
                 RightFire();
                 break;
@@ -70,52 +104,32 @@ public class EnemyAttacks : MonoBehaviour
 
     private void FrontFire()
     {
-        Rigidbody clone;
-        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
         clone.velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
     }
 
     private void BackFire()
     {
-        Rigidbody clone;
-        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
         clone.velocity = transform.TransformDirection(Vector3.back * bulletSpeed);
     }
 
     private void LeftFire()
     {
-        Rigidbody clone;
-        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
         clone.velocity = transform.TransformDirection(Vector3.left * bulletSpeed);
     }
 
     private void RightFire()
     {
-        Rigidbody clone;
-        clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
         clone.velocity = transform.TransformDirection(Vector3.right * bulletSpeed);
-    }
-    
-    void OnTriggerEnter(Collider other) 
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            isTriggered = true;
-        }    
-    }
-    
-    void OnTriggerExit(Collider other) 
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            isTriggered = false;
-        }    
     }
 }
 /*  1.Delay activation ~
     2.Player enters range (set to rotate otherwise?) ~
     3.Enemies fire according to type
-    4.Destroy projectile against range OR time
+    4.Destroy projectile against range OR time ~
     5.Player collision
     6.Player health
 
