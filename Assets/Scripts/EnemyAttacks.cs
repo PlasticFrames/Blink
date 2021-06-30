@@ -20,6 +20,8 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float fireDelay;
     [SerializeField] public float fireSpeed;
 
+    public float fireTimer;
+
     [SerializeField] public Vector3 yAngle;
 
     public bool isTriggered = false;
@@ -46,15 +48,34 @@ public class EnemyAttacks : MonoBehaviour
         {
             transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
         }
+
+        if (isTriggered && !dashScript.isPlanning && !dashScript.isDashing)
+        {
+            if (fireTimer > 0)
+            {
+                fireTimer -= Time.deltaTime;
+            }
+            else
+            {
+                fireTimer = fireDelay;
+            }
+        }
+        Debug.Log(fireTimer);
+
+        if (fireTimer <= 0)
+        {
+            FireBullets();
+            fireTimer = fireDelay;
+        }
     }
     
     void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isTriggered = true;
             target = other.transform;
-            InvokeRepeating("FireBullets", fireDelay, fireSpeed);
+            fireTimer = fireDelay;
+            isTriggered = true;
         }    
     }
     
@@ -62,9 +83,8 @@ public class EnemyAttacks : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isTriggered = false;
             target = null;
-            CancelInvoke("FireBullets");
+            isTriggered = false;
         }    
     }
 

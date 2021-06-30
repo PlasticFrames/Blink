@@ -22,7 +22,7 @@ public class BulletDestroy : MonoBehaviour
 
         if (dashScript.isDashing || dashScript.isPlanning)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         //Destroy(gameObject, bulletTimer);
     }
