@@ -44,7 +44,7 @@ public class EnemyAttacks : MonoBehaviour
         }
         else
         {
-            transform.Rotate(yAngle * Time.deltaTime);
+            transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
             //transform.Rotate(yAngle, Space.Self);
         }
 
@@ -68,8 +68,8 @@ public class EnemyAttacks : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            target = other.transform;
             isTriggered = true;
+            target = other.transform;
             InvokeRepeating("FireBullets", fireDelay, fireSpeed);
         }    
     }
@@ -78,8 +78,9 @@ public class EnemyAttacks : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            target = null;
             isTriggered = false;
+            target = null;
+            CancelInvoke("FireBullets");
         }    
     }
 
