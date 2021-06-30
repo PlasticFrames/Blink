@@ -39,31 +39,15 @@ public class EnemyAttacks : MonoBehaviour
         if (target != null)
         {
             Vector3 forward = target.position - transform.position;
-            forward.y = 0; // Optional but will prevent the object to look up or down
+            forward.y = 0;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
         else
         {
             transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
-            //transform.Rotate(yAngle, Space.Self);
-        }
-
-        if (!isTriggered && !dashScript.isDashing && !dashScript.isPlanning)
-        {
-            //transform.Rotate(yAngle, Space.Self);
-        }
-        
-        if (isTriggered && !dashScript.isDashing && !dashScript.isPlanning)
-        {
-            //transform.LookAt(player.transform.position);            
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            
         }
     }
-
+    
     void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.CompareTag("Player"))
