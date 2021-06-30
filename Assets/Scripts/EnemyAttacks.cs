@@ -20,7 +20,7 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float bulletSpeed;
     [SerializeField] public float ringRotation;
     [SerializeField] public float burstSize;
-    [SerializeField] public float burstDelay;    
+    [SerializeField] public float burstRate;    
     [SerializeField] public float spreadRotation;
     public float fireTimer = 1;
 
@@ -98,10 +98,10 @@ public class EnemyAttacks : MonoBehaviour
                 RingFire(); 
                 break;
             case 1:
-                StartCoroutine(BurstFire());
+                SpreadFire();
                 break;
             case 2: 
-                SpreadFire();
+                StartCoroutine(BurstFire());
                 break;
         }
     }
@@ -109,7 +109,7 @@ public class EnemyAttacks : MonoBehaviour
     void RingFire()
     {
         bulletOffset.transform.rotation = transform.rotation;
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
         {
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             bulletOffset.transform.Rotate((yAngle * ringRotation) * Time.deltaTime);
@@ -121,15 +121,14 @@ public class EnemyAttacks : MonoBehaviour
         for (int i = 0; i < burstSize; i++)
         {
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-            yield return new WaitForSeconds(burstDelay);
-        }
-        
+            yield return new WaitForSeconds(burstRate);
+        }        
     }
 
     void SpreadFire()
     {
         bulletOffset.transform.rotation = transform.rotation;
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             bulletOffset.transform.Rotate((yAngle * spreadRotation) * Time.deltaTime);

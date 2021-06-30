@@ -543,6 +543,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: burstRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: bulletSpeed
       value: 10
       objectReference: {fileID: 0}
