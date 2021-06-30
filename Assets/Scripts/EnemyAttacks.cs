@@ -18,11 +18,15 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float rotationSpeed;
     [SerializeField] public float fireDelay;
     [SerializeField] public float bulletSpeed;
+    [SerializeField] public float ringSize;
     [SerializeField] public float ringRotation;
     [SerializeField] public float burstSize;
     [SerializeField] public float burstRate;    
+    [SerializeField] public float spreadSize;
     [SerializeField] public float spreadRotation;
-    public float fireTimer = 1;
+    
+    public float fireTimer = 1f;
+    public float radius = 5f;
 
     [SerializeField] public Vector3 yAngle;
 
@@ -109,7 +113,7 @@ public class EnemyAttacks : MonoBehaviour
     void RingFire()
     {
         bulletOffset.transform.rotation = transform.rotation;
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < ringSize; i++)
         {
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             bulletOffset.transform.Rotate((yAngle * ringRotation) * Time.deltaTime);
@@ -128,17 +132,15 @@ public class EnemyAttacks : MonoBehaviour
     void SpreadFire()
     {
         bulletOffset.transform.rotation = transform.rotation;
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < spreadSize; i++)
         {
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             bulletOffset.transform.Rotate((yAngle * spreadRotation) * Time.deltaTime);
         }
     }
 }
-/*  1.Delay activation ~
-    2.Player enters range (set to rotate otherwise?) ~
-    3.Enemies fire according to type
-    4.Destroy projectile against range OR time ~
-    5.Player collision
-    6.Player health
+/*  
+    360f / ringSize = Angle?
+    Set rotation to angle * i
+    Fire?
 */

@@ -209,9 +209,11 @@ MonoBehaviour:
   rotationSpeed: 50
   fireDelay: 1.5
   bulletSpeed: 10
+  ringSize: 9
   ringRotation: 10000
   burstSize: 3
   burstRate: 0.05
+  spreadSize: 6
   spreadRotation: 1000
   fireTimer: 1
   yAngle: {x: 0, y: 0.2, z: 0}
