@@ -11,7 +11,8 @@ public class BulletDestroy : MonoBehaviour
 
     public Vector3 fireVelocity;
 
-    [SerializeField] public float bulletTimer;
+    [SerializeField] public float destroyTime;
+    public float bulletTimer;
 
     void Start()
     {
@@ -20,15 +21,21 @@ public class BulletDestroy : MonoBehaviour
         bulletBody = GetComponent<Rigidbody>();
         fireVelocity = bulletBody.velocity;
 
-        if (dashScript.isDashing || dashScript.isPlanning)
-        {
-            //Destroy(gameObject);
-        }
-        //Destroy(gameObject, bulletTimer);
+        bulletTimer = destroyTime;
     }
 
     void Update() 
     {
+        if (!dashScript.isDashing && !dashScript.isPlanning)
+        {
+            bulletTimer -= Time.deltaTime;
+        }
+
+        if (bulletTimer <= 0)
+        {
+            Destroy(gameObject);
+        }
+        
         if (dashScript.isDashing || dashScript.isPlanning)
         {
             bulletBody.constraints =  RigidbodyConstraints.FreezeAll;

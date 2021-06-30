@@ -18,15 +18,12 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float rotationSpeed;
     [SerializeField] public float bulletSpeed;
     [SerializeField] public float fireDelay;
-    [SerializeField] public float fireSpeed;
-
     public float fireTimer;
 
     [SerializeField] public Vector3 yAngle;
 
     public bool isTriggered = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
@@ -35,7 +32,6 @@ public class EnemyAttacks : MonoBehaviour
         bulletOffset = (gameObject.transform.GetChild(4).gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (target != null)
@@ -60,7 +56,6 @@ public class EnemyAttacks : MonoBehaviour
                 fireTimer = fireDelay;
             }
         }
-        Debug.Log(fireTimer);
 
         if (fireTimer <= 0)
         {
@@ -137,6 +132,4 @@ public class EnemyAttacks : MonoBehaviour
     4.Destroy projectile against range OR time ~
     5.Player collision
     6.Player health
-
-
 */
