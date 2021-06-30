@@ -34,17 +34,20 @@ public class EnemyAttacks : MonoBehaviour
 
     void Update()
     {
-        if (target != null)
+        if (!dashScript.isDashing && !dashScript.isPlanning)
         {
-            Vector3 forward = target.position - transform.position;
-            forward.y = 0;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
+            if (target != null)
+            {
+                Vector3 forward = target.position - transform.position;
+                forward.y = 0;
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
+            }
         }
-        else
-        {
-            transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
-        }
-
+        
         if (isTriggered && !dashScript.isPlanning && !dashScript.isDashing)
         {
             if (fireTimer > 0)
