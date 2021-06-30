@@ -126,8 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashScript: {fileID: 0}
+  varScript: {fileID: 0}
   attackScript: {fileID: 0}
   bulletBody: {fileID: 0}
   fireVelocity: {x: 0, y: 0, z: 0}
   destroyTime: 2.5
   bulletTimer: 0
+  bulletSpeed: 10

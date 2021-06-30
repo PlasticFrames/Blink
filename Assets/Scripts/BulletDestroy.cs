@@ -14,6 +14,7 @@ public class BulletDestroy : MonoBehaviour
 
     [SerializeField] public float destroyTime;
     public float bulletTimer;
+    [SerializeField] public float bulletSpeed;
 
     void Start()
     {
@@ -21,9 +22,14 @@ public class BulletDestroy : MonoBehaviour
         varScript = GameObject.FindWithTag("Player").GetComponent<PlayerVariables>();
         attackScript = GameObject.FindWithTag("Enemy").GetComponent<EnemyAttacks>();
         bulletBody = GetComponent<Rigidbody>();
-        fireVelocity = bulletBody.velocity;
 
         bulletTimer = destroyTime;
+        bulletBody.velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
+        if (!dashScript.isDashing && !dashScript.isPlanning)
+        {
+            //bulletBody.velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
+        }
+        fireVelocity = bulletBody.velocity;
     }
 
     void Update() 

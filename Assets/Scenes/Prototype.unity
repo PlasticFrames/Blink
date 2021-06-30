@@ -546,6 +546,10 @@ PrefabInstance:
       propertyPath: bulletSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: ringRotation
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 7427714086725111290, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.5

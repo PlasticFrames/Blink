@@ -207,8 +207,12 @@ MonoBehaviour:
   bulletBody: {fileID: -8237422359240510023, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
   target: {fileID: 0}
   rotationSpeed: 50
-  bulletSpeed: 10
   fireDelay: 1
+  bulletSpeed: 10
+  ringRotation: 10000
+  burstSize: 3
+  burstDelay: 0.1
+  spreadRotation: 100
   fireTimer: 1
   yAngle: {x: 0, y: 0.2, z: 0}
   isTriggered: 0

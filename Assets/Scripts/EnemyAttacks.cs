@@ -16,8 +16,12 @@ public class EnemyAttacks : MonoBehaviour
     public Transform target;
 
     [SerializeField] public float rotationSpeed;
-    [SerializeField] public float bulletSpeed;
     [SerializeField] public float fireDelay;
+    [SerializeField] public float bulletSpeed;
+    [SerializeField] public float ringRotation;
+    [SerializeField] public float burstSize;
+    [SerializeField] public float burstDelay;    
+    [SerializeField] public float spreadRotation;
     public float fireTimer = 1;
 
     [SerializeField] public Vector3 yAngle;
@@ -91,43 +95,45 @@ public class EnemyAttacks : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                FrontFire();
-                BackFire();
-                LeftFire();
-                RightFire();
+                RingFire(); 
                 break;
             case 1:
-                FrontFire();
-                BackFire();
+                StartCoroutine(BurstFire());
                 break;
             case 2: 
-                FrontFire();
+                SpreadFire();
                 break;
         }
     }
 
-    private void FrontFire()
+    void RingFire()
     {
-        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-        clone.velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
+        bulletOffset.transform.rotation = transform.rotation;
+        for (int i = 0; i < 8; i++)
+        {
+            Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+            bulletOffset.transform.Rotate((yAngle * ringRotation) * Time.deltaTime);
+        }
     }
 
-    private void BackFire()
+    IEnumerator BurstFire()
     {
-        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-        clone.velocity = transform.TransformDirection(Vector3.back * bulletSpeed);
+        for (int i = 0; i < burstSize; i++)
+        {
+            Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+            yield return new WaitForSeconds(burstDelay);
+        }
+        
     }
 
-    private void LeftFire()
+    void SpreadFire()
     {
-        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-        clone.velocity = transform.TransformDirection(Vector3.left * bulletSpeed);
-    }
-
-    private void RightFire()
-    {
-        Rigidbody clone = Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-        clone.velocity = transform.TransformDirection(Vector3.right * bulletSpeed);
+        bulletOffset.transform.rotation = transform.rotation;
+        for (int i = 0; i < 4; i++)
+        {
+            Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+            bulletOffset.transform.Rotate((yAngle * spreadRotation) * Time.deltaTime);
+        }
     }
 }
 /*  1.Delay activation ~
