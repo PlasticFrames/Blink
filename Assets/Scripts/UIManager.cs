@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public PlayerDash dashScript;
-    public PlayerVariables healthScript;
+    public PlayerHealth healthScript;
 
     public GameObject dash0;
     public GameObject dash1;
