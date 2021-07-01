@@ -222,6 +222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3581036610956230554, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+      propertyPath: playerModel
+      value: 
+      objectReference: {fileID: 1297825547}
     - target: {fileID: 4829200572956947684, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: verticalBoost
       value: 1.5
@@ -608,6 +612,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2752528221716177748, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
   m_PrefabInstance: {fileID: 1196691316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1297825547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4829200573180508418, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+  m_PrefabInstance: {fileID: 121560335}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1586439647
 GameObject:
