@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fire_DashRecharge_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: 13634827b7141994e8f769c8830ba766, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_e3c23c52c83542b1a5401a9c51b64af2:
+        m_Texture: {fileID: 2800000, guid: 83b4d40a557ecf34784c4c845462e7b9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_5e7f265f0a214d8b853e2acc721a4843: 0.36
+    - Vector1_6ac09cba99c74c44acaa83c77259f1b4: 3.76
+    - Vector1_6f4d1c19cc614a3aba1bd141adad5a07: 0.1
+    - Vector1_bab499e3d4aa4a4582c523bdcdd83d8f: 6.69
+    m_Colors:
+    - Color_0ffa3e1105b44054bae65c7f175cb627: {r: 0, g: 168.65883, b: 766.9961, a: 0}
+    - Vector2_33602c56bd4b4acaa157afdbc9ccd8d5: {r: -0.2, g: -0.5, b: 0, a: 0}
+    - Vector2_e388168640374188b8502368f33ef222: {r: 0, g: -0.65, b: 0, a: 0}
+  m_BuildTextureStacks: []
