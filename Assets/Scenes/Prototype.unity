@@ -465,10 +465,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1684181353085774066, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: enemyType
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
 --- !u!1001 &706555354
@@ -478,10 +474,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1323064653398651429, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_Constraints
-      value: 36
-      objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651431, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -530,33 +522,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2489189531094128238, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_Name
-      value: TargetRotation
-      objectReference: {fileID: 0}
-    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: yAngle.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: baseSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: burstRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: bulletSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: ringRotation
-      value: 100000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7427714086725111290, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
+    - target: {fileID: 1684181353085774066, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
+      propertyPath: enemyType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}

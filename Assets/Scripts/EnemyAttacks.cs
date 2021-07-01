@@ -19,7 +19,6 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float fireDelay;
     [SerializeField] public float bulletSpeed;
     [SerializeField] public float ringSize;
-    [SerializeField] public float ringRotation;
     [SerializeField] public float burstSize;
     [SerializeField] public float burstRate;    
     [SerializeField] public float spreadSize;
@@ -29,7 +28,8 @@ public class EnemyAttacks : MonoBehaviour
     public float radius = 5f;
 
     [SerializeField] public Vector3 yAngle;
-
+    [SerializeField] public Vector3 ringRot;
+    
     public bool isTriggered = false;
 
     void Start()
@@ -37,7 +37,7 @@ public class EnemyAttacks : MonoBehaviour
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
         player = GameObject.FindWithTag("Player");
-        bulletOffset = (gameObject.transform.GetChild(4).gameObject);
+        bulletOffset = (gameObject.transform.GetChild(4).gameObject);        
     }
 
     void Update()
@@ -112,11 +112,10 @@ public class EnemyAttacks : MonoBehaviour
 
     void RingFire()
     {
-        bulletOffset.transform.rotation = transform.rotation;
         for (int i = 0; i < ringSize; i++)
         {
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-            bulletOffset.transform.Rotate((yAngle * ringRotation) * Time.deltaTime);
+            bulletOffset.transform.Rotate(ringRot, Space.World);
         }
     }
 

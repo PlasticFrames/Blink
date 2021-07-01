@@ -149,7 +149,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 116
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &1323064653398651430
 MonoBehaviour:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d03f6d11cbd4a40bcac29b0eeda381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
+  enemyType: 1
 --- !u!114 &3113545503038941500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,13 +210,15 @@ MonoBehaviour:
   fireDelay: 1.5
   bulletSpeed: 10
   ringSize: 9
-  ringRotation: 10000
+  ringRotation: 0
+  ringRot: {x: 0, y: 40, z: 0}
   burstSize: 3
-  burstRate: 0.05
+  burstRate: 0.1
   spreadSize: 6
   spreadRotation: 1000
   fireTimer: 1
-  yAngle: {x: 0, y: 0.2, z: 0}
+  radius: 5
+  yAngle: {x: 0, y: 0.25, z: 0}
   isTriggered: 0
 --- !u!135 &4387034829356540041
 SphereCollider:
@@ -255,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6482414507979338452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1323064653398651435}
