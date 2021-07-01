@@ -7,14 +7,14 @@ public class EnemyAttacks : MonoBehaviour
 {
     public PlayerDash dashScript;
     public EnemySwitch switchScript;
+    public EnemyMovement moveScript;
 
     public GameObject player;
     public GameObject bullet;
     public GameObject bulletOffset;
     public Rigidbody bulletBody;
-    public Transform target;
 
-    [SerializeField] public float rotationSpeed;
+    
     [SerializeField] public float fireDelay;
     [SerializeField] public float bulletSpeed;
     [SerializeField] public float ringSize;
@@ -24,8 +24,7 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float spreadRotation;
     
     public float fireTimer = 1f;
-
-    [SerializeField] public Vector3 yAngle;
+ 
     [SerializeField] public Vector3 ringRot;
     
     public bool isTriggered = false;
@@ -34,26 +33,13 @@ public class EnemyAttacks : MonoBehaviour
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
+        moveScript = GetComponent<EnemyMovement>();
         player = GameObject.FindWithTag("Player");
         bulletOffset = (gameObject.transform.GetChild(4).gameObject);        
     }
 
     void Update()
     {
-        if (!dashScript.isDashing && !dashScript.isPlanning)
-        {
-            if (target != null)
-            {
-                Vector3 forward = target.position - transform.position;
-                forward.y = 0;
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
-            }
-            else
-            {
-                transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
-            }
-        }
-
         if (isTriggered && !dashScript.isPlanning && !dashScript.isDashing)
         {
             if (fireTimer > 0)
@@ -77,7 +63,6 @@ public class EnemyAttacks : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            target = other.transform;
             fireTimer = fireDelay;
             isTriggered = true;
         }    
@@ -87,7 +72,6 @@ public class EnemyAttacks : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            target = null;
             isTriggered = false;
         }    
     }
@@ -132,7 +116,7 @@ public class EnemyAttacks : MonoBehaviour
         for (int i = 0; i < spreadSize; i++)
         {
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-            bulletOffset.transform.Rotate((yAngle * spreadRotation) * Time.deltaTime);
+            bulletOffset.transform.Rotate((moveScript.yAngle * spreadRotation) * Time.deltaTime);
         }
     }
 }
