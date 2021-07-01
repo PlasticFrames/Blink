@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: playerModel
       value: 
       objectReference: {fileID: 1297825547}
+    - target: {fileID: 3581036610956230554, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+      propertyPath: invulnerabilityDuration
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4829200572956947684, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: verticalBoost
       value: 1.5
