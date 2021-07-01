@@ -11,7 +11,6 @@ public class EnemyAttacks : MonoBehaviour
     public GameObject player;
     public GameObject bullet;
     public GameObject bulletOffset;
-
     public Rigidbody bulletBody;
     public Transform target;
 
@@ -25,7 +24,6 @@ public class EnemyAttacks : MonoBehaviour
     [SerializeField] public float spreadRotation;
     
     public float fireTimer = 1f;
-    public float radius = 5f;
 
     [SerializeField] public Vector3 yAngle;
     [SerializeField] public Vector3 ringRot;
@@ -138,8 +136,3 @@ public class EnemyAttacks : MonoBehaviour
         }
     }
 }
-/*  
-    360f / ringSize = Angle?
-    Set rotation to angle * i
-    Fire?
-*/

@@ -5,11 +5,16 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public PlayerDash dashScript;
+    public PlayerVariables healthScript;
 
     public GameObject dash0;
     public GameObject dash1;
     public GameObject dash2;
     public GameObject dash3;
+    public GameObject health0;
+    public GameObject health1;
+    public GameObject health2;
+    public GameObject health3;
 
     void Start()
     {
@@ -44,6 +49,34 @@ public class UIManager : MonoBehaviour
             dash2.SetActive (false);
             dash3.SetActive (true);
             break;
-        }    
+        }
+
+        switch(healthScript.playerHealth)
+        {
+        case 0:
+            health0.SetActive (true);
+            health1.SetActive (false);
+            health2.SetActive (false);
+            health3.SetActive (false);
+            break;
+        case 1:
+            health0.SetActive (false);
+            health1.SetActive (true);
+            health2.SetActive (false);
+            health3.SetActive (false);
+            break;
+        case 2:
+            health0.SetActive (false);
+            health1.SetActive (false);
+            health2.SetActive (true);
+            health3.SetActive (false);
+            break;
+        case 3:
+            health0.SetActive (false);
+            health1.SetActive (false);
+            health2.SetActive (false);
+            health3.SetActive (true);
+            break;
+        }        
     }
 }
