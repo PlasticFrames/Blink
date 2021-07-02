@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     public PlayerDash dashScript;
 
     public GameObject player;
+    public NavMeshAgent agent;
 
     [SerializeField] public float rotationSpeed;
 
@@ -20,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
         triggerScript = GetComponent<EnemyTrigger>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         player = GameObject.FindWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -35,9 +38,14 @@ public class EnemyMovement : MonoBehaviour
             forward.y = 0;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
-        else if (triggerScript.isMoving)
+        
+        if (triggerScript.isMoving)
         {
             Move();
+        }
+        else
+        {
+            agent.enabled = false;
         }
     }
 
@@ -46,13 +54,16 @@ public class EnemyMovement : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                 
+                agent.enabled = true;
+                agent.SetDestination(player.transform.position);
                 break;
             case 1:
-                
+                agent.enabled = true;
+                agent.SetDestination(player.transform.position);               
                 break;
             case 2: 
-                
+                agent.enabled = true;
+                agent.SetDestination(player.transform.position);                
                 break;
         }
     }

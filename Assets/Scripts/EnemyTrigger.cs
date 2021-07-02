@@ -67,6 +67,7 @@ public class EnemyTrigger : MonoBehaviour
         {
             isIdle = false;
             isMoving = false;
+            isFacing = false;
             isAttacking = false;
         }
     }
