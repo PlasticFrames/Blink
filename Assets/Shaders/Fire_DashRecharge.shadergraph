@@ -1072,7 +1072,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "2e2e4a077bc94e59bd82bba8872ed4fb",
     "m_Id": 0,
-    "m_DisplayName": "DistortionStrenght",
+    "m_DisplayName": "DistortionStrength",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
