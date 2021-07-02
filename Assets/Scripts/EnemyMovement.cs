@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public EnemySwitch switchScript;
     public EnemyTrigger triggerScript;
     public PlayerDash dashScript;
 
@@ -15,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
+        switchScript = GetComponent<EnemySwitch>();
         triggerScript = GetComponent<EnemyTrigger>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         player = GameObject.FindWithTag("Player");
@@ -32,6 +34,26 @@ public class EnemyMovement : MonoBehaviour
             Vector3 forward = player.transform.position - transform.position;
             forward.y = 0;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
+        }
+        else if (triggerScript.isMoving)
+        {
+            Move();
+        }
+    }
+
+    void Move()
+    {
+        switch (switchScript.enemyType)
+        {
+            case 0:
+                 
+                break;
+            case 1:
+                
+                break;
+            case 2: 
+                
+                break;
         }
     }
 }

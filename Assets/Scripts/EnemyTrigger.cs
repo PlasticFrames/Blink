@@ -38,7 +38,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         if  (Vector3.Angle(player.transform.forward, transform.position - player.transform.position) < angle)
         {
-            isFacing = true;
+            isFacing = true; //TIE TO FIRING WITHOUT LOOPING ENABLE?
         }
 
         if (!dashScript.isPlanning && !dashScript.isDashing)
