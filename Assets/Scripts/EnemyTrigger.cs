@@ -8,12 +8,17 @@ public class EnemyTrigger : MonoBehaviour
     public EnemyAttacks attackScript;
     public PlayerDash dashScript;
 
+    public GameObject player;
+
+    public int angle = 10;
+
     public float playerDistance;
     [SerializeField] public float moveDistance;
     public float attackDistance;
 
     public bool isIdle = true;
     public bool isMoving = false;
+    public bool isFacing = false;
     public bool isAttacking = false;
 
     void Start() 
@@ -22,6 +27,8 @@ public class EnemyTrigger : MonoBehaviour
         attackScript = GetComponent<EnemyAttacks>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         
+        player = GameObject.FindWithTag("Player");
+
         moveDistance = GetComponent<SphereCollider>().radius;
         playerDistance = moveDistance + 1;
         attackDistance = moveDistance / 2; 
@@ -29,6 +36,11 @@ public class EnemyTrigger : MonoBehaviour
 
     void Update()
     {
+        if  (Vector3.Angle(player.transform.forward, transform.position - player.transform.position) < angle)
+        {
+            isFacing = true;
+        }
+
         if (!dashScript.isPlanning && !dashScript.isDashing)
         {
             if (playerDistance < moveDistance && playerDistance > attackDistance)
@@ -46,6 +58,7 @@ public class EnemyTrigger : MonoBehaviour
             {
                 isIdle = true;
                 isMoving = false;
+                isFacing = false;
                 isAttacking = false;
             } 
         }
@@ -61,7 +74,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerDistance = Vector3.Distance(transform.position, other.transform.position);
+            playerDistance = Vector3.Distance(transform.position, player.transform.position);
         }   
     }
 }

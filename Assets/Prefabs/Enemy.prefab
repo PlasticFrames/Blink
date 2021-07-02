@@ -214,6 +214,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84feceb78b3cb054894a86a152ca3d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveScript: {fileID: 0}
+  attackScript: {fileID: 0}
+  dashScript: {fileID: 0}
+  playerDistance: 0
+  moveDistance: 0
+  attackDistance: 0
+  isIdle: 1
+  isMoving: 0
+  isAttacking: 0
 --- !u!114 &7801562505917728504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,10 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd83c6ad93ae1f47a70f4833594eebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerScript: {fileID: 0}
   dashScript: {fileID: 0}
   player: {fileID: 0}
-  target: {fileID: 0}
-  State: 0
   rotationSpeed: 100
   yAngle: {x: 0, y: 0.2, z: 0}
 --- !u!114 &3113545503038941500
@@ -246,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   switchScript: {fileID: 1684181353085774066}
+  triggerScript: {fileID: 0}
   moveScript: {fileID: 0}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   bullet: {fileID: 6662743222625947433, guid: f97ef0d818af6694dae679ff116f4aa4, type: 3}
@@ -260,7 +269,6 @@ MonoBehaviour:
   spreadRotation: 1000
   fireTimer: 1
   ringRot: {x: 0, y: 40, z: 0}
-  isTriggered: 0
 --- !u!114 &1323064653398651430
 MonoBehaviour:
   m_ObjectHideFlags: 0
