@@ -39,7 +39,7 @@ public class PlayerDash: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && dashCharges > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && !isDashing && dashCharges > 0)
         {
             isPlanning = true;
             aimOrigin = transform.position;

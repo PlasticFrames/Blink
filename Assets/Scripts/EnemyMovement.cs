@@ -41,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
         
         if (triggerScript.isMoving)
         {
+            agent.enabled = true;
             Move();
         }
         else
@@ -54,15 +55,12 @@ public class EnemyMovement : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                agent.enabled = true;
-                agent.SetDestination(player.transform.position);
+                agent.SetDestination(-player.transform.position);
                 break;
             case 1:
-                agent.enabled = true;
                 agent.SetDestination(player.transform.position);               
                 break;
             case 2: 
-                agent.enabled = true;
                 agent.SetDestination(player.transform.position);                
                 break;
         }
