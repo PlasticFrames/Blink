@@ -43,6 +43,10 @@ public class PlayerAnimations : MonoBehaviour
 
         }
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            playerAnim.SetBool("isDashing", false);
+        }
         if (playerObj.gameObject.GetComponent<PlayerDash>().isDashing == true)
         {
             playerAnim.SetBool("isDashing", true);
