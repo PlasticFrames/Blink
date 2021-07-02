@@ -95,9 +95,10 @@ GameObject:
   - component: {fileID: 4387034829356540041}
   - component: {fileID: 6275058124937472220}
   - component: {fileID: 1684181353085774066}
+  - component: {fileID: -9069340007738104157}
   - component: {fileID: 7801562505917728504}
-  - component: {fileID: 1323064653398651430}
   - component: {fileID: 3113545503038941500}
+  - component: {fileID: 1323064653398651430}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -164,7 +165,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &6275058124937472220
 NavMeshAgent:
@@ -201,6 +202,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
+--- !u!114 &-9069340007738104157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323064653398651431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84feceb78b3cb054894a86a152ca3d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7801562505917728504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,32 +227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashScript: {fileID: 0}
+  player: {fileID: 0}
   target: {fileID: 0}
+  State: 0
   rotationSpeed: 100
   yAngle: {x: 0, y: 0.2, z: 0}
---- !u!114 &1323064653398651430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323064653398651431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12b70b80eb54b634393692e127b1f1b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-  rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  switchScript: {fileID: 1684181353085774066}
-  player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-  dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
-  playerBody: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-  enemyBody: {fileID: 1323064653398651429}
-  nudgeForce: 100
-  knockMultiplier: 3
-  reactionRadius: 2
-  forceOrigin: {x: 0, y: 0, z: 0}
 --- !u!114 &3113545503038941500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +261,29 @@ MonoBehaviour:
   fireTimer: 1
   ringRot: {x: 0, y: 40, z: 0}
   isTriggered: 0
+--- !u!114 &1323064653398651430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323064653398651431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b70b80eb54b634393692e127b1f1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+  rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
+  switchScript: {fileID: 1684181353085774066}
+  player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+  dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
+  playerBody: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+  enemyBody: {fileID: 1323064653398651429}
+  nudgeForce: 100
+  knockMultiplier: 3
+  reactionRadius: 2
+  forceOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &6482414507979338452
 GameObject:
   m_ObjectHideFlags: 0

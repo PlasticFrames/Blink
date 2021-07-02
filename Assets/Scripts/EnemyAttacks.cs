@@ -7,6 +7,7 @@ public class EnemyAttacks : MonoBehaviour
 {
     public PlayerDash dashScript;
     public EnemySwitch switchScript;
+    public EnemyTrigger triggerScript;
     public EnemyMovement moveScript;
 
     public GameObject player;
@@ -26,21 +27,20 @@ public class EnemyAttacks : MonoBehaviour
     public float fireTimer = 1f;
  
     [SerializeField] public Vector3 ringRot;
-    
-    public bool isTriggered = false;
 
     void Start()
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
         moveScript = GetComponent<EnemyMovement>();
+        triggerScript = GetComponent<EnemyTrigger>();
         player = GameObject.FindWithTag("Player");
         bulletOffset = (gameObject.transform.GetChild(4).gameObject);        
     }
 
     void Update()
     {
-        if (isTriggered && !dashScript.isPlanning && !dashScript.isDashing)
+        if (triggerScript.isTriggered && !dashScript.isPlanning && !dashScript.isDashing)
         {
             if (fireTimer > 0)
             {
@@ -64,7 +64,7 @@ public class EnemyAttacks : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             fireTimer = fireDelay;
-            isTriggered = true;
+            triggerScript.isTriggered = true;
         }    
     }
     
@@ -72,7 +72,7 @@ public class EnemyAttacks : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            isTriggered = false;
+            triggerScript.isTriggered = false;
         }    
     }
 

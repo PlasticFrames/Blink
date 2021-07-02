@@ -6,7 +6,10 @@ public class EnemyMovement : MonoBehaviour
 {
     public PlayerDash dashScript;
 
+    public GameObject player;
     public Transform target;
+
+    public int State = 0;
 
     [SerializeField] public float rotationSpeed;
 
@@ -23,14 +26,31 @@ public class EnemyMovement : MonoBehaviour
         {
             if (target != null)
             {
-                Vector3 forward = target.position - transform.position;
-                forward.y = 0;
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
+                State = 1;
+            }
+            else if (target != null) //enemy is facing player?
+            {
+                State = 1;
             }
             else
             {
-                transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
+                State = 0;
             }
+        }
+
+        switch (State)
+        {
+            case 0:
+                transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
+                break;
+            case 1:
+                Vector3 forward = target.position - transform.position;
+                forward.y = 0;
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
+                break;
+            case 2:
+
+                break;
         }
     }
 
