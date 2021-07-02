@@ -40,7 +40,7 @@ public class EnemyAttacks : MonoBehaviour
 
     void Update()
     {
-        if (triggerScript.isTriggered && !dashScript.isPlanning && !dashScript.isDashing)
+        if (triggerScript.isAttacking)
         {
             if (fireTimer > 0)
             {
@@ -64,15 +64,6 @@ public class EnemyAttacks : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             fireTimer = fireDelay;
-            triggerScript.isTriggered = true;
-        }    
-    }
-    
-    void OnTriggerExit(Collider other) 
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            triggerScript.isTriggered = false;
         }    
     }
 
@@ -101,15 +92,6 @@ public class EnemyAttacks : MonoBehaviour
         }
     }
 
-    IEnumerator BurstFire()
-    {
-        for (int i = 0; i < burstSize; i++)
-        {
-            Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
-            yield return new WaitForSeconds(burstRate);
-        }        
-    }
-
     void SpreadFire()
     {
         bulletOffset.transform.rotation = transform.rotation;
@@ -118,5 +100,14 @@ public class EnemyAttacks : MonoBehaviour
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             bulletOffset.transform.Rotate((moveScript.yAngle * spreadRotation) * Time.deltaTime);
         }
+    }
+
+    IEnumerator BurstFire()
+    {
+        for (int i = 0; i < burstSize; i++)
+        {
+            Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
+            yield return new WaitForSeconds(burstRate);
+        }        
     }
 }

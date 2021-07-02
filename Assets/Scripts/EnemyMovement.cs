@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public EnemyTrigger triggerScript;
     public PlayerDash dashScript;
 
     public GameObject player;
-    public Transform target;
-
-    public int State = 0;
 
     [SerializeField] public float rotationSpeed;
 
@@ -17,56 +15,23 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
+        triggerScript = GetComponent<EnemyTrigger>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
+        player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
-        if (!dashScript.isDashing && !dashScript.isPlanning)
+
+        if (triggerScript.isIdle)
         {
-            if (target != null)
-            {
-                State = 1;
-            }
-            else if (target != null) //enemy is facing player?
-            {
-                State = 1;
-            }
-            else
-            {
-                State = 0;
-            }
+            transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
         }
-
-        switch (State)
+        else if (triggerScript.isMoving || triggerScript.isAttacking) //enemy is facing player?
         {
-            case 0:
-                transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
-                break;
-            case 1:
-                Vector3 forward = target.position - transform.position;
-                forward.y = 0;
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
-                break;
-            case 2:
-
-                break;
+            Vector3 forward = player.transform.position - transform.position;
+            forward.y = 0;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
-    }
-
-    void OnTriggerEnter(Collider other) 
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            target = other.transform;
-        }    
-    }
-    
-    void OnTriggerExit(Collider other) 
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            target = null;
-        }    
     }
 }
