@@ -22,8 +22,8 @@ public class EnemyTrigger : MonoBehaviour
         attackScript = GetComponent<EnemyAttacks>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         
-        playerDistance = 100f;
         moveDistance = GetComponent<SphereCollider>().radius;
+        playerDistance = moveDistance + 1;
         attackDistance = moveDistance / 2; 
     }
 
