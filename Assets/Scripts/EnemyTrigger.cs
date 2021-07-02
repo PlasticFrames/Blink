@@ -20,6 +20,7 @@ public class EnemyTrigger : MonoBehaviour
     public bool isMoving = false;
     public bool isFacing = false;
     public bool isAttacking = false;
+    public bool isCharging = false; //Charge > fire when within certain range
 
     void Start() 
     {
@@ -47,12 +48,12 @@ public class EnemyTrigger : MonoBehaviour
             {
                 isIdle = false;
                 isMoving = true;
-                isAttacking = false;
+                isAttacking = true;
             }
             else if (playerDistance < attackDistance)
             {
-                isAttacking = true;
-                isMoving = false;
+                isAttacking = false;
+                isMoving = true;
             }
             else
             {
