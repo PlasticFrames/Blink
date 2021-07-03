@@ -245,8 +245,9 @@ MonoBehaviour:
   enemyDestination: {fileID: 6304563432460928115, guid: 3b5beb53e36d767459a74a4482d06c48, type: 3}
   player: {fileID: 0}
   agent: {fileID: 0}
-  rotationSpeed: 100
+  rotationSpeed: 200
   yAngle: {x: 0, y: 0.2, z: 0}
+  retreat: {x: 0, y: 0, z: 0}
 --- !u!114 &3113545503038941500
 MonoBehaviour:
   m_ObjectHideFlags: 0
