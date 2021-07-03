@@ -40,7 +40,7 @@ public class PlayerDash: MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && !isDashing && dashCharges > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && !isDashing && dashCharges > 0) //SWAP TO RMB?
         {
             isPlanning = true;
             aimOrigin = transform.position;
@@ -116,16 +116,16 @@ public class PlayerDash: MonoBehaviour
         dashMarks.Clear();
         currentDash = 0;
         isDashing = false;
-        StartCoroutine(CooldownDashes());
+        StartCoroutine(DelayDashes());
     }
 
-    IEnumerator CooldownDashes()
+    IEnumerator DelayDashes() //Slowly recharges dashes
     {
         if (dashCharges < maxDash)
         {
             yield return new WaitForSeconds(dashDelay);
             dashCharges++;
-            yield return CooldownDashes();
+            yield return DelayDashes();
         }
         else
         {
