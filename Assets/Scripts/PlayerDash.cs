@@ -30,6 +30,11 @@ public class PlayerDash: MonoBehaviour
     public bool isPlanning;
     public bool isDashing;
 
+    public ParticleSystem dashAimSparks;
+    public ParticleSystem dashAimBeam;
+    public ParticleSystem dashAimReticuleBlue;
+    public ParticleSystem dashAimReticuleRed;
+
     void Start()
     {
         moveScript = GetComponent<PlayerMove>();
@@ -39,6 +44,11 @@ public class PlayerDash: MonoBehaviour
 
     void Update()
     {
+        var dashAimSparksEmission = dashAimSparks.emission;
+        var dashAimBeamEmission = dashAimBeam.emission;
+        var dashAimReticuleBlueEmission = dashAimReticuleBlue.emission;
+        var dashAimReticuleRedEmission = dashAimReticuleRed.emission;
+
         if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && !isDashing && dashCharges > 0)
         {
             isPlanning = true;
@@ -55,8 +65,26 @@ public class PlayerDash: MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isPlanning)
         {
             dashDestination = dashAim.transform.position;
+            dashAimSparks.Play();
+            dashAimBeam.Play();
             SetDestinations();
         }
+        
+        if(currentDash == 3)
+        {
+            dashAimReticuleBlueEmission.enabled = false;
+            dashAimReticuleRedEmission.enabled = true;
+            dashAimSparksEmission.enabled = false;
+            dashAimBeamEmission.enabled = false;
+        }
+        else
+        {
+            dashAimReticuleBlueEmission.enabled = true;
+            dashAimReticuleRedEmission.enabled = false;
+            dashAimSparksEmission.enabled = true;
+            dashAimBeamEmission.enabled = true;
+        }
+ 
 
         if (isPlanning)
         {

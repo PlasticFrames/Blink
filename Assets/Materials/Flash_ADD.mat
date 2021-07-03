@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_BeamConnection
-  m_Shader: {fileID: -6465566751694194690, guid: 9cf1a472633f0f3479640ce520832442, type: 3}
+  m_Name: Flash_ADD
+  m_Shader: {fileID: -6465566751694194690, guid: 692e1054c1ccc6b40a33ddd5bb69911b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_2aec4da4ea314617808dff5d317e5ffb:
+        m_Texture: {fileID: 2800000, guid: 9ee25e4a3b41a664e91568f6a9e944c5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -33,7 +37,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_1e9bd8aa74fc4855a742abdb04c78756: {r: 147.03337, g: 0, b: 1.7298044, a: 0}
-    - Color_29126b8ffa1b4c59ab9205d40c8afe42: {r: 2.2419243, g: 0.105552375, b: 0, a: 0}
-    - Vector2_247ddc285a1443f79bd3974a51fb2bbb: {r: 10.84, g: 1, b: 0, a: 0}
+    - Color_1f5458a2716a4e68952ab12017b647c9: {r: 4.2870936, g: 4.2314806, b: 4.111835, a: 1}
   m_BuildTextureStacks: []
