@@ -248,8 +248,10 @@ MonoBehaviour:
   agent: {fileID: 0}
   rotationSpeed: 200
   baseSpeed: 6
+  strafeTime: 3
   yAngle: {x: 0, y: 0.2, z: 0}
   retreat: {x: 0, y: 0, z: 0}
+  strafeToggle: 0
 --- !u!114 &3113545503038941500
 MonoBehaviour:
   m_ObjectHideFlags: 0

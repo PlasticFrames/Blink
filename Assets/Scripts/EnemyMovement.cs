@@ -15,9 +15,12 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] public float rotationSpeed;
     [SerializeField] public float baseSpeed;
+    [SerializeField] public float strafeTime;
 
     [SerializeField] public Vector3 yAngle;
     public Vector3 retreat;
+
+    public bool strafeToggle;
 
     void Start()
     {
@@ -61,20 +64,43 @@ public class EnemyMovement : MonoBehaviour
                 if (triggerScript.isFar)
                 {
                     agent.SetDestination(player.transform.position);
-                    Debug.Log(agent.destination);
                 }
                 else if (triggerScript.isNear)
                 {
                     agent.SetDestination(transform.position - (transform.forward * triggerScript.playerDistance));
-                    Debug.Log(agent.destination);
                 }
                 break;
             case 1:
-                agent.SetDestination(player.transform.position);             
+                if (triggerScript.isFar)
+                {
+                    agent.SetDestination(player.transform.position);
+                }
+                else if (triggerScript.isNear && !strafeToggle)
+                {
+                    StartCoroutine(MoveLeft());
+                }
+                else if (triggerScript.isNear && strafeToggle)
+                {
+                    StartCoroutine(MoveRight());
+                }
                 break;
             case 2: 
                 agent.SetDestination(player.transform.position);                
                 break;
         }
+    }
+
+    IEnumerator MoveLeft()
+    {
+        agent.SetDestination(transform.position - (transform.right * triggerScript.playerDistance));
+        yield return new WaitForSeconds(strafeTime);
+        strafeToggle = true;
+    }
+    
+    IEnumerator MoveRight()
+    {
+        agent.SetDestination(transform.position + (transform.right * triggerScript.playerDistance));
+        yield return new WaitForSeconds(strafeTime);
+        strafeToggle = false;
     }
 }
