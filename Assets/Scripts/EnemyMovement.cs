@@ -9,12 +9,14 @@ public class EnemyMovement : MonoBehaviour
     public EnemyTrigger triggerScript;
     public PlayerDash dashScript;
 
+    public GameObject enemyDestination;
     public GameObject player;
     public NavMeshAgent agent;
 
     [SerializeField] public float rotationSpeed;
 
     [SerializeField] public Vector3 yAngle;
+    public Vector3 retreat;
 
     void Start()
     {
@@ -55,7 +57,9 @@ public class EnemyMovement : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                agent.SetDestination(-player.transform.position);
+                retreat = player.transform.position * triggerScript.playerDistance;
+                Instantiate(enemyDestination, retreat, Quaternion.identity);
+                agent.SetDestination(retreat);
                 break;
             case 1:
                 agent.SetDestination(player.transform.position);               
