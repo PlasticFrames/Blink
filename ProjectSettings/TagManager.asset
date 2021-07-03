@@ -12,6 +12,8 @@ TagManager:
   - Shield
   - Armour
   - Manager
+  - Dash UI
+  - Power
   layers:
   - Default
   - TransparentFX
