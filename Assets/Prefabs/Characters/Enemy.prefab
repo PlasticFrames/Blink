@@ -222,13 +222,12 @@ MonoBehaviour:
   player: {fileID: 0}
   angle: 10
   playerDistance: 0
-  moveDistance: 0
-  attackDistance: 0
+  farDistance: 0
+  nearDistance: 0
   isIdle: 1
-  isMoving: 0
+  isFar: 0
+  isNear: 0
   isFacing: 0
-  isAttacking: 0
-  isCharging: 0
 --- !u!114 &7801562505917728504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +247,7 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 0}
   rotationSpeed: 200
-  baseSpeed: 3
+  baseSpeed: 6
   yAngle: {x: 0, y: 0.2, z: 0}
   retreat: {x: 0, y: 0, z: 0}
 --- !u!114 &3113545503038941500

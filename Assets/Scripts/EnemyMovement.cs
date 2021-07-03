@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
         
-        if (triggerScript.isFar)
+        if (triggerScript.isFar || triggerScript.isNear)
         {
             agent.enabled = true;
             Move();
@@ -61,10 +61,12 @@ public class EnemyMovement : MonoBehaviour
                 if (triggerScript.isFar)
                 {
                     agent.SetDestination(player.transform.position);
+                    Debug.Log(agent.destination);
                 }
                 else if (triggerScript.isNear)
                 {
                     agent.SetDestination(transform.position - (transform.forward * triggerScript.playerDistance));
+                    Debug.Log(agent.destination);
                 }
                 break;
             case 1:
