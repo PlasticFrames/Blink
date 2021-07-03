@@ -10,6 +10,11 @@ public class TimeManager : MonoBehaviour
     public float slowdownFactor = 0.05f;
     public float slowdownLength = 2f;
 
+    void Start() 
+    {
+        dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
+    }
+
     void Update() 
     {
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f); //limits time dilation
