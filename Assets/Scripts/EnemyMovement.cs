@@ -57,9 +57,7 @@ public class EnemyMovement : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                retreat = player.transform.position * triggerScript.playerDistance;
-                Instantiate(enemyDestination, retreat, Quaternion.identity);
-                agent.SetDestination(retreat);
+                agent.SetDestination(transform.position - (transform.forward * triggerScript.playerDistance)); //Base enemy retreats
                 break;
             case 1:
                 agent.SetDestination(player.transform.position);               

@@ -85,7 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 0}
   runCam: {fileID: 0}
-  speed: 7.5
+  speed: 10
   turnSmoothTime: 0.1
   turnSmoothVelocity: 0
   verticalBoost: 1.5
