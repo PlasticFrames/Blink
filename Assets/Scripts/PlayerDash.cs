@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerDash: MonoBehaviour
 {
     PlayerMove moveScript;
+    PlayerHealth healthScript;
 
     public Camera runCam;
 
@@ -34,6 +35,7 @@ public class PlayerDash: MonoBehaviour
     void Start()
     {
         moveScript = GetComponent<PlayerMove>();
+        healthScript = GetComponent<PlayerHealth>();
         runCam = Camera.main;
         dashAim = GameObject.FindWithTag("Dash Aim");
     }
@@ -116,6 +118,7 @@ public class PlayerDash: MonoBehaviour
         dashMarks.Clear();
         currentDash = 0;
         isDashing = false;
+        StartCoroutine(healthScript.MakeInvulnerable());
         StartCoroutine(DelayDashes());
     }
 
