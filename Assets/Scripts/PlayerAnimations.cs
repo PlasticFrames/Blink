@@ -33,7 +33,7 @@ public class PlayerAnimations : MonoBehaviour
         var emission2 = ps2.emission;
         var emission3 = ps3.emission;
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && playerObj.gameObject.GetComponent<PlayerDash>().isPlanning == false)
         {
             playerAnim.SetBool("isRunning", true);
         }
@@ -45,12 +45,10 @@ public class PlayerAnimations : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            playerAnim.SetBool("isDashing", false);
+            playerAnim.SetBool("isDashing", true);
         }
         if (playerObj.gameObject.GetComponent<PlayerDash>().isDashing == true)
         {
-            playerAnim.SetBool("isDashing", true);
-
             emission.enabled = true;
             emission2.enabled = true;
             emission3.enabled = true;
@@ -62,7 +60,16 @@ public class PlayerAnimations : MonoBehaviour
             emission2.enabled = false;
             emission3.enabled = false;
         }
-
-
+        
+        if (Input.GetKey(KeyCode.O) || playerObj.gameObject.GetComponent<PlayerDash>().isPlanning == true)
+        {
+            playerAnim.SetInteger("isPlanning", Random.Range(1,3));
+            //playerAnim.SetBool("isPlanningB", true);
+        }
+        else
+        {
+            //playerAnim.SetBool("isPlanningB", false);
+            playerAnim.SetInteger("isPlanning", 0);
+        }
     }
 }
