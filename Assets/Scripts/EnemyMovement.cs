@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public NavMeshAgent agent;
 
     [SerializeField] public float rotationSpeed;
+    [SerializeField] public float baseSpeed;
 
     [SerializeField] public Vector3 yAngle;
     public Vector3 retreat;
@@ -60,7 +61,7 @@ public class EnemyMovement : MonoBehaviour
                 agent.SetDestination(transform.position - (transform.forward * triggerScript.playerDistance)); //Base enemy retreats
                 break;
             case 1:
-                agent.SetDestination(player.transform.position);               
+                agent.SetDestination(player.transform.position);             
                 break;
             case 2: 
                 agent.SetDestination(player.transform.position);                
