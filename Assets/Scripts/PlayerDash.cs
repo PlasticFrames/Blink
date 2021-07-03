@@ -101,6 +101,7 @@ public class PlayerDash: MonoBehaviour
         if (dashCharges > 0)
         {
             Instantiate(dashMark, dashDestination, Quaternion.identity);
+            Instantiate(dashMark, dashDestination, Quaternion.identity);
             aimOrigin = dashDestination;
             currentDash++;
             dashCharges--;
