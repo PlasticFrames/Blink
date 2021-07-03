@@ -23,6 +23,7 @@ public class PlayerDash: MonoBehaviour
     public int dashCharges = 3;
     public int maxDash = 3;
     public int currentDash = 0;
+    public int dashDelay = 1;
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
@@ -109,13 +110,27 @@ public class PlayerDash: MonoBehaviour
         currentDash = 0;
         foreach (var Vector3 in dashMarks)
         {
-            yield return LerpDash (Vector3, dashSpeed);
+            yield return LerpDash(Vector3, dashSpeed);
             currentDash++;
         }
         dashMarks.Clear();
-        dashCharges = maxDash;
         currentDash = 0;
         isDashing = false;
+        StartCoroutine(CooldownDashes());
+    }
+
+    IEnumerator CooldownDashes()
+    {
+        if (dashCharges < maxDash)
+        {
+            yield return new WaitForSeconds(dashDelay);
+            dashCharges++;
+            yield return CooldownDashes();
+        }
+        else
+        {
+            yield return null;
+        }
     }
 
     IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes
