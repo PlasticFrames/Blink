@@ -9,20 +9,18 @@ public class PlayerDashJimmy: MonoBehaviour
 
     public Camera runCam;
 
+
     public GameObject dashAim;
-    public GameObject playerObj;
+    public GameObject dashMark;
 
-
-    [SerializeField] GameObject[] dashMarks = new GameObject[3];
+    public List<Vector3> dashMarksJimmy = new List<Vector3>();
 
     public float groundZ = 0f;
     public float distance;
     public float distanceFromPlayer;
-    public float maxDistance = 10f;
+    public float maxDistance = 15f;
     public float dashSpeed;
-    public float dashLength1;
-    public float dashLength2;
-    public float dashLength3;
+    public float newSpeed;
 
     public int dashCharges = 3;
     public int maxDash = 3;
@@ -31,17 +29,19 @@ public class PlayerDashJimmy: MonoBehaviour
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
 
-    public bool isPlanning = false;
-    public bool isDashing = false;
+    public bool isPlanning;
+    public bool isDashing;
 
     void Start()
     {
         moveScript = GetComponent<PlayerMove>();
+        runCam = Camera.main;
+        dashAim = GameObject.FindWithTag("Dash Aim");
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && dashCharges > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && !isDashing && dashCharges > 0)
         {
             isPlanning = true;
             aimOrigin = transform.position;
@@ -54,23 +54,32 @@ public class PlayerDashJimmy: MonoBehaviour
             StartCoroutine(TriggerDashes());
         }
 
+        if (Input.GetMouseButtonDown(0) && isPlanning)
+        {
+            dashDestination = dashAim.transform.position;
+            SetDestinations();
+        }
+
         if (isPlanning)
         {
             LimitRange();
         }
         else if (!isPlanning)
         {
-            dashAim.SetActive(false); 
+            dashAim.SetActive(false);
         }
 
-        if(Input.GetMouseButtonDown(0) && isPlanning)
+        if (isPlanning || isDashing)
         {
-            dashDestination = dashAim.transform.position;
-            SetDestinations();
+            moveScript.enabled = false;
+        }
+        else if (!isPlanning && !isDashing)
+        {
+            moveScript.enabled = true;
         }
     }
 
-    public Vector3 GetWorldPosition(float z)
+    public Vector3 GetWorldPosition(float z) //Retrieves mouse position on ground
     {
         Ray mousePos = runCam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
@@ -78,59 +87,58 @@ public class PlayerDashJimmy: MonoBehaviour
         return mousePos.GetPoint(distance);
     }
 
-    void LimitRange()
+    void LimitRange() //Displays dash aim and clamps to player/mark
     {
         distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
         Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
         dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
-        dashAim.SetActive(true);
+        dashAim.SetActive(true); //DISABLE AIM VS MAX DASH?
     }
 
-    void SetDestinations() //DISABLE AIM VS MAX DASH?
+    void SetDestinations() //Instantiates mark at aim position and increments charges
     {
         if (dashCharges > 0)
         {
-            dashMarks[currentDash].transform.position = dashDestination;
-            dashMarks[currentDash].SetActive(true);
-            aimOrigin = dashMarks[currentDash].transform.position;
-            //dashLength1 = Vector3.Distance(dashMarks[currentDash].transform.position, dashMarks[currentDash + 1].transform.position);
-            //dashLength2 = Vector3.Distance(dashMarks[0].transform.position, dashMarks[1].transform.position);
-            //dashLength3 = Vector3.Distance(dashMarks[1].transform.position, dashMarks[2].transform.position);
+            Instantiate(dashMark, dashDestination, Quaternion.identity);
+            aimOrigin = dashDestination;
             currentDash++;
             dashCharges--;
         }
     }
 
-    IEnumerator TriggerDashes()
-  {
-    currentDash = 0;
-    foreach (GameObject gameObject in dashMarks)
+    IEnumerator TriggerDashes() //Resets int for loop, triggers dashes and clears marks
     {
-        if (dashMarks[currentDash].transform.position != Vector3.zero)
+        currentDash = 0;
+        foreach (var Vector3 in dashMarksJimmy)
         {
-            yield return LerpDash (dashMarks[currentDash].transform.position, dashSpeed);
-            dashMarks[currentDash].SetActive(false);
-            dashMarks[currentDash].transform.position = Vector3.zero; //reset position to limit next dashes
+            yield return LerpDash (Vector3, dashSpeed);
             currentDash++;
         }
+        dashMarksJimmy.Clear();
+        dashCharges = maxDash;
+        currentDash = 0;
+        isDashing = false;
     }
-    currentDash = 0;
-    dashCharges = maxDash;
-    isDashing = false;
-  }
 
-    IEnumerator LerpDash(Vector3 targetPos, float duration) //still seems to be smoothing between points?
+    IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes
     {
         float time = 0;
         Vector3 startPos = transform.position;
         while (time < duration)
         {
+            /*
+            transform.LookAt(targetPos);
+            float distance = Vector3.Distance(startPos, targetPos);
+            float finalSpeed = (distance / newSpeed);
+            transform.position = Vector3.Lerp(startPos, targetPos, Time.deltaTime / finalSpeed);
+            yield return null;
+            */
+            
             transform.LookAt(targetPos);
             transform.position = Vector3.Lerp(startPos, targetPos, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPos; //snapping
-        
+        transform.position = targetPos; //snaps to next position
     }
 } 
