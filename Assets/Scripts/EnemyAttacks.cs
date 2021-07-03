@@ -40,7 +40,7 @@ public class EnemyAttacks : MonoBehaviour
 
     void Update()
     {
-        if (triggerScript.isAttacking)
+        if (triggerScript.isNear)
         {
             if (fireTimer > 0)
             {

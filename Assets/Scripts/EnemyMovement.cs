@@ -35,14 +35,14 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
         }
-        else if (triggerScript.isMoving || triggerScript.isAttacking) //enemy is facing player?
+        else if (triggerScript.isFar || triggerScript.isNear) //enemy is facing player?
         {
             Vector3 forward = player.transform.position - transform.position;
             forward.y = 0;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
         
-        if (triggerScript.isMoving)
+        if (triggerScript.isFar)
         {
             agent.enabled = true;
             Move();
@@ -58,7 +58,14 @@ public class EnemyMovement : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                agent.SetDestination(transform.position - (transform.forward * triggerScript.playerDistance)); //Base enemy retreats
+                if (triggerScript.isFar)
+                {
+                    agent.SetDestination(player.transform.position);
+                }
+                else if (triggerScript.isNear)
+                {
+                    agent.SetDestination(transform.position - (transform.forward * triggerScript.playerDistance));
+                }
                 break;
             case 1:
                 agent.SetDestination(player.transform.position);             

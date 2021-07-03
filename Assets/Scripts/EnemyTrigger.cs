@@ -13,14 +13,13 @@ public class EnemyTrigger : MonoBehaviour
     public int angle = 10;
 
     public float playerDistance;
-    [SerializeField] public float moveDistance;
-    public float attackDistance;
+    [SerializeField] public float farDistance;
+    public float nearDistance;
 
     public bool isIdle = true;
-    public bool isMoving = false;
+    public bool isFar = false;
+    public bool isNear = false;
     public bool isFacing = false;
-    public bool isAttacking = false;
-    public bool isCharging = false; //Charge > fire when within certain range
 
     void Start() 
     {
@@ -30,9 +29,9 @@ public class EnemyTrigger : MonoBehaviour
         
         player = GameObject.FindWithTag("Player");
 
-        moveDistance = GetComponent<SphereCollider>().radius;
-        playerDistance = moveDistance + 1;
-        attackDistance = moveDistance / 2; 
+        farDistance = GetComponent<SphereCollider>().radius;
+        playerDistance = farDistance + 1;
+        nearDistance = farDistance / 2; 
     }
 
     void Update()
@@ -44,31 +43,30 @@ public class EnemyTrigger : MonoBehaviour
 
         if (!dashScript.isPlanning && !dashScript.isDashing)
         {
-            if (playerDistance < moveDistance && playerDistance > attackDistance)
+            if (playerDistance < farDistance && playerDistance > nearDistance)
             {
                 isIdle = false;
-                isMoving = true;
-                isAttacking = true;
+                isFar = true;
+                isNear = false;
             }
-            else if (playerDistance < attackDistance)
+            else if (playerDistance < nearDistance)
             {
-                isAttacking = false;
-                isMoving = true;
+                isIdle = false;
+                isNear = true;
+                isFar = false;
             }
             else
             {
                 isIdle = true;
-                isMoving = false;
-                isFacing = false;
-                isAttacking = false;
+                isFar = false;
+                isNear = false;
             } 
         }
         else
         {
             isIdle = false;
-            isMoving = false;
-            isFacing = false;
-            isAttacking = false;
+            isFar = false;
+            isNear = false;
         }
     }
 
