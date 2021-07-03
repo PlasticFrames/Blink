@@ -33,7 +33,7 @@ public class PlayerAnimations : MonoBehaviour
         var emission2 = ps2.emission;
         var emission3 = ps3.emission;
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && playerObj.gameObject.GetComponent<PlayerDash>().isPlanning == false)
         {
             playerAnim.SetBool("isRunning", true);
         }
