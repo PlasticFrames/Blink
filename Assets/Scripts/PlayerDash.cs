@@ -124,12 +124,18 @@ public class PlayerDash: MonoBehaviour
 
     IEnumerator DelayDashes() //Slowly recharges dashes
     {
-        if (dashCharges < maxDash)
-        {
-            yield return new WaitForSeconds(dashDelay);
-            dashCharges++;
-            yield return DelayDashes();
-        }
+        if (!isPlanning && !isDashing)
+
+            if (dashCharges < maxDash) //Not stopping recharge
+            {
+                yield return new WaitForSeconds(dashDelay);
+                dashCharges++;
+                yield return DelayDashes();
+            }
+            else
+            {
+                yield return null;
+            }
         else
         {
             yield return null;
