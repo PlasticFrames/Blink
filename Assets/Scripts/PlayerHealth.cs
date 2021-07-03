@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator MakeInvulnerable()
     {
         isInvulnerable = true;
-Debug.Log("Invulnerable");
+
         for (float i = 0; i < invulnerabilityDuration; i += invulnerabilityDelta)
         {
             if (playerModel.transform.localScale == Vector3.one)

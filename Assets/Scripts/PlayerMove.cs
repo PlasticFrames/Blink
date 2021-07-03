@@ -10,10 +10,11 @@ public class PlayerMove : MonoBehaviour
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
-[SerializeField] float verticalBoost;
+    [SerializeField] float verticalBoost;
 
     public Vector3 moveDirection;
-    Vector3 velocity;
+    public Vector3 velocity;
+
 
     void Start()
     {
