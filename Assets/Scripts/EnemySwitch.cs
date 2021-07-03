@@ -11,15 +11,7 @@ public class EnemySwitch : MonoBehaviour
         CheckType();
     }
 
-    void OnCollisionEnter(Collision other) 
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-           CheckType(); 
-        }
-    }
-
-    void CheckType()
+    public void CheckType()
     {
         switch (enemyType)
         {

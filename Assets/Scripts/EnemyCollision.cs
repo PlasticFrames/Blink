@@ -79,6 +79,7 @@ public class EnemyCollision : MonoBehaviour
             break;
         case 1:
             switchScript.enemyType = 0;
+            switchScript.CheckType();
             //enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             break;
         case 2: 
