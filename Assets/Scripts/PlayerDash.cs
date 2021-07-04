@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerDash: MonoBehaviour
 {
     PlayerMove moveScript;
-    PlayerHealth healthScript;
 
     public Camera runCam;
 
@@ -24,7 +23,6 @@ public class PlayerDash: MonoBehaviour
     public int dashCharges = 3;
     public int maxDash = 3;
     public int currentDash = 0;
-    public int dashDelay = 1;
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
@@ -32,17 +30,26 @@ public class PlayerDash: MonoBehaviour
     public bool isPlanning;
     public bool isDashing;
 
+    public ParticleSystem dashAimSparks;
+    public ParticleSystem dashAimBeam;
+    public ParticleSystem dashAimReticuleBlue;
+    public ParticleSystem dashAimReticuleRed;
+
     void Start()
     {
         moveScript = GetComponent<PlayerMove>();
-        healthScript = GetComponent<PlayerHealth>();
         runCam = Camera.main;
         dashAim = GameObject.FindWithTag("Dash Aim");
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && !isDashing && dashCharges > 0) //SWAP TO RMB?
+        var dashAimSparksEmission = dashAimSparks.emission;
+        var dashAimBeamEmission = dashAimBeam.emission;
+        var dashAimReticuleBlueEmission = dashAimReticuleBlue.emission;
+        var dashAimReticuleRedEmission = dashAimReticuleRed.emission;
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isPlanning && !isDashing && dashCharges > 0)
         {
             isPlanning = true;
             aimOrigin = transform.position;
@@ -58,8 +65,26 @@ public class PlayerDash: MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isPlanning)
         {
             dashDestination = dashAim.transform.position;
+            dashAimSparks.Play();
+            dashAimBeam.Play();
             SetDestinations();
         }
+        
+        if(currentDash == 3)
+        {
+            dashAimReticuleBlueEmission.enabled = false;
+            dashAimReticuleRedEmission.enabled = true;
+            dashAimSparksEmission.enabled = false;
+            dashAimBeamEmission.enabled = false;
+        }
+        else
+        {
+            dashAimReticuleBlueEmission.enabled = true;
+            dashAimReticuleRedEmission.enabled = false;
+            dashAimSparksEmission.enabled = true;
+            dashAimBeamEmission.enabled = true;
+        }
+ 
 
         if (isPlanning)
         {
@@ -101,7 +126,6 @@ public class PlayerDash: MonoBehaviour
         if (dashCharges > 0)
         {
             Instantiate(dashMark, dashDestination, Quaternion.identity);
-            Instantiate(dashMark, dashDestination, Quaternion.identity);
             aimOrigin = dashDestination;
             currentDash++;
             dashCharges--;
@@ -113,34 +137,13 @@ public class PlayerDash: MonoBehaviour
         currentDash = 0;
         foreach (var Vector3 in dashMarks)
         {
-            yield return LerpDash(Vector3, dashSpeed);
+            yield return LerpDash (Vector3, dashSpeed);
             currentDash++;
         }
         dashMarks.Clear();
+        dashCharges = maxDash;
         currentDash = 0;
         isDashing = false;
-        StartCoroutine(healthScript.MakeInvulnerable());
-        StartCoroutine(DelayDashes());
-    }
-
-    IEnumerator DelayDashes() //Slowly recharges dashes
-    {
-        if (!isPlanning && !isDashing)
-
-            if (dashCharges < maxDash) //Not stopping recharge
-            {
-                yield return new WaitForSeconds(dashDelay);
-                dashCharges++;
-                yield return DelayDashes();
-            }
-            else
-            {
-                yield return null;
-            }
-        else
-        {
-            yield return null;
-        }
     }
 
     IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes
