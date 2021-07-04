@@ -33,7 +33,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-
         if (triggerScript.isIdle)
         {
             transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
