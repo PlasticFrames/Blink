@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
 
     public GameObject playerModel;
 
+    public Rigidbody playerBody;
+
     public int maxHealth = 3;
     public int playerHealth = 3;
 
@@ -21,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     {
         moveScript = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
         playerModel = GameObject.FindWithTag("Player").gameObject.transform.GetChild(2).gameObject;
+        playerBody = GetComponent<Rigidbody>();
     }
 
     void Update() 
@@ -63,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(invulnerabilityDelta);
         }
         ScaleModel(Vector3.one);
+        playerBody.drag = 0;
         isInvulnerable = false;
     }
 

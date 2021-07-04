@@ -46,31 +46,33 @@ public class EnemyCollision : MonoBehaviour
     void RunReaction()
     {
         forceOrigin = transform.position;
+        playerBody.drag = 5;
 
         switch (switchScript.enemyType)
         {
-        case 0: 
-            playerBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
-            break;
-        case 1:
-            playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
-            break;
-        case 2:
-            playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
-            dashScript.dashCharges--;
-            dashScript.maxDash--;
-    
-            if(dashScript.dashCharges >= 0)
-            {
-                Instantiate(dashRecharge, player.transform.position + (Vector3.up * 2), Quaternion.identity);
-            }
-            break;
+            case 0:
+                playerBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                break;
+            case 1:
+                playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse); //ADD PLAYER INPUT DISABLE?
+                break;
+            case 2:
+                playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                dashScript.dashCharges--;
+                dashScript.maxDash--;
+
+                if (dashScript.dashCharges >= 0)
+                {
+                    Instantiate(dashRecharge, player.transform.position + (Vector3.up * 2), Quaternion.identity);
+                }
+                break;
         }
     }
 
     void DashReaction()
     {
         forceOrigin = player.transform.position;
+        enemyBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
         switch (switchScript.enemyType)
         {
@@ -86,5 +88,6 @@ public class EnemyCollision : MonoBehaviour
             enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
             break;
         }
+        enemyBody.constraints = ~RigidbodyConstraints.FreezePosition;
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public PlayerDash dashScript;
     public PlayerHealth healthScript;
+    public PlayerDash dashScript;
 
     public GameObject dash0;
     public GameObject dash1;
@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        healthScript = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
     }
 
