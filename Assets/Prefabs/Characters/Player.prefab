@@ -90,6 +90,7 @@ MonoBehaviour:
   turnSmoothVelocity: 0
   verticalBoost: 1.5
   moveDirection: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &4829200572956947690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runCam: {fileID: 0}
-  dashAim: {fileID: 0}
+  dashAim: {fileID: 7957034739971197770, guid: 20d50f14ed962d8499238ff7fd991263, type: 3}
   dashMark: {fileID: 4431726490762268164, guid: e8349473918065146addf4c4e2b80350, type: 3}
   dashMarks: []
   groundZ: 0
@@ -118,6 +119,10 @@ MonoBehaviour:
   dashDestination: {x: 0, y: 0, z: 0}
   isPlanning: 0
   isDashing: 0
+  dashAimSparks: {fileID: 4361166835500315053, guid: 18a4ee571e35cbd4fbe8af7c6fa99348, type: 3}
+  dashAimBeam: {fileID: 1087513495505308912, guid: 13073845f0797814781c2cf221eca1a2, type: 3}
+  dashAimReticuleBlue: {fileID: 8011077423884362572, guid: f6214916d1bab5b46b8646533fa5ab43, type: 3}
+  dashAimReticuleRed: {fileID: 8300543424316533088, guid: 39454cc816be13345989d3100045bcd1, type: 3}
 --- !u!114 &3581036610956230554
 MonoBehaviour:
   m_ObjectHideFlags: 0
