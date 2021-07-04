@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyCollision : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class EnemyCollision : MonoBehaviour
     public EnemySwitch switchScript;
 
     public GameObject player;
-    public GameObject dashRecharge;        
+    public GameObject dashRecharge;
+    public NavMeshAgent agent;        
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
 
@@ -24,6 +26,7 @@ public class EnemyCollision : MonoBehaviour
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
         player = GameObject.FindWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         enemyBody = GetComponent<Rigidbody>();       
     }
@@ -72,22 +75,29 @@ public class EnemyCollision : MonoBehaviour
     void DashReaction()
     {
         forceOrigin = player.transform.position;
+        agent.enabled = false;
         enemyBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
         switch (switchScript.enemyType)
         {
-        case 0: 
-            Destroy(gameObject);
-            break;
-        case 1:
-            switchScript.enemyType = 0;
-            switchScript.CheckType();
-            break;
-        case 2: 
-            Debug.Log("Nudge armour");
-            enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
-            break;
+            case 0:
+                Destroy(gameObject);
+                break;
+            case 1:
+                switchScript.enemyType = 0;
+                switchScript.CheckType();
+                break;
+            case 2:
+                Debug.Log("Nudge armour");
+                enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
+                break;
         }
+        StartCoroutine(ResetBody());
+    }
+
+    IEnumerator ResetBody()
+    {
+        yield return new WaitForSeconds(0.5f);
         enemyBody.constraints = ~RigidbodyConstraints.FreezePosition;
     }
 }

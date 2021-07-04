@@ -152,7 +152,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &4387034829356540041
 SphereCollider:
@@ -298,6 +298,7 @@ MonoBehaviour:
   switchScript: {fileID: 1684181353085774066}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
+  agent: {fileID: 0}
   playerBody: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   enemyBody: {fileID: 1323064653398651429}
   nudgeForce: 100
