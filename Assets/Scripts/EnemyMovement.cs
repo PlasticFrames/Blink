@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     public EnemySwitch switchScript;
+    public GroundCheck groundScript;
     public EnemyTrigger triggerScript;
     public PlayerDash dashScript;
 
@@ -25,6 +26,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         switchScript = GetComponent<EnemySwitch>();
+        groundScript = GetComponentInChildren<GroundCheck>();
         triggerScript = GetComponent<EnemyTrigger>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         player = GameObject.FindWithTag("Player");
@@ -44,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
         
-        if (triggerScript.isFar || triggerScript.isNear)
+        if ((triggerScript.isFar || triggerScript.isNear) && groundScript.isGrounded)
         {
             agent.enabled = true;
             Move();

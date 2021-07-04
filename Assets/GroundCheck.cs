@@ -1,22 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GroundCheck : MonoBehaviour
 {
-    public Rigidbody rigidBody;
+    public NavMeshAgent agent;
+
+    public Rigidbody body;
+
     [SerializeField] public float fallSpeed;
+
+    public bool isGrounded;
 
     void Start()
     {
-        rigidBody = GetComponentInParent<Rigidbody>();
+        agent = GetComponentInParent<NavMeshAgent>();
+        body = GetComponentInParent<Rigidbody>();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Ground");           
+            isGrounded = true;
+            if(transform.parent.tag == "Player")
+            {
+                 
+            }
+            else if(transform.parent.tag == "Enemy")
+            {
+
+            }      
         }    
     }
 
@@ -24,8 +39,22 @@ public class GroundCheck : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Air");
-            rigidBody.velocity = Vector3.down * fallSpeed;
-        }    
+            isGrounded = false;
+
+            if (!isGrounded)
+            {
+                if(transform.parent.tag == "Player")
+                {
+                    body.drag = 0;
+                    body.velocity = Vector3.down * fallSpeed;
+                }
+                else if(transform.parent.tag == "Enemy")
+                {
+                    agent.enabled = false;
+                    body.drag = 0;
+                    body.velocity = Vector3.down * fallSpeed;
+                }            
+            }      
+        }
     }
 }
