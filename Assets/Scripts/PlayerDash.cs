@@ -12,6 +12,8 @@ public class PlayerDash: MonoBehaviour
     public GameObject dashAim;
     public GameObject dashMark;
 
+    public Rigidbody playerBody;
+
     public List<Vector3> dashMarks = new List<Vector3>();
 
     public float groundZ = 0f;
@@ -39,6 +41,7 @@ public class PlayerDash: MonoBehaviour
     {
         moveScript = GetComponent<PlayerMove>();
         runCam = Camera.main;
+        playerBody = GetComponent<Rigidbody>();
         dashAim = GameObject.FindWithTag("Dash Aim");
     }
 
@@ -103,10 +106,12 @@ public class PlayerDash: MonoBehaviour
 
         if (isPlanning || isDashing)
         {
+            playerBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
             moveScript.enabled = false;
         }
         else if (!isPlanning && !isDashing)
         {
+            playerBody.constraints = ~RigidbodyConstraints.FreezePosition;
             moveScript.enabled = true;
         }
     }
