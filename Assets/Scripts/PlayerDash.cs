@@ -65,6 +65,8 @@ public class PlayerDash: MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isPlanning)
         {
             dashDestination = dashAim.transform.position;
+            dashAimReticuleBlue.Play();
+            dashAimReticuleRed.Play();
             dashAimSparks.Play();
             dashAimBeam.Play();
             SetDestinations();
@@ -72,6 +74,8 @@ public class PlayerDash: MonoBehaviour
         
         if(currentDash == 3)
         {
+            dashAimReticuleRed.Play();
+            dashAimReticuleBlue.Stop();
             dashAimReticuleBlueEmission.enabled = false;
             dashAimReticuleRedEmission.enabled = true;
             dashAimSparksEmission.enabled = false;
@@ -79,6 +83,8 @@ public class PlayerDash: MonoBehaviour
         }
         else
         {
+            dashAimReticuleRed.Stop();
+            dashAimReticuleBlue.Play();
             dashAimReticuleBlueEmission.enabled = true;
             dashAimReticuleRedEmission.enabled = false;
             dashAimSparksEmission.enabled = true;
