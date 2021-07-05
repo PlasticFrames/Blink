@@ -35,7 +35,7 @@ public class EnemyAttacks : MonoBehaviour
         moveScript = GetComponent<EnemyMovement>();
         triggerScript = GetComponent<EnemyTrigger>();
         player = GameObject.FindWithTag("Player");
-        bulletOffset = (gameObject.transform.GetChild(4).gameObject);        
+        bulletOffset = (gameObject.transform.GetChild(1).gameObject);        
     }
 
     void Update()

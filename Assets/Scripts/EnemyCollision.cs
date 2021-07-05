@@ -49,7 +49,6 @@ public class EnemyCollision : MonoBehaviour
     void RunReaction()
     {
         forceOrigin = transform.position;
-        //playerBody.drag = 5;
 
         switch (switchScript.enemyType)
         {

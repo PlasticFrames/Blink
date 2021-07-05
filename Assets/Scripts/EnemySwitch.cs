@@ -25,12 +25,12 @@ public class EnemySwitch : MonoBehaviour
         {
             case 0:
                 agent.speed = moveScript.baseSpeed / (enemyType + 1);
-                Destroy(gameObject.transform.GetChild(1).gameObject);
-                Destroy(gameObject.transform.GetChild(2).gameObject);
+                Destroy(gameObject.transform.GetChild(3).gameObject);
+                Destroy(gameObject.transform.GetChild(4).gameObject);
                 break;
             case 1:
                 agent.speed = moveScript.baseSpeed / (enemyType + 1);
-                Destroy(gameObject.transform.GetChild(2).gameObject);
+                Destroy(gameObject.transform.GetChild(4).gameObject);
                 break;
             case 2:
                 agent.speed = moveScript.baseSpeed / (enemyType + 1);
