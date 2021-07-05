@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4829200572956947685}
   - component: {fileID: 4829200572956947689}
   - component: {fileID: 4829200572956947691}
+  - component: {fileID: 2379724991835871553}
   - component: {fileID: 4829200572956947684}
   - component: {fileID: 4829200572956947690}
   - component: {fileID: 3581036610956230554}
@@ -65,13 +66,26 @@ Rigidbody:
   m_GameObject: {fileID: 4829200572956947686}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!135 &2379724991835871553
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4829200572956947686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4829200572956947684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,10 +136,10 @@ MonoBehaviour:
   dashDestination: {x: 0, y: 0, z: 0}
   isPlanning: 0
   isDashing: 0
-  dashAimSparks: {fileID: 4361166835500315053, guid: 18a4ee571e35cbd4fbe8af7c6fa99348, type: 3}
-  dashAimBeam: {fileID: 1087513495505308912, guid: 13073845f0797814781c2cf221eca1a2, type: 3}
-  dashAimReticuleBlue: {fileID: 8011077423884362572, guid: f6214916d1bab5b46b8646533fa5ab43, type: 3}
-  dashAimReticuleRed: {fileID: 8300543424316533088, guid: 39454cc816be13345989d3100045bcd1, type: 3}
+  dashAimSparks: {fileID: 0}
+  dashAimBeam: {fileID: 0}
+  dashAimReticuleBlue: {fileID: 0}
+  dashAimReticuleRed: {fileID: 0}
 --- !u!114 &3581036610956230554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +250,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Size: {x: 0.5, y: 0.1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8792531237309958017
 MonoBehaviour:
@@ -245,15 +259,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7363813308293417542}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6e767ceacbe95046815c0083f22c03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   body: {fileID: 0}
-  fallSpeed: 0
-  isGrounded: 0
+  fallSpeed: 10
+  isGrounded: 1
 --- !u!95 &8038119997466857901
 Animator:
   serializedVersion: 3

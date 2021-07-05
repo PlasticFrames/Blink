@@ -135,22 +135,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3581036610956230554, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: playerModel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3581036610956230554, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: invulnerabilityDelta
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3581036610956230554, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: invulnerabilityDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4829200572956947684, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: verticalBoost
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4829200572956947685, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -200,14 +184,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: dashAim
-      value: 
-      objectReference: {fileID: 7957034739971197770, guid: 20d50f14ed962d8499238ff7fd991263, type: 3}
-    - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: maxDash
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: dashAimBeam
       value: 
       objectReference: {fileID: 191331033}
@@ -223,25 +199,9 @@ PrefabInstance:
       propertyPath: dashAimReticuleBlue
       value: 
       objectReference: {fileID: 689969376}
-    - target: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 7065782276431086819, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8792531237309958017, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-      propertyPath: fallSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
@@ -256,7 +216,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-60442
+  m_Name: pb_Mesh-10816
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -754,7 +714,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh127108
+  m_Name: pb_Mesh25894
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1454,7 +1414,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-60200
+  m_Name: pb_Mesh-10576
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

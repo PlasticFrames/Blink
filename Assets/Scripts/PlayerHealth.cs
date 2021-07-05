@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(invulnerabilityDelta);
         }
         ScaleModel(Vector3.one);
-        playerBody.drag = 0;
+       // playerBody.drag = 0;
         isInvulnerable = false;
     }
 
