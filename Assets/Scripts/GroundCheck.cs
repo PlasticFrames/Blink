@@ -22,13 +22,13 @@ public class GroundCheck : MonoBehaviour
     
     void Update() 
     {
-        if(isGrounded)
+        if (isGrounded)
         {
             body.drag = 5;
         }
-        else
+        else if (!isGrounded)
         {
-            Fall();
+            //Fall();
         }
     }
 

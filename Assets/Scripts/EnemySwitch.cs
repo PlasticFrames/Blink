@@ -9,7 +9,7 @@ public class EnemySwitch : MonoBehaviour
 
     public NavMeshAgent agent;
 
-    public int enemyType; //0 = Base, 1 = shield, 2 = armour
+    public int enemyType; //0 = Base, 1 = shield, 2 = armour [ASSIGN IN INSPECTOR]
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class EnemySwitch : MonoBehaviour
         CheckType();
     }
 
-    public void CheckType()
+    public void CheckType() //Assigns speed and destroys meshes based on type
     {
         switch (enemyType)
         {

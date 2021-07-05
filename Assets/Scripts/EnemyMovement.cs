@@ -10,13 +10,12 @@ public class EnemyMovement : MonoBehaviour
     public EnemyTrigger triggerScript;
     public PlayerDash dashScript;
 
-    public GameObject enemyDestination;
     public GameObject player;
     public NavMeshAgent agent;
 
     [SerializeField] public float rotationSpeed;
-    [SerializeField] public float baseSpeed;
-    [SerializeField] public float strafeTime;
+    public float baseSpeed = 6f;
+    public float strafeTime;
 
     [SerializeField] public Vector3 yAngle;
     public Vector3 retreat;
@@ -31,22 +30,24 @@ public class EnemyMovement : MonoBehaviour
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+
+        strafeTime = baseSpeed / 2;
     }
 
     void Update()
     {
-        if (triggerScript.isIdle)
+        if (triggerScript.isIdle) //Rotates enemy in place
         {
             transform.Rotate((yAngle * rotationSpeed) * Time.deltaTime);
         }
-        else if (triggerScript.isFar || triggerScript.isNear) //enemy is facing player?
+        else if (triggerScript.isFar || triggerScript.isNear) //Rotates enemy towards player
         {
             Vector3 forward = player.transform.position - transform.position;
             forward.y = 0;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
         
-        if ((triggerScript.isFar || triggerScript.isNear) && groundScript.isGrounded)
+        if (triggerScript.isFar || triggerScript.isNear) //Triggers movement
         {
             agent.enabled = true;
             Move();
