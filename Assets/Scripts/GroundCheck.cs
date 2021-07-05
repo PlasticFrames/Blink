@@ -28,7 +28,7 @@ public class GroundCheck : MonoBehaviour
         }
         else if (!isGrounded)
         {
-            //Fall();
+            Fall();
         }
     }
 

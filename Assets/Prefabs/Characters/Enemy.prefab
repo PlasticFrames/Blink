@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   body: {fileID: 0}
-  fallSpeed: 0
+  fallSpeed: 10
   isGrounded: 1
 --- !u!1 &6482414507979338452
 GameObject:
