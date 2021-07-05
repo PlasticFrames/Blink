@@ -11,6 +11,7 @@ public class PlayerDash: MonoBehaviour
 
     public GameObject dashAim;
     public GameObject dashMark;
+    public GameObject particleParent;
 
     public Rigidbody playerBody;
 
@@ -21,6 +22,7 @@ public class PlayerDash: MonoBehaviour
     public float distanceFromPlayer;
     public float maxDistance = 15f;
     public float dashSpeed;
+    private float raycastLength = 500f;
 
     public int dashCharges = 3;
     public int maxDash = 3;
@@ -37,6 +39,8 @@ public class PlayerDash: MonoBehaviour
     public ParticleSystem dashAimBeam;
     public ParticleSystem dashAimReticuleBlue;
     public ParticleSystem dashAimReticuleRed;
+
+    RaycastHit hit;
 
     void Start()
     {
@@ -127,10 +131,23 @@ public class PlayerDash: MonoBehaviour
 
     void LimitRange() //Displays dash aim and clamps to player/mark
     {
-        distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
-        Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, raycastLength))
+        {
+            Debug.Log(hit.collider.name);
+            if (hit.collider.tag == "Ground")
+            {
+                dashAim.transform.position = hit.point;
+            }
+        }
+        //distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
+        //Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
+        Vector3 offset = hit.point - aimOrigin;
         dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
         dashAim.SetActive(true); //DISABLE AIM VS MAX DASH?
+        //particleParent.transform.rotation = Quaternion.Euler(particleParent.transform.rotation.x, hit.normal.y, particleParent.transform.rotation.z);
+        particleParent.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
     }
 
     void SetDestinations() //Instantiates mark at aim position and increments charges

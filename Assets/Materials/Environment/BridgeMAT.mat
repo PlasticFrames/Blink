@@ -7,24 +7,24 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassObjMAT
-  m_Shader: {fileID: -6465566751694194690, guid: 0415bdbd970b27d4596a0850d5b395ec, type: 3}
+  m_Name: BridgeMAT
+  m_Shader: {fileID: -6465566751694194690, guid: 4b87a7418f2649e47999997832969424, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3500
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_a98fa012e40e4cf6b23e4241d8f044f6:
-        m_Texture: {fileID: 2800000, guid: 0ede2c2ed04f1794384909de1f00aae7, type: 3}
+    - Texture2D_c1263fb39ba74b2180a0938a869d6665:
+        m_Texture: {fileID: 2800000, guid: 9c74abdc073400740b0a22d5840384b5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture2DAsset_ae728a33ae31480a8c621a88b960bfdf_Out_0:
-        m_Texture: {fileID: 2800000, guid: 3cdf76339176d174d9499afa9e140778, type: 3}
+    - _Texture2DAsset_dd88b534e3454a24b0f0e8df2cfe3cd8_Out_0:
+        m_Texture: {fileID: 2800000, guid: e6c3077488650774e96f5de6cc7b3cc2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -39,12 +39,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_14b2a816d61d4161bb64659d2416b879: 3
-    - Vector1_5773f60a702f4999bf30ab13989024d0: -0.28
-    - Vector1_d8e2f00b7ddf4a6293a5f5ea4b5a51b3: 0.3
-    m_Colors:
-    - Color_37ec6bbe98014ed0b5c2a4fe3eeb1c8d: {r: 1, g: 1, b: 1, a: 0}
-    - Color_ddb0daf0792c43528865ff8dcaa5315d: {r: 1, g: 0.733555, b: 0.55345905, a: 0.20392157}
-    - Vector2_de9354c4c33249fd99fff5c503a86454: {r: 6, g: 0, b: 0, a: 0}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
