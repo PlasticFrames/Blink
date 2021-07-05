@@ -35,7 +35,6 @@ public class EnemyCollision : MonoBehaviour
     {
         if (dashScript.isDashing)
         {
-            Debug.Log("Agent disabled");
             agent.enabled = false;
         }
     }

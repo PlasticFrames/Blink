@@ -68,15 +68,20 @@ public class PlayerDash: MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && isPlanning)
         {
+            ShowMark();
+        }
+
+        if (Input.GetMouseButtonUp(0) && isPlanning)
+        {
             dashDestination = dashAim.transform.position;
             dashAimReticuleBlue.Play();
             dashAimReticuleRed.Play();
             dashAimSparks.Play();
             dashAimBeam.Play();
-            SetDestinations();
+            SetDestination();
         }
         
-        if(currentDash == 3)
+        if(dashCharges == 0)
         {
             dashAimReticuleRed.Play();
             dashAimReticuleBlue.Stop();
@@ -130,15 +135,23 @@ public class PlayerDash: MonoBehaviour
         distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
         Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
         dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
-        dashAim.SetActive(true); //DISABLE AIM VS MAX DASH?
+        dashAim.SetActive(true);
     }
 
-    void SetDestinations() //Instantiates mark at aim position and increments charges
+    void ShowMark()
     {
+        dashAim.SetActive(false); //DOESN'T DISABLE PARTICLE EFFECTS
+    }
+
+    void SetDestination() //Instantiates mark at aim position and increments charges
+    {
+        Vector3 relativePosition = dashDestination - transform.position; //NEEDS TO BE RELATIVE TO LAST MARK
+        Quaternion markRotation = Quaternion.LookRotation(relativePosition, Vector3.up);
+
         if (dashCharges > 0)
         {
-            Instantiate(dashMark, dashDestination, Quaternion.identity);
-            Instantiate(dashMark, dashDestination, Quaternion.identity);
+            Instantiate(dashMark, dashDestination, markRotation);
+            Instantiate(dashMark, dashDestination, markRotation);
             aimOrigin = dashDestination;
             currentDash++;
             dashCharges--;
