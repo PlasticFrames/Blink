@@ -74,7 +74,7 @@ public class EnemyTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerDistance = Vector3.Distance(transform.position, player.transform.position); //THROWING ERROR BUT FUNCTIONAL
+            playerDistance = Vector3.Distance(transform.position, player.transform.position);
         }     
     }
 }

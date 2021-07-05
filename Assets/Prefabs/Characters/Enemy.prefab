@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4387034829356540041}
   - component: {fileID: 6275058124937472220}
   - component: {fileID: 1684181353085774066}
-  - component: {fileID: -9069340007738104157}
+  - component: {fileID: 5352350680752657176}
   - component: {fileID: 7801562505917728504}
   - component: {fileID: 3113545503038941500}
   - component: {fileID: 1323064653398651430}
@@ -205,7 +205,7 @@ MonoBehaviour:
   moveScript: {fileID: 0}
   agent: {fileID: 0}
   enemyType: 0
---- !u!114 &-9069340007738104157
+--- !u!114 &5352350680752657176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,14 +221,12 @@ MonoBehaviour:
   attackScript: {fileID: 0}
   dashScript: {fileID: 0}
   player: {fileID: 0}
-  angle: 10
   playerDistance: 0
   farDistance: 0
   nearDistance: 0
   isIdle: 1
   isFar: 0
   isNear: 0
-  isFacing: 0
 --- !u!114 &7801562505917728504
 MonoBehaviour:
   m_ObjectHideFlags: 0
