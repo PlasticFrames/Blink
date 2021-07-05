@@ -15,6 +15,7 @@ TagManager:
   - Dash UI
   - Power
   - Ground
+  - Push Range
   layers:
   - Default
   - TransparentFX
