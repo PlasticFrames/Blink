@@ -48,7 +48,7 @@ public class GroundCheck : MonoBehaviour
         }
     }
 
-    private void Fall()
+    private void Fall() //Disables constraints, reduces drag and applies downforce
     {
         if(transform.parent.tag == "Enemy")
         {

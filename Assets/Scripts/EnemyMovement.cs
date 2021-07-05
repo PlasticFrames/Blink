@@ -62,7 +62,7 @@ public class EnemyMovement : MonoBehaviour
     {
         switch (switchScript.enemyType)
         {
-            case 0:
+            case 0: //Base enemy chases or flees
                 if (triggerScript.isFar)
                 {
                     agent.SetDestination(player.transform.position);
@@ -72,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
                     agent.SetDestination(transform.position - (transform.forward * triggerScript.playerDistance));
                 }
                 break;
-            case 1:
+            case 1: //Shield enemy chases or strafes
                 if (triggerScript.isFar)
                 {
                     agent.SetDestination(player.transform.position);
@@ -86,7 +86,7 @@ public class EnemyMovement : MonoBehaviour
                     StartCoroutine(MoveRight());
                 }
                 break;
-            case 2: 
+            case 2: //Armour enemy chases and knocks
                 agent.SetDestination(player.transform.position);                
                 break;
         }

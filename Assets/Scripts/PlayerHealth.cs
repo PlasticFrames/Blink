@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
     public float invulnerabilityDuration = 1.5f;
     public float invulnerabilityDelta = 0.15f;
 
+    public Vector3 startPosition;
+
     public bool isInvulnerable;
 
     void Start() 
@@ -24,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
         moveScript = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
         playerModel = GameObject.FindWithTag("Player").gameObject.transform.GetChild(0).gameObject;
         playerBody = GetComponent<Rigidbody>();
+        
+        startPosition = transform.position;
     }
 
     void Update() 
@@ -47,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public IEnumerator MakeInvulnerable()
+    public IEnumerator MakeInvulnerable() //Scales player model for set time to simulate flashing
     {
         isInvulnerable = true;
 
@@ -67,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
         isInvulnerable = false;
     }
 
-    void ScaleModel(Vector3 scale) //CHANGE TO FRENEL OR SOME SUCH?
+    void ScaleModel(Vector3 scale)
     {
         playerModel.transform.localScale = scale;
     }
@@ -75,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
     void ResetPlayer()
     {
         moveScript.enabled = false;
-        transform.position = Vector3.zero;
+        transform.position = startPosition;
         playerHealth = maxHealth;
     }
 }
