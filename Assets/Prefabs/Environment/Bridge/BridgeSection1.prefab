@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3460555196840267964}
   - component: {fileID: 4437823185400208642}
   - component: {fileID: -5903511318921344781}
+  - component: {fileID: 370161117}
   m_Layer: 0
   m_Name: BridgeSection1
   m_TagString: Ground
@@ -91,8 +92,21 @@ MeshCollider:
   m_GameObject: {fileID: 5606674843179261074}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3691855350823433188, guid: 8c861f720ebda53409e3595ea19da1c7, type: 3}
+--- !u!65 &370161117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606674843179261074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1221082, y: 0, z: 8.4706335}
+  m_Center: {x: 0.0000034570705, y: 0.7143835, z: -0.000007629396}
