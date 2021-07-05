@@ -31,6 +31,15 @@ public class EnemyCollision : MonoBehaviour
         enemyBody = GetComponent<Rigidbody>();       
     }
 
+    void Update() 
+    {
+        if (dashScript.isDashing)
+        {
+            Debug.Log("Agent disabled");
+            agent.enabled = false;
+        }
+    }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))

@@ -84,7 +84,6 @@ public class EnemyTrigger : MonoBehaviour
 
     private void SetIdle()
     {
-        //agent.enabled = false; //IF NECESSARY
         playerDistance = farDistance + 1;
         isIdle = true;
         isFar = false;
