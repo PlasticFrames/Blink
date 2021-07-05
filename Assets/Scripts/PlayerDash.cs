@@ -29,7 +29,6 @@ public class PlayerDash: MonoBehaviour
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
-    public Vector3 lastMark;
 
     public bool isPlanning;
     public bool isDashing;
@@ -58,7 +57,6 @@ public class PlayerDash: MonoBehaviour
         {
             isPlanning = true;
             aimOrigin = transform.position;
-            lastMark = transform.position;
             LimitRange();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && isPlanning)
@@ -85,7 +83,6 @@ public class PlayerDash: MonoBehaviour
         
         if(dashCharges == 0)
         {
-            lastMark = transform.position;
             dashAimReticuleRed.Play();
             dashAimReticuleBlue.Stop();
             dashAimReticuleBlueEmission.enabled = false;
@@ -148,7 +145,7 @@ public class PlayerDash: MonoBehaviour
 
     void SetDestination() //Instantiates mark at aim position and increments charges
     {
-        Vector3 relativePosition = dashDestination - lastMark; //NEEDS TO BE RELATIVE TO LAST MARK
+        Vector3 relativePosition = dashDestination - aimOrigin;
         Quaternion markRotation = Quaternion.LookRotation(relativePosition, Vector3.up);
 
         if (dashCharges > 0)
@@ -156,7 +153,6 @@ public class PlayerDash: MonoBehaviour
             Instantiate(dashMark, dashDestination, markRotation);
             Instantiate(dashMark, dashDestination, markRotation);
             aimOrigin = dashDestination;
-            lastMark = dashMarks[dashMarks.Count - 1];
             currentDash++;
             dashCharges--;
         }
