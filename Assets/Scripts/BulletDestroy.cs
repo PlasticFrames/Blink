@@ -25,16 +25,12 @@ public class BulletDestroy : MonoBehaviour
 
         bulletTimer = destroyTime;
         bulletBody.velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
-        if (!dashScript.isDashing && !dashScript.isPlanning)
-        {
-            //bulletBody.velocity = transform.TransformDirection(Vector3.forward * bulletSpeed);
-        }
         fireVelocity = bulletBody.velocity;
     }
 
     void Update() 
     {
-        if (!dashScript.isDashing && !dashScript.isPlanning)
+        if (!dashScript.isDashing && !dashScript.isPlanning) //Starts timer to limit bullet lifetime/range
         {
             bulletTimer -= Time.deltaTime;
         }
@@ -44,7 +40,7 @@ public class BulletDestroy : MonoBehaviour
             Destroy(gameObject);
         }
         
-        if (dashScript.isDashing || dashScript.isPlanning)
+        if (dashScript.isDashing || dashScript.isPlanning) //Constrains rigidbody when player is planning/dashing
         {
             bulletBody.constraints =  RigidbodyConstraints.FreezeAll;
         }
@@ -57,12 +53,16 @@ public class BulletDestroy : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))  //Dstroys bullet and/or damages player
         {
             if(!dashScript.isDashing && !dashScript.isPlanning)
             {
                 healthScript.TakeDamage();
                 Destroy(gameObject);
+            }
+            else
+            {
+                //Destroy(gameObject);
             }
         } 
     }

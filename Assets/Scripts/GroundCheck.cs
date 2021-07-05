@@ -50,11 +50,11 @@ public class GroundCheck : MonoBehaviour
 
     private void Fall()
     {
-        Debug.Log(transform.parent.name + " is falling");
         if(transform.parent.tag == "Enemy")
         {
             agent.enabled = false;
         }
+        body.constraints = ~RigidbodyConstraints.FreezePosition;
         body.drag = 0;
         body.velocity = Vector3.down * fallSpeed;
     }

@@ -44,7 +44,7 @@ public class DashRecharge : MonoBehaviour
         }
     }
 
-    IEnumerator LerpColour(Color endValue, float duration)
+    /*IEnumerator LerpColour(Color endValue, float duration) //Lerps colour to illustrate delay
     {
         float time = 0;
         Color startValue = materialToChange.color;
@@ -56,5 +56,5 @@ public class DashRecharge : MonoBehaviour
             yield return null;
         }
         materialToChange.color = endValue;
-    }
+    }*/
 }

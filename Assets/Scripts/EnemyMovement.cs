@@ -53,7 +53,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            agent.enabled = false;
+            //agent.enabled = false;
         }
     }
 

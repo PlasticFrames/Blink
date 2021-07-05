@@ -74,8 +74,6 @@ public class EnemyCollision : MonoBehaviour
     void DashReaction()
     {
         forceOrigin = player.transform.position;
-       // agent.enabled = false;
-        //enemyBody.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
 
         switch (switchScript.enemyType)
         {
@@ -91,12 +89,5 @@ public class EnemyCollision : MonoBehaviour
                 enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
                 break;
         }
-        //StartCoroutine(ResetBody());
-    }
-
-    IEnumerator ResetBody()
-    {
-        yield return new WaitForSeconds(0.5f);
-        enemyBody.constraints = ~RigidbodyConstraints.FreezePosition;
     }
 }

@@ -10,7 +10,7 @@ public class EnemyTrigger : MonoBehaviour
 
     public GameObject player;
 
-    public int angle = 10;
+    //public int angle = 10;
 
     public float playerDistance;
     [SerializeField] public float farDistance;
@@ -19,7 +19,7 @@ public class EnemyTrigger : MonoBehaviour
     public bool isIdle = true;
     public bool isFar = false;
     public bool isNear = false;
-    public bool isFacing = false;
+    //public bool isFacing = false;
 
     void Start() 
     {
@@ -36,13 +36,13 @@ public class EnemyTrigger : MonoBehaviour
 
     void Update()
     {
-        if  (Vector3.Angle(player.transform.forward, transform.position - player.transform.position) < angle)
+        /*if  (Vector3.Angle(player.transform.forward, transform.position - player.transform.position) < angle)
         {
             isFacing = true; //TIE TO FIRING WITHOUT LOOPING ENABLE?
-        }
+        }*/
 
-        if (!dashScript.isPlanning && !dashScript.isDashing)
-        {
+        if (!dashScript.isPlanning && !dashScript.isDashing) //Sets booleans according to distance between player and enemy
+        {            
             if (playerDistance < farDistance && playerDistance > nearDistance)
             {
                 isIdle = false;
@@ -70,11 +70,11 @@ public class EnemyTrigger : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other) 
+    private void OnTriggerStay(Collider other)  //Updates player distance when player is inside trigger
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerDistance = Vector3.Distance(transform.position, player.transform.position);
-        }   
+            playerDistance = Vector3.Distance(transform.position, player.transform.position); //THROWING ERROR BUT FUNCTIONAL
+        }     
     }
 }
