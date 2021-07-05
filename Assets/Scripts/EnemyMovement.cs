@@ -13,13 +13,14 @@ public class EnemyMovement : MonoBehaviour
     public GameObject player;
     public NavMeshAgent agent;
 
-    [SerializeField] public float rotationSpeed;
+    public float rotationSpeed = 200f;
     public float baseSpeed = 6f;
     public float strafeTime;
 
-    [SerializeField] public Vector3 yAngle;
+    public Vector3 yAngle = new Vector3(0, 0.2f, 0);
     public Vector3 retreat;
-
+    
+    public bool recentDash;
     public bool strafeToggle;
 
     void Start()

@@ -159,7 +159,7 @@ public class PlayerDash: MonoBehaviour
         StartCoroutine(CooldownDashes());
     }
 
-    IEnumerator CooldownDashes()
+    IEnumerator CooldownDashes() //Slowly recharges dashes
     {
         if (dashCharges < maxDash)
         {

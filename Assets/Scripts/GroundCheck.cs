@@ -10,7 +10,7 @@ public class GroundCheck : MonoBehaviour
 
     public Rigidbody body;
 
-    [SerializeField] public float fallSpeed;
+    public float fallSpeed = 10f;
 
     public bool isGrounded;
 
