@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     void Start() 
     {
         moveScript = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
-        playerModel = GameObject.FindWithTag("Player").gameObject.transform.GetChild(2).gameObject;
+        playerModel = GameObject.FindWithTag("Player").gameObject.transform.GetChild(0).gameObject;
         playerBody = GetComponent<Rigidbody>();
     }
 
@@ -31,8 +31,6 @@ public class PlayerHealth : MonoBehaviour
         if (playerHealth <= 0)
         {
             ResetPlayer();
-            moveScript.enabled = false;
-            playerHealth = maxHealth;
         }
     }
 
@@ -78,5 +76,6 @@ public class PlayerHealth : MonoBehaviour
     {
         moveScript.enabled = false;
         transform.position = Vector3.zero;
+        playerHealth = maxHealth;
     }
 }
