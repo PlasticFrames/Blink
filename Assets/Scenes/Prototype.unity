@@ -958,6 +958,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1609569152, guid: 52b256018a56411499e7186be869dfa2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7957034739971197770, guid: 52b256018a56411499e7186be869dfa2, type: 3}
       propertyPath: m_Name
       value: VFX_DashAim_
