@@ -15,6 +15,8 @@ public class EnemyCollision : MonoBehaviour
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
 
+    public int destroyDelay = 1;
+
     public float nudgeForce = 100f;
     public float knockMultiplier = 2f;    
     public float reactionRadius = 2f;
@@ -83,21 +85,29 @@ public class EnemyCollision : MonoBehaviour
 
     void DashReaction()
     {
+        dashScript.isColliding = true;
         forceOrigin = player.transform.position;
 
         switch (switchScript.enemyType)
         {
             case 0:
-                Destroy(gameObject);
+                enemyBody.AddExplosionForce(nudgeForce * 4, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                StartCoroutine(DelayDestroy());
                 break;
             case 1:
+                enemyBody.AddExplosionForce(nudgeForce * 3, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 switchScript.enemyType = 0;
                 switchScript.CheckType();
                 break;
             case 2:
-                Debug.Log("Nudge armour");
-                enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                enemyBody.AddExplosionForce(nudgeForce * 2, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 break;
         }
+    }
+
+    IEnumerator DelayDestroy()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
     }
 }

@@ -38,6 +38,7 @@ public class PlayerDash: MonoBehaviour
 
     public bool isPlanning;
     public bool isDashing;
+    public bool isColliding;
 
     public ParticleSystem dashAimSparks;
     public ParticleSystem dashAimBeam;
@@ -207,11 +208,32 @@ public class PlayerDash: MonoBehaviour
         {
             yield return LerpDash (gameObject.transform.position, dashSpeed);
             currentDash++;
+            isColliding = false;
         }
         dashMarks.Clear();
         currentDash = 0;
         isDashing = false;
         StartCoroutine(CooldownDashes());
+    }
+
+        IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes and snaps
+    {
+        float time = 0;
+        Vector3 startPos = transform.position;
+        while (time < duration)
+        {
+            transform.LookAt(targetPos);
+            transform.position = Vector3.Lerp(startPos, targetPos, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+
+            if(isColliding) //TRYING TO BREAK LERP ON COLLISION
+            {
+                //break;
+            }
+        }
+        
+        //transform.position = targetPos;
     }
 
     IEnumerator CooldownDashes() //Slowly recharges dashes
@@ -226,19 +248,5 @@ public class PlayerDash: MonoBehaviour
         {
             dashCharges = maxDash;
         }
-    }
-
-    IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes and snaps
-    {
-        float time = 0;
-        Vector3 startPos = transform.position;
-        while (time < duration)
-        {
-            transform.LookAt(targetPos);
-            transform.position = Vector3.Lerp(startPos, targetPos, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        transform.position = targetPos;
     }
 } 
