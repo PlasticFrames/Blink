@@ -9,15 +9,28 @@ public class MarkPosition : MonoBehaviour
 
     public GameObject player;
 
+    public int lastIndex;
+
+    public bool lastDestination;
+
     void Start()
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         player = GameObject.FindWithTag("Player");
-        AddPosition();
+        AddMark();
     }
 
     void Update() 
     {
+        if (transform.position == dashScript.aimOrigin)
+        {
+            lastDestination = true;
+        }
+        else
+        {
+            lastDestination = false;
+        }
+
         if (player.transform.position == transform.position)
         {
             Destroy(gameObject);            
@@ -26,19 +39,24 @@ public class MarkPosition : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (Input.GetMouseButtonDown(1))
+        
+        if (Input.GetMouseButtonDown(1))
         {
-            CheckList();
+            UndoMark();
         }
     }
 
-    void AddPosition()
+    void AddMark()
     {
         dashScript.dashMarks.Add(gameObject);
     }
 
-    void CheckList()
+    public void UndoMark()
     {
-
+        if (lastDestination)
+        {
+            dashScript.dashMarks.Remove(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

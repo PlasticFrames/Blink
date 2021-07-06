@@ -185,8 +185,13 @@ public class PlayerDash: MonoBehaviour
         if(dashCharges < maxDash)
         {
             Debug.Log("Undo last destination");
+            aimOrigin = dashMarks[dashMarks.Count - 1].transform.position;
             currentDash--;
             dashCharges++;
+        }
+        else
+        {
+            isPlanning = false;
         }
     }
 
