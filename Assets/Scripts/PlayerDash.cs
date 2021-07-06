@@ -228,7 +228,7 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
-    IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes
+    IEnumerator LerpDash(Vector3 targetPos, float duration) //Lerps through dashes and snaps
     {
         float time = 0;
         Vector3 startPos = transform.position;
@@ -239,6 +239,6 @@ public class PlayerDash: MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPos; //snaps to next position
+        transform.position = targetPos;
     }
 } 

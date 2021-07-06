@@ -15,11 +15,13 @@ public class EnemyCollision : MonoBehaviour
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
 
-    [SerializeField] float nudgeForce;
+    public float nudgeForce = 100f;
     public float knockMultiplier = 2f;    
     public float reactionRadius = 2f;
 
     public Vector3 forceOrigin;
+
+    public bool isPushed = false; //WOMP WOMP
 
     void Start() 
     {
@@ -94,7 +96,7 @@ public class EnemyCollision : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Nudge armour");
-                enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);//SWAP TO LERP? RENABLING MOVEMENT MIGHT HELP
+                enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 break;
         }
     }
