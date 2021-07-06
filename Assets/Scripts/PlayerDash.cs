@@ -16,6 +16,7 @@ public class PlayerDash: MonoBehaviour
     public Rigidbody playerBody;
 
     public List<GameObject> dashMarks = new List<GameObject>();
+    public List<Vector3> savedOrigins = new List<Vector3>();
 
     public float groundZ = 0f;
     public float distance;
@@ -33,6 +34,7 @@ public class PlayerDash: MonoBehaviour
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
+    public Vector3 lastOrigin;
 
     public bool isPlanning;
     public bool isDashing;
@@ -63,6 +65,7 @@ public class PlayerDash: MonoBehaviour
         {
             isPlanning = true;
             aimOrigin = transform.position;
+            savedOrigins.Add(aimOrigin);
             LimitRange();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && isPlanning)
@@ -111,7 +114,6 @@ public class PlayerDash: MonoBehaviour
             dashAimSparksEmission.enabled = true;
             dashAimBeamEmission.enabled = true;
         }
- 
 
         if (isPlanning)
         {
@@ -121,6 +123,7 @@ public class PlayerDash: MonoBehaviour
         {
             dashAim.SetActive(false);
             pushRange.SetActive(false);
+            savedOrigins.Clear();
         }
 
         if (isPlanning || isDashing)
@@ -175,19 +178,20 @@ public class PlayerDash: MonoBehaviour
             Instantiate(dashMark, dashDestination, markRotation);
             Instantiate(dashMark, dashDestination, markRotation);
             aimOrigin = dashDestination;
+            savedOrigins.Add(aimOrigin);
             currentDash++;
             dashCharges--;
         }
     }
 
-    void UndoDestination()
+    void UndoDestination() //
     {
         if(dashCharges < maxDash)
         {
-            Debug.Log("Undo last destination");
-            aimOrigin = dashMarks[dashMarks.Count - 1].transform.position;
             currentDash--;
             dashCharges++;
+            dashDestination = aimOrigin;
+            aimOrigin = savedOrigins[currentDash];
         }
         else
         {

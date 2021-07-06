@@ -22,7 +22,7 @@ public class MarkPosition : MonoBehaviour
 
     void Update() 
     {
-        if (transform.position == dashScript.aimOrigin)
+        if (transform.position == dashScript.dashDestination)
         {
             lastDestination = true;
         }
