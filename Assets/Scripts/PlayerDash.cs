@@ -23,6 +23,9 @@ public class PlayerDash: MonoBehaviour
     public float maxDistance = 15f;
     public float dashSpeed;
 
+    private float raycastLength = 500f;
+    RaycastHit hit;
+
     public int dashCharges = 3;
     public int maxDash = 3;
     public int currentDash = 0;
@@ -38,6 +41,7 @@ public class PlayerDash: MonoBehaviour
     public ParticleSystem dashAimBeam;
     public ParticleSystem dashAimReticuleBlue;
     public ParticleSystem dashAimReticuleRed;
+    
 
     void Start()
     {
@@ -136,10 +140,25 @@ public class PlayerDash: MonoBehaviour
 
     void LimitRange() //Displays dash aim and clamps to player/mark
     {
-        distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, raycastLength))
+        {
+            //Debug.Log(hit.collider.name);
+            if (hit.collider.tag == "Ground")
+            {
+                Debug.Log("Hit ground");
+                dashAim.transform.position = hit.point;
+                Vector3 offset = hit.point - aimOrigin;
+                dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
+                dashAim.SetActive(true);
+                dashAim.transform.rotation = Quaternion.LookRotation(hit.normal);
+            }
+        }
+        /*distanceFromPlayer = Vector3.Distance(GetWorldPosition(groundZ), transform.position);
         Vector3 offset = GetWorldPosition(groundZ) - aimOrigin;
         dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
-        dashAim.SetActive(true);
+        dashAim.SetActive(true);*/
     }
 
     void SetDestination() //Instantiates mark at aim position and increments charges
