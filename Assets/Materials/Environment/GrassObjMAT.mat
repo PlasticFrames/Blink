@@ -13,14 +13,14 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3500
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_a98fa012e40e4cf6b23e4241d8f044f6:
-        m_Texture: {fileID: 2800000, guid: 5d90a0caa543243418f826e90865c0c1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0ede2c2ed04f1794384909de1f00aae7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_ae728a33ae31480a8c621a88b960bfdf_Out_0:
@@ -39,6 +39,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - Vector1_14b2a816d61d4161bb64659d2416b879: 3
+    - Vector1_5773f60a702f4999bf30ab13989024d0: -0.28
+    - Vector1_d8e2f00b7ddf4a6293a5f5ea4b5a51b3: 0.3
+    m_Colors:
+    - Color_37ec6bbe98014ed0b5c2a4fe3eeb1c8d: {r: 0.2541646, g: 0.3679245, b: 0.17586327, a: 0}
+    - Color_ddb0daf0792c43528865ff8dcaa5315d: {r: 0.6320754, g: 0.34560943, b: 0.051679082, a: 0.20392157}
+    - Vector2_de9354c4c33249fd99fff5c503a86454: {r: 6, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -1197,10 +1197,10 @@
     "m_ActiveSubTarget": {
         "m_Id": "9cda7ee0ee4f4a3e9fb69713ebe1cd85"
     },
-    "m_SurfaceType": 1,
+    "m_SurfaceType": 0,
     "m_AlphaMode": 0,
     "m_TwoSided": false,
-    "m_AlphaClip": false,
+    "m_AlphaClip": true,
     "m_CustomEditorGUI": ""
 }
 
@@ -1806,7 +1806,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "AlphaClipThreshold",
     "m_StageCapability": 2,
-    "m_Value": 1.25,
+    "m_Value": 0.23999999463558198,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
