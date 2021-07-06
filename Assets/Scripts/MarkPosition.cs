@@ -18,6 +18,8 @@ public class MarkPosition : MonoBehaviour
 
     void Update() 
     {
+
+
         if (player.transform.position == transform.position)
         {
             Destroy(gameObject);            

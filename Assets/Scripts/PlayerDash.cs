@@ -129,14 +129,14 @@ public class PlayerDash: MonoBehaviour
             moveScript.enabled = true;
         }
     }
-
+    /*
     public Vector3 GetWorldPosition(float z) //Retrieves mouse position on ground
     {
         Ray mousePos = runCam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
         ground.Raycast(mousePos, out distance);
         return mousePos.GetPoint(distance);
-    }
+    }*/
 
     void LimitRange() //Displays dash aim and clamps to player/mark
     {
@@ -147,7 +147,7 @@ public class PlayerDash: MonoBehaviour
             //Debug.Log(hit.collider.name);
             if (hit.collider.tag == "Ground")
             {
-                Debug.Log("Hit ground");
+                //Debug.Log("Hit ground");
                 dashAim.transform.position = hit.point;
                 Vector3 offset = hit.point - aimOrigin;
                 dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
@@ -184,6 +184,7 @@ public class PlayerDash: MonoBehaviour
             yield return LerpDash (Vector3, dashSpeed);
             currentDash++;
         }
+        //transform.rotation = Quaternion.identity;
         dashMarks.Clear();
         currentDash = 0;
         isDashing = false;
@@ -210,7 +211,8 @@ public class PlayerDash: MonoBehaviour
         Vector3 startPos = transform.position;
         while (time < duration)
         {
-            transform.LookAt(targetPos);
+            Vector3 lookPos = new Vector3 (targetPos.x, transform.position.y, targetPos.z);
+            transform.LookAt(lookPos);
             transform.position = Vector3.Lerp(startPos, targetPos, time / duration);
             time += Time.deltaTime;
             yield return null;
