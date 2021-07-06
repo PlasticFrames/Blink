@@ -15,7 +15,7 @@ public class PlayerDash: MonoBehaviour
 
     public Rigidbody playerBody;
 
-    public List<Vector3> dashMarks = new List<Vector3>();
+    public List<GameObject> dashMarks = new List<GameObject>();
 
     public float groundZ = 0f;
     public float distance;
@@ -87,6 +87,11 @@ public class PlayerDash: MonoBehaviour
             dashAimBeam.Play();
             SetDestination();
         }
+
+        if (Input.GetMouseButtonDown(1) && isPlanning)
+        {
+            UndoDestination();
+        }
         
         if(dashCharges == 0)
         {
@@ -147,7 +152,6 @@ public class PlayerDash: MonoBehaviour
             //Debug.Log(hit.collider.name);
             if (hit.collider.tag == "Ground")
             {
-                Debug.Log("Hit ground");
                 dashAim.transform.position = hit.point;
                 Vector3 offset = hit.point - aimOrigin;
                 dashAim.transform.position = aimOrigin + Vector3.ClampMagnitude(offset, maxDistance);
@@ -176,12 +180,22 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
+    void UndoDestination()
+    {
+        if(dashCharges < maxDash)
+        {
+            Debug.Log("Undo last destination");
+            currentDash--;
+            dashCharges++;
+        }
+    }
+
     IEnumerator TriggerDashes() //Resets int for loop, triggers dashes and clears marks
     {
         currentDash = 0;
-        foreach (var Vector3 in dashMarks)
+        foreach (var gameObject in dashMarks)
         {
-            yield return LerpDash (Vector3, dashSpeed);
+            yield return LerpDash (gameObject.transform.position, dashSpeed);
             currentDash++;
         }
         dashMarks.Clear();

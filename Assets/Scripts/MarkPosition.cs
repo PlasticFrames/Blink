@@ -22,14 +22,23 @@ public class MarkPosition : MonoBehaviour
         {
             Destroy(gameObject);            
         }
-        else if(!dashScript.isPlanning && !dashScript.isDashing)
+        else if (!dashScript.isPlanning && !dashScript.isDashing)
         {
             Destroy(gameObject);
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            CheckList();
         }
     }
 
     void AddPosition()
     {
-        dashScript.dashMarks.Add(transform.position);
+        dashScript.dashMarks.Add(gameObject);
+    }
+
+    void CheckList()
+    {
+
     }
 }
