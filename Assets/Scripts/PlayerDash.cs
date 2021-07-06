@@ -222,18 +222,13 @@ public class PlayerDash: MonoBehaviour
         Vector3 startPos = transform.position;
         while (time < duration)
         {
-            transform.LookAt(targetPos);
+            Vector3 lookPos = new Vector3 (targetPos.x, transform.position.y, targetPos.z);
+            transform.LookAt(lookPos);
             transform.position = Vector3.Lerp(startPos, targetPos, time / duration);
             time += Time.deltaTime;
             yield return null;
-
-            if(isColliding) //TRYING TO BREAK LERP ON COLLISION
-            {
-                //break;
-            }
         }
-        
-        //transform.position = targetPos;
+        transform.position = targetPos;
     }
 
     IEnumerator CooldownDashes() //Slowly recharges dashes
