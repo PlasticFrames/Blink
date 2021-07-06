@@ -184,7 +184,7 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
-    void UndoDestination() //
+    void UndoDestination() //Reverses set function and resets aim
     {
         if(dashCharges < maxDash)
         {
@@ -192,6 +192,7 @@ public class PlayerDash: MonoBehaviour
             dashCharges++;
             dashDestination = aimOrigin;
             aimOrigin = savedOrigins[currentDash];
+            savedOrigins.Remove(savedOrigins[savedOrigins.Count - 1]);
         }
         else
         {
