@@ -203,11 +203,14 @@ public class PlayerDash: MonoBehaviour
 
     IEnumerator TriggerDashes() //Resets int for loop, triggers dashes and clears marks
     {
-        currentDash = 0;
+        currentDash = 0;       
         foreach (var gameObject in dashMarks)
         {
-            yield return LerpDash (gameObject.transform.position, dashSpeed);
-            currentDash++;
+            if (gameObject != null)
+            {
+                yield return LerpDash (gameObject.transform.position, dashSpeed);
+                currentDash++;
+            } 
         }
         dashMarks.Clear();
         currentDash = 0;

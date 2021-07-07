@@ -5,13 +5,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
+
 {
+    public GameObject finish;
     public Scene currentScene;
 
     public int buildIndex;
     public int enemyCount;
 
     public bool isComplete = true;
+
+    void Start() 
+    {
+        finish = GameObject.FindWithTag("Finish").gameObject.transform.GetChild(0).gameObject;
+    }
 
     void Update() 
     {
@@ -25,7 +32,7 @@ public class GameManager : MonoBehaviour
 
         if(enemyCount <= 0)
         {
-            isComplete = true;
+            finish.SetActive(true);
         }
     }
 
