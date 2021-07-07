@@ -81,5 +81,6 @@ public class PlayerHealth : MonoBehaviour
         moveScript.enabled = false;
         transform.position = startPosition;
         playerHealth = maxHealth;
+        moveScript.enabled = true;
     }
 }

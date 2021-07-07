@@ -40,8 +40,8 @@ public class PowerCollision : MonoBehaviour
             switchScript = other.gameObject.GetComponent<EnemySwitch>();
             triggerScript = other.gameObject.GetComponent<EnemyTrigger>();
             enemyCollision = other.gameObject.GetComponent<EnemyCollision>();
-
             enemyBody = other.gameObject.GetComponent<Rigidbody>();
+
             enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
 
             if(triggerScript.isPushed)

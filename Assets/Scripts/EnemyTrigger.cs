@@ -106,7 +106,7 @@ public class EnemyTrigger : MonoBehaviour
 
     IEnumerator DisablePushed()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         isPushed = false;
     }
 }
