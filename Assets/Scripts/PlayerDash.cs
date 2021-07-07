@@ -38,7 +38,6 @@ public class PlayerDash: MonoBehaviour
 
     public bool isPlanning;
     public bool isDashing;
-    public bool isColliding;
 
     public ParticleSystem dashAimSparks;
     public ParticleSystem dashAimBeam;
@@ -139,13 +138,13 @@ public class PlayerDash: MonoBehaviour
         }
     }
 
-    public Vector3 GetWorldPosition(float z) //Retrieves mouse position on ground
+    /*public Vector3 GetWorldPosition(float z) //Retrieves mouse position on ground
     {
         Ray mousePos = runCam.ScreenPointToRay(Input.mousePosition);
         Plane ground = new Plane(Vector3.up, new Vector3(0, z, 0));
         ground.Raycast(mousePos, out distance);
         return mousePos.GetPoint(distance);
-    }
+    }*/
 
     void LimitRange() //Displays dash aim and clamps to player/mark
     {
@@ -208,7 +207,6 @@ public class PlayerDash: MonoBehaviour
         {
             yield return LerpDash (gameObject.transform.position, dashSpeed);
             currentDash++;
-            isColliding = false;
         }
         dashMarks.Clear();
         currentDash = 0;

@@ -85,7 +85,6 @@ public class EnemyCollision : MonoBehaviour
 
     void DashReaction()
     {
-        dashScript.isColliding = true;
         forceOrigin = player.transform.position;
 
         switch (switchScript.enemyType)
