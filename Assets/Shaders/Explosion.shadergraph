@@ -2338,7 +2338,7 @@
     },
     "m_Name": "ExplosionDissipation",
     "m_DefaultReferenceName": "Vector1_dc924776ad214d66a373b0899f83607c",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "explosionDissipation_",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
