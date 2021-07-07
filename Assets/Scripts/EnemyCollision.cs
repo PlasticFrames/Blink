@@ -23,8 +23,6 @@ public class EnemyCollision : MonoBehaviour
 
     public Vector3 forceOrigin;
 
-    public bool isPushed = false; //WOMP WOMP
-
     void Start() 
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
