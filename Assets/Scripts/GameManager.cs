@@ -10,10 +10,18 @@ public class GameManager : MonoBehaviour
 
     void Update() 
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CheckScene();
+        }
+    }
+
+    void CheckScene()
+    {
         currentScene = SceneManager.GetActiveScene();
         int buildIndex = currentScene.buildIndex;
 
-        if (buildIndex == 0 && Input.GetKeyDown(KeyCode.Space))
+        if (buildIndex == 0)
         {
             SceneManager.LoadScene(1);
         }
