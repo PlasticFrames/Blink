@@ -6,7 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Scene currentScene;
+
     public int buildIndex;
+    public int enemiesLeft;
+
+    void Start() 
+    {
+        
+    }
 
     void Update() 
     {
@@ -25,5 +32,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+    }
+
+    void CheckComplete()
+    {
+        
     }
 }

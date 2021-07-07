@@ -10,7 +10,7 @@ public class PlayerDash: MonoBehaviour
     public Camera runCam;
 
     public GameObject dashAim;
-    public GameObject pushRange;
+    //public GameObject pushRange;
     public GameObject dashMark;
 
     public Rigidbody playerBody;
@@ -51,7 +51,7 @@ public class PlayerDash: MonoBehaviour
         runCam = Camera.main;
         playerBody = GetComponent<Rigidbody>();
         dashAim = GameObject.FindWithTag("Dash Aim");
-        pushRange = GameObject.FindWithTag("Push Range");
+        //pushRange = GameObject.FindWithTag("Push Range");
     }
 
     void Update()
@@ -77,12 +77,12 @@ public class PlayerDash: MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && isPlanning)
         {
-            pushRange.SetActive(true);
+            //pushRange.SetActive(true);
         }
 
         if (Input.GetMouseButtonUp(0) && isPlanning)
         {
-            pushRange.SetActive(false);
+            //pushRange.SetActive(false);
             dashDestination = dashAim.transform.position;
             dashAimReticuleBlue.Play();
             dashAimReticuleRed.Play();
@@ -122,7 +122,7 @@ public class PlayerDash: MonoBehaviour
         else if (!isPlanning)
         {
             dashAim.SetActive(false);
-            pushRange.SetActive(false);
+            //pushRange.SetActive(false);
             savedOrigins.Clear();
         }
 

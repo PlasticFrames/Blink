@@ -193,6 +193,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5041395403207878649}
     m_Modifications:
+    - target: {fileID: 819657374083804742, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+      propertyPath: m_StopNaN
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 819657374083804742, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+      propertyPath: m_Dithering
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 819657374083804742, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 819657374083804742, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 819657374083804742, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+      propertyPath: m_RequiresDepthTextureOption
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177744, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -207,15 +227,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177748, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -55.25
       objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177748, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 38.268345
+      value: 37.768345
       objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177748, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -92.387955
+      value: -72.387955
       objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177748, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: m_LocalRotation.w
@@ -246,8 +266,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2752528221716177749, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
+      propertyPath: m_Depth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752528221716177749, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
       propertyPath: orthographic size
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35469c9fe005cd44abe77874ef377158, type: 3}
