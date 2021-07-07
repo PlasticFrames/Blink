@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,25 +9,30 @@ public class GameManager : MonoBehaviour
     public Scene currentScene;
 
     public int buildIndex;
-    public int enemiesLeft;
+    public int enemyCount;
 
-    void Start() 
-    {
-        
-    }
+    public bool isComplete = true;
 
     void Update() 
     {
+        CountEnemies();
+        Debug.Log(enemyCount);
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CheckScene();
+        }
+
+        if(enemyCount <= 0)
+        {
+            isComplete = true;
         }
     }
 
     void CheckScene()
     {
         currentScene = SceneManager.GetActiveScene();
-        int buildIndex = currentScene.buildIndex;
+        buildIndex = currentScene.buildIndex;
 
         if (buildIndex == 0)
         {
@@ -34,8 +40,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void CheckComplete()
+    void CountEnemies()
     {
-        
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 }
