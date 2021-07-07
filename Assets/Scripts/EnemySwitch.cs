@@ -11,14 +11,25 @@ public class EnemySwitch : MonoBehaviour
 
     public int enemyType; //0 = Base, 1 = shield, 2 = armour [ASSIGN IN INSPECTOR]
 
+    public Material heavyDissolveMat;
+    public Material mediumDissolveMat;
+
+    public float heavyDissolve;
+    public float mediumDissolve;
+
     void Start()
     {
         moveScript = GetComponent<EnemyMovement>();
         agent = GetComponent<NavMeshAgent>();
-        
+
         CheckType();
     }
+    void Update()
+    {
+        heavyDissolveMat.SetFloat("heavyDissolve_", heavyDissolve);
+        mediumDissolveMat.SetFloat("mediumDissolve_", mediumDissolve);
 
+    }
     public void CheckType() //Assigns speed and destroys meshes based on type
     {
         switch (enemyType)
