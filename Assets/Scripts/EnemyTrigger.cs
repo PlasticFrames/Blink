@@ -23,6 +23,7 @@ public class EnemyTrigger : MonoBehaviour
     public bool isFar = false;
     public bool isNear = false;
     //public bool isFacing = false;
+    public bool isPushed = false;
 
     void Start() 
     {
@@ -66,6 +67,11 @@ public class EnemyTrigger : MonoBehaviour
                 SetIdle();
             } 
         }
+
+        if (isPushed)
+        {
+            StartCoroutine(DisablePushed());
+        }
     }
 
     private void SetNear()
@@ -96,5 +102,11 @@ public class EnemyTrigger : MonoBehaviour
         {
             playerDistance = Vector3.Distance(transform.position, player.transform.position);
         }     
+    }
+
+    IEnumerator DisablePushed()
+    {
+        yield return new WaitForSeconds(2f);
+        isPushed = false;
     }
 }

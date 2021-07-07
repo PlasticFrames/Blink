@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 5480735645000753595}
   - component: {fileID: 5480735645000753594}
   - component: {fileID: 5480735645000753605}
+  - component: {fileID: 6128139217453913203}
   m_Layer: 0
   m_Name: BeamConnection
   m_TagString: Power
@@ -304,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5480735645000753604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.78, y: 7.46, z: 0.26685286}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 28.02511, y: 2.5607111, z: 5.5017}
   m_Children:
   - {fileID: 5480735643353904089}
@@ -352,7 +353,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -370,10 +371,10 @@ BoxCollider:
   m_GameObject: {fileID: 5480735645000753604}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.25}
+  m_Center: {x: 0, y: 0, z: -0.5}
 --- !u!114 &5480735645000753605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,3 +442,20 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &6128139217453913203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480735645000753604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8a359577633da47abadeda3381b0f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBody: {fileID: 0}
+  nudgeForce: 100
+  knockMultiplier: 2
+  reactionRadius: 2
+  forceOrigin: {x: 0, y: 0, z: 0}

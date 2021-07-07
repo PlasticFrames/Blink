@@ -8,6 +8,7 @@ public class EnemyCollision : MonoBehaviour
     public PlayerDash dashScript;
     public DashRecharge rechargeScript;
     public EnemySwitch switchScript;
+    public EnemyTrigger triggerScript;
 
     public GameObject player;
     public GameObject dashRecharge;
@@ -27,6 +28,7 @@ public class EnemyCollision : MonoBehaviour
     {
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         switchScript = GetComponent<EnemySwitch>();
+        triggerScript = GetComponent<EnemyTrigger>();
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
@@ -84,6 +86,7 @@ public class EnemyCollision : MonoBehaviour
     void DashReaction()
     {
         forceOrigin = player.transform.position;
+        triggerScript.isPushed = true;
 
         switch (switchScript.enemyType)
         {
@@ -102,7 +105,7 @@ public class EnemyCollision : MonoBehaviour
         }
     }
 
-    IEnumerator DelayDestroy()
+    public IEnumerator DelayDestroy()
     {
         yield return new WaitForSeconds(destroyDelay);
         Destroy(gameObject);

@@ -545,7 +545,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21606
+  m_Name: pb_Mesh87318
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1084,7 +1084,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1896
+  m_Name: pb_Mesh-69582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1253,7 +1253,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1648
+  m_Name: pb_Mesh-69336
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2069,6 +2069,10 @@ PrefabInstance:
     - target: {fileID: 5480735645000753594, guid: 5ed798b0fd63753468e7b3ce5b6461e3, type: 3}
       propertyPath: m_Center.z
       value: -0.49980724
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480735645000753594, guid: 5ed798b0fd63753468e7b3ce5b6461e3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5480735645000753595, guid: 5ed798b0fd63753468e7b3ce5b6461e3, type: 3}
       propertyPath: m_CastShadows

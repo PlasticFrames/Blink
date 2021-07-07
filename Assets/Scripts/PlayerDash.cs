@@ -134,7 +134,7 @@ public class PlayerDash: MonoBehaviour
         else if (!isPlanning && !isDashing)
         {
             playerBody.constraints = ~RigidbodyConstraints.FreezePosition;
-            moveScript.enabled = true;
+            
         }
     }
 
@@ -197,6 +197,7 @@ public class PlayerDash: MonoBehaviour
         else
         {
             isPlanning = false;
+            moveScript.enabled = true;
         }
     }
 
@@ -211,6 +212,7 @@ public class PlayerDash: MonoBehaviour
         dashMarks.Clear();
         currentDash = 0;
         isDashing = false;
+        moveScript.enabled = true;
         StartCoroutine(CooldownDashes());
     }
 
