@@ -381,6 +381,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1151574543}
+    - target: {fileID: 6128139217453913203, guid: 5ed798b0fd63753468e7b3ce5b6461e3, type: 3}
+      propertyPath: nudgeForce
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ed798b0fd63753468e7b3ce5b6461e3, type: 3}
 --- !u!4 &458532582 stripped

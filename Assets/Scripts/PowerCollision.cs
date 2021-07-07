@@ -23,17 +23,22 @@ public class PowerCollision : MonoBehaviour
     {
         playerMove = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
         healthScript = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
-        playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();   
+        //playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();   
     }
 
     void OnCollisionEnter(Collision other) 
     {
         forceOrigin = other.contacts[0].point;
+        Debug.Log(other.contacts[0].otherCollider.tag);
+        Debug.Log(other.contacts[0].otherCollider.attachedRigidbody);
 
         if (other.gameObject.CompareTag("Player"))
         {
+            playerBody = other.gameObject.GetComponent<Rigidbody>();
+           
+            playerMove.enabled = false;
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
-            //StartCoroutine(healthScript.MakeInvulnerable());
+            StartCoroutine(healthScript.MakeInvulnerable());
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {

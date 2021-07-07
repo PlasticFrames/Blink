@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator MakeInvulnerable() //Scales player model for set time to simulate flashing
     {
         isInvulnerable = true;
-
+        moveScript.enabled = true;
         for (float i = 0; i < invulnerabilityDuration; i += invulnerabilityDelta)
         {
             if (playerModel.transform.localScale == Vector3.one)
@@ -81,6 +81,6 @@ public class PlayerHealth : MonoBehaviour
         moveScript.enabled = false;
         transform.position = startPosition;
         playerHealth = maxHealth;
-        moveScript.enabled = true;
+        StartCoroutine(MakeInvulnerable());
     }
 }
