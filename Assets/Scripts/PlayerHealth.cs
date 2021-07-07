@@ -36,6 +36,11 @@ public class PlayerHealth : MonoBehaviour
         {
             ResetPlayer();
         }
+        else if (transform.position.y < -10)
+        {
+            TakeDamage();
+            GroundPlayer();
+        }
     }
 
     public void TakeDamage()
@@ -54,7 +59,6 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator MakeInvulnerable() //Scales player model for set time to simulate flashing
     {
         isInvulnerable = true;
-        moveScript.enabled = true;
         for (float i = 0; i < invulnerabilityDuration; i += invulnerabilityDelta)
         {
             if (playerModel.transform.localScale == Vector3.one)
@@ -82,5 +86,14 @@ public class PlayerHealth : MonoBehaviour
         transform.position = startPosition;
         playerHealth = maxHealth;
         StartCoroutine(MakeInvulnerable());
+        moveScript.enabled = true;
+    }
+
+    void GroundPlayer()
+    {
+        moveScript.enabled = false;
+        transform.position = startPosition;
+        StartCoroutine(MakeInvulnerable());
+        moveScript.enabled = true;
     }
 }
