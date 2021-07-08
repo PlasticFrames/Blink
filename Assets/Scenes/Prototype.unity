@@ -719,10 +719,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1323064653398651430, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1323064653398651431, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -770,26 +766,6 @@ PrefabInstance:
     - target: {fileID: 1323064653398651435, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1684181353085774066, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1731630511854476364, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: isGrounded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3113545503038941500, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5352350680752657176, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7801562505917728504, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2484ab91f8f0d44a0f35731ba45d51, type: 3}
@@ -4263,7 +4239,7 @@ PrefabInstance:
       objectReference: {fileID: 342285087}
     - target: {fileID: 5041395403506047476, guid: d8b4c4dfef88e34448da03440e7394be, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5041395403506047477, guid: d8b4c4dfef88e34448da03440e7394be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4291,7 +4267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7188962976880549621, guid: d8b4c4dfef88e34448da03440e7394be, type: 3}
       propertyPath: orthographic size
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b4c4dfef88e34448da03440e7394be, type: 3}

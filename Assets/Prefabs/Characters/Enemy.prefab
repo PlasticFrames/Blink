@@ -205,10 +205,11 @@ MonoBehaviour:
   moveScript: {fileID: 0}
   agent: {fileID: 0}
   enemyType: 0
-  heavyDissolveMat: {fileID: 2100000, guid: 90d6d016001715c49ab2977012e22a27, type: 2}
-  mediumDissolveMat: {fileID: 2100000, guid: a4843d1a102c0ff4db2a8371c74495b4, type: 2}
+  heavyDissolveMat: {fileID: 0}
+  mediumDissolveMat: {fileID: 0}
   heavyDissolve: 0
   mediumDissolve: 0
+  dissolveTime: 2
 --- !u!114 &5352350680752657176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +307,8 @@ MonoBehaviour:
   triggerScript: {fileID: 0}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
+  bulletOffset: {fileID: 0}
+  explosion: {fileID: 0}
   agent: {fileID: 0}
   playerBody: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   enemyBody: {fileID: 1323064653398651429}
