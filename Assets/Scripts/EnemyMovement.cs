@@ -57,6 +57,11 @@ public class EnemyMovement : MonoBehaviour
         {
             agent.enabled = false;
         }
+
+        if(dashScript.isDashing || dashScript.isPlanning)
+        {
+            agent.enabled = false;
+        }
     }
 
     void Move()
