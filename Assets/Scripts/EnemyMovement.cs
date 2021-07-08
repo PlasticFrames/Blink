@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(forward), rotationSpeed * Time.deltaTime);
         }
         
-        if (triggerScript.isFar || triggerScript.isNear) //Triggers movement according to distance and type
+        if ((triggerScript.isFar || triggerScript.isNear) && groundScript.isGrounded) //Triggers movement according to distance and type
         {
             agent.enabled = true;
             Move();

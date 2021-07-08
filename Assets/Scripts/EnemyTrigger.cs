@@ -12,6 +12,7 @@ public class EnemyTrigger : MonoBehaviour
 
     public GameObject player;
     public NavMeshAgent agent;
+    public Rigidbody enemyBody;
 
     //public int angle = 10;
 
@@ -34,6 +35,7 @@ public class EnemyTrigger : MonoBehaviour
         
         player = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        enemyBody = GetComponent<Rigidbody>();
 
         farDistance = GetComponent<SphereCollider>().radius;
         playerDistance = farDistance + 1;
@@ -70,6 +72,8 @@ public class EnemyTrigger : MonoBehaviour
 
         if (isPushed)
         {
+            agent.enabled = false;
+            enemyBody.constraints = RigidbodyConstraints.FreezePositionY;
             StartCoroutine(DisablePushed());
         }
     }
@@ -108,5 +112,6 @@ public class EnemyTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         isPushed = false;
+        enemyBody.constraints = ~RigidbodyConstraints.FreezePosition;
     }
 }

@@ -95,7 +95,7 @@ public class EnemyCollision : MonoBehaviour
         switch (switchScript.enemyType)
         {
             case 0:
-                enemyBody.AddExplosionForce(nudgeForce * 4, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                enemyBody.AddExplosionForce(nudgeForce * 2, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 StartCoroutine(DelayDestroy());
                 break;
             case 1:
@@ -104,7 +104,7 @@ public class EnemyCollision : MonoBehaviour
                 switchScript.CheckType();
                 break;
             case 2:
-                enemyBody.AddExplosionForce(nudgeForce * 2, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 break;
         }
     }
