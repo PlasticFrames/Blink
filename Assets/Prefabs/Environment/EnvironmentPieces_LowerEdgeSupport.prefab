@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2593681179230574582}
   - component: {fileID: 8730762509130613546}
   - component: {fileID: 4324693480354451816}
+  - component: {fileID: 6751874222241626115}
+  - component: {fileID: 8008126874921551674}
   m_Layer: 0
   m_Name: EnvironmentPieces_LowerEdgeSupport
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6751874222241626115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793208240123895534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.39999, y: 4.4714885, z: 1.5398656}
+  m_Center: {x: 0, y: 2.1768882, z: -0.82084364}
+--- !u!65 &8008126874921551674
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793208240123895534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.783432, y: 4.4714885, z: 3.0052643}
+  m_Center: {x: 0.09365368, y: 2.1768882, z: -0.08814424}

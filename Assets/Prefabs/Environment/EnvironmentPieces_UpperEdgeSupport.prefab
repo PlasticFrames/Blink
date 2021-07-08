@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3649070878468751398}
   - component: {fileID: 7934972224679056094}
   - component: {fileID: 279042331}
+  - component: {fileID: 108118982316638872}
+  - component: {fileID: 2840393236441670220}
   m_Layer: 0
   m_Name: EnvironmentPieces_UpperEdgeSupport
   m_TagString: Untagged
@@ -2432,3 +2434,29 @@ MonoBehaviour:
   m_SkinMeshRef: {fileID: 0}
   m_OriginalMeshObject: {fileID: -2309073180173815351, guid: e2e2a7370e9266e44a3203e1e6cc2e9b, type: 3}
   m_Mode: 0
+--- !u!65 &108118982316638872
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917571653595167215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.399998, y: 6.7370477, z: 1.5170615}
+  m_Center: {x: 0.0000009536743, y: 3.3096678, z: -0.8322431}
+--- !u!65 &2840393236441670220
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917571653595167215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.8134136, y: 6.7370477, z: 3.0212636}
+  m_Center: {x: 0.08630729, y: 3.3096678, z: -0.08014202}

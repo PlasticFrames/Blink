@@ -45,3 +45,35 @@ MonoBehaviour:
       m_YScaleBool: 1
       m_ZScaleBool: 1
     name: FlowersObj
+  - gameObject: {fileID: 6996720730184662228, guid: 995065c52ad19b24c829cfb45826f006, type: 3}
+    settings:
+      m_Strength: 36
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 360, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 0.18867922, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1.3207546, z: 1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Grass
+  - gameObject: {fileID: 6996720730184662228, guid: 995065c52ad19b24c829cfb45826f006, type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 0, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Grass
