@@ -12,6 +12,8 @@ public class EnemyCollision : MonoBehaviour
 
     public GameObject player;
     public GameObject dashRecharge;
+    public GameObject bulletOffset;
+    public GameObject explosion;
     public NavMeshAgent agent;        
     public Rigidbody playerBody;
     public Rigidbody enemyBody;
@@ -30,6 +32,8 @@ public class EnemyCollision : MonoBehaviour
         switchScript = GetComponent<EnemySwitch>();
         triggerScript = GetComponent<EnemyTrigger>();
         player = GameObject.FindWithTag("Player");
+        bulletOffset = (gameObject.transform.GetChild(1).gameObject);
+        explosion = GameObject.FindWithTag("Explosion");
         agent = GetComponent<NavMeshAgent>();
         playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
         enemyBody = GetComponent<Rigidbody>();       
@@ -108,6 +112,7 @@ public class EnemyCollision : MonoBehaviour
     public IEnumerator DelayDestroy()
     {
         yield return new WaitForSeconds(destroyDelay);
+        Instantiate(explosion, bulletOffset.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

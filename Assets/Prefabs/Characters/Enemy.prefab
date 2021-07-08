@@ -207,7 +207,7 @@ MonoBehaviour:
   enemyType: 0
   heavyDissolveMat: {fileID: 2100000, guid: 90d6d016001715c49ab2977012e22a27, type: 2}
   mediumDissolveMat: {fileID: 2100000, guid: a4843d1a102c0ff4db2a8371c74495b4, type: 2}
-  heavyDissolve: 0.38
+  heavyDissolve: 0
   mediumDissolve: 0
 --- !u!114 &5352350680752657176
 MonoBehaviour:
@@ -233,6 +233,7 @@ MonoBehaviour:
   isIdle: 1
   isFar: 0
   isNear: 0
+  isPushed: 0
 --- !u!114 &7801562505917728504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +303,7 @@ MonoBehaviour:
   dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   rechargeScript: {fileID: 9188109264519935014, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
   switchScript: {fileID: 1684181353085774066}
+  triggerScript: {fileID: 0}
   player: {fileID: 4829200572956947686, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   dashRecharge: {fileID: 9188109264519935015, guid: 448788fe0fff15b47a9243f3259dfb5c, type: 3}
   agent: {fileID: 0}

@@ -39,7 +39,7 @@ Material:
     - Vector1_1f83c355e99c431ab443178bea2856dc: 0.03
     - disolveAmount: 0
     - dissolveAmount_: 0.41
-    - heavyDissolve_: 0.38
+    - heavyDissolve_: 0
     m_Colors:
     - Color_f24b713f9d614152a47cd4239b9aea1e: {r: 0.07724828, g: 8.072445, b: 9.849155, a: 0}
   m_BuildTextureStacks: []

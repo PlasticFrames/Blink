@@ -554,7 +554,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1601450
+  m_Name: pb_Mesh38538
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1190,7 +1190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1329126
+  m_Name: pb_Mesh-32914
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1354,7 +1354,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1328878
+  m_Name: pb_Mesh-32590
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1740,6 +1740,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3676775feaaa65d498fb6b53bc15ac0b, type: 3}
+--- !u!1001 &1891507585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5012107489634567456, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_Name
+      value: VFX_Small_Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5012107489634567457, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62e7a2c91d98e504099eea824ad5b0c9, type: 3}
 --- !u!1 &1901107408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1809,7 @@ GameObject:
   - component: {fileID: 1901107411}
   - component: {fileID: 1901107410}
   - component: {fileID: 1901107409}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4204,6 +4261,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 342285087}
+    - target: {fileID: 5041395403506047476, guid: d8b4c4dfef88e34448da03440e7394be, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5041395403506047477, guid: d8b4c4dfef88e34448da03440e7394be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

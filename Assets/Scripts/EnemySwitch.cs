@@ -28,8 +28,8 @@ public class EnemySwitch : MonoBehaviour
     {
         heavyDissolveMat.SetFloat("heavyDissolve_", heavyDissolve);
         mediumDissolveMat.SetFloat("mediumDissolve_", mediumDissolve);
-
     }
+    
     public void CheckType() //Assigns speed and destroys meshes based on type
     {
         switch (enemyType)

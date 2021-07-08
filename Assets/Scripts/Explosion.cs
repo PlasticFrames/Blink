@@ -27,6 +27,8 @@ public class Explosion : MonoBehaviour
         explosionEmission.enabled = false;
         screwsEmission.enabled = false;
         boltsEmission.enabled = false;
+
+        StartCoroutine(explosionVFX(targetValue, 1f));
     }
 
     // Update is called once per frame

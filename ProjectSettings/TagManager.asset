@@ -16,6 +16,7 @@ TagManager:
   - Power
   - Ground
   - Push Range
+  - Explosion
   layers:
   - Default
   - TransparentFX
