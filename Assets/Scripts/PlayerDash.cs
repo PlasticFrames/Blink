@@ -30,7 +30,7 @@ public class PlayerDash: MonoBehaviour
     public int dashCharges = 3;
     public int maxDash = 3;
     public int currentDash = 0;
-    public int dashDelay = 1;
+    public int dashDelay = 2;
 
     public Vector3 aimOrigin;
     public Vector3 dashDestination;
@@ -239,15 +239,11 @@ public class PlayerDash: MonoBehaviour
 
     IEnumerator CooldownDashes() //Slowly recharges dashes
     {
-        if (dashCharges < maxDash)
+        if (dashCharges < maxDash && !isDashing && !isPlanning)
         {
             yield return new WaitForSeconds(dashDelay);
             dashCharges++;
             yield return CooldownDashes();
-        }
-        else
-        {
-            dashCharges = maxDash;
         }
     }
 } 
