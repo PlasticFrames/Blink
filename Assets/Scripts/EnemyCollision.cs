@@ -105,7 +105,7 @@ public class EnemyCollision : MonoBehaviour
                 StartCoroutine(DelayDestroy());
                 break;
             case 1:
-                enemyBody.AddExplosionForce(nudgeForce * 3, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
+                enemyBody.AddExplosionForce(nudgeForce, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
                 switchScript.enemyType = 0;
                 switchScript.CheckType();
                 break;

@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
 
     public bool isComplete = false;
 
+    void Start() 
+    {
+        isComplete = false;
+    }
+
     void Update() 
     {
         CheckScene();
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviour
             isComplete = false;
             SceneManager.LoadScene(buildIndex + 1);
         }
-        else if (buildIndex > 1 && isComplete)
+        else if (buildIndex == 2 && isComplete)
         {
             SceneManager.LoadScene(0);
         }
