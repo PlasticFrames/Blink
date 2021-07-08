@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public GameManager managerScript;
     public PlayerHealth healthScript;
     public PlayerDash dashScript;
 
@@ -15,9 +16,11 @@ public class UIManager : MonoBehaviour
     public GameObject health1;
     public GameObject health2;
     public GameObject health3;
+    public GameObject finish;
 
     void Start()
     {
+        managerScript = GameObject.FindWithTag("Manager").GetComponent<GameManager>();
         healthScript = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
     }
@@ -78,6 +81,19 @@ public class UIManager : MonoBehaviour
             health2.SetActive (false);
             health3.SetActive (true);
             break;
+        }
+
+        if (managerScript.isComplete)
+        {
+            dash0.SetActive (false);
+            dash1.SetActive (false);
+            dash2.SetActive (false);
+            dash3.SetActive (false);
+            health0.SetActive (false);
+            health1.SetActive (false);
+            health2.SetActive (false);
+            health3.SetActive (false);
+            finish.SetActive (true);
         }        
     }
 }

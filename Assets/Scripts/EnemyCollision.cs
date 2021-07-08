@@ -45,6 +45,11 @@ public class EnemyCollision : MonoBehaviour
         {
             agent.enabled = false;
         }
+
+        if (transform.position.y <= -10)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision other)

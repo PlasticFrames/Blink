@@ -7,18 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 
 {
-    public GameObject finish;
     public Scene currentScene;
 
     public int buildIndex;
     public int enemyCount;
 
-    public bool isComplete = false;
+    public float finishDelay = 2f;
 
-    void Start() 
-    {
-        finish = GameObject.FindWithTag("Finish").gameObject.transform.GetChild(0).gameObject;
-    }
+    public bool isComplete = false;
 
     void Update() 
     {
@@ -33,11 +29,12 @@ public class GameManager : MonoBehaviour
         if(buildIndex > 0)
         {
             CountEnemies();
+            Debug.Log(enemyCount);
         }
 
         if(isComplete)
         {
-            ChooseScene();
+            StartCoroutine(DelayFinish());
         }
     }
 
@@ -53,19 +50,24 @@ public class GameManager : MonoBehaviour
         
         if(enemyCount <= 0)
         {
-            finish.SetActive(true);
             isComplete = true;
         }
+    }
+    
+    IEnumerator DelayFinish()
+    {
+        yield return new WaitForSeconds(finishDelay);
+        ChooseScene();
     }
 
     public void ChooseScene()
     {
         if (buildIndex < 2)
         {
-            SceneManager.LoadScene(buildIndex + 1);
             isComplete = false;
+            SceneManager.LoadScene(buildIndex + 1);
         }
-        else
+        else if (buildIndex > 1 && isComplete)
         {
             SceneManager.LoadScene(0);
         }
