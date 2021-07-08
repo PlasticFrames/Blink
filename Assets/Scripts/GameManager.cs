@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 
 {
-    public TimeManager timeScript;
     public GameObject finish;
     public Scene currentScene;
 
@@ -18,48 +17,49 @@ public class GameManager : MonoBehaviour
 
     void Start() 
     {
-        currentScene = SceneManager.GetActiveScene();
-        buildIndex = currentScene.buildIndex;
         finish = GameObject.FindWithTag("Finish").gameObject.transform.GetChild(0).gameObject;
     }
 
     void Update() 
     {
-        CountEnemies();
-        Debug.Log(enemyCount);
+        CheckScene();
 
-        if(Input.GetKeyDown(KeyCode.Space) && buildIndex == 0)
+        if(buildIndex == 0 && Input.GetKeyDown(KeyCode.Space))
         {
-            isComplete = true;
-            CheckScene();
+            ChooseScene();
         }
 
-        if(enemyCount <= 0)
+        if(buildIndex > 0)
         {
-            finish.SetActive(true);
+            CountEnemies();
         }
 
-        if(buildIndex == 0)
+        if(isComplete)
         {
-            timeScript.enabled = false;
+            //ChooseScene();
         }
-        else
-        {
-            timeScript.enabled = true;
-        }
-    }
-
-    void CountEnemies()
-    {
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
     public void CheckScene()
     {
         currentScene = SceneManager.GetActiveScene();
         buildIndex = currentScene.buildIndex;
+    }
 
-        if (isComplete && buildIndex < 2)
+    public void CountEnemies()
+    {
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        
+        if(enemyCount <= 0)
+        {
+            finish.SetActive(true);
+            isComplete = true;
+        }
+    }
+
+    public void ChooseScene()
+    {
+        if (buildIndex < 2)
         {
             SceneManager.LoadScene(buildIndex + 1);
             isComplete = false;
@@ -68,7 +68,5 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        currentScene = SceneManager.GetActiveScene();
-        buildIndex = currentScene.buildIndex;
     }
 }
