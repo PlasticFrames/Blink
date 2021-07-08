@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerCollision : MonoBehaviour
 {
     PlayerMove playerMove;
+    PlayerDash dashScript;
     PlayerHealth healthScript;
     EnemySwitch switchScript;
     EnemyTrigger triggerScript;
@@ -22,6 +23,7 @@ public class PowerCollision : MonoBehaviour
     void Start() 
     {
         playerMove = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
+        dashScript = GameObject.FindWithTag("Player").GetComponent<PlayerDash>();
         healthScript = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         //playerBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();   
     }
@@ -32,11 +34,9 @@ public class PowerCollision : MonoBehaviour
         Debug.Log(other.contacts[0].otherCollider.tag);
         Debug.Log(other.contacts[0].otherCollider.attachedRigidbody);
 
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !dashScript.isDashing)
         {
-            playerBody = other.gameObject.GetComponent<Rigidbody>();
-           
-            playerMove.enabled = false;
+            //playerBody = other.gameObject.GetComponent<Rigidbody>(); 
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             StartCoroutine(healthScript.MakeInvulnerable());
         }
