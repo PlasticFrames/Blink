@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c6581d37a9957428b746a3582f95e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finish: {fileID: 0}
   currentScene:
     m_Handle: 0
   buildIndex: 0
   enemyCount: 0
+  finishDelay: 2
   isComplete: 0
 --- !u!114 &1482230657681396243
 MonoBehaviour:
@@ -105,7 +105,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Enemy
     clip: {fileID: 8300000, guid: 331d22957aac5b04d8f2162ea4abec9e, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Idle
     clip: {fileID: 8300000, guid: 367a260bf165536438e58636419faadf, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -129,19 +129,19 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Destroy
     clip: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Collide
     clip: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Power
     clip: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}

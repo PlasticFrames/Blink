@@ -43,6 +43,7 @@ public class BulletDestroy : MonoBehaviour
         if (dashScript.isDashing || dashScript.isPlanning) //Constrains rigidbody when player is planning/dashing
         {
             bulletBody.constraints =  RigidbodyConstraints.FreezeAll;
+            GameObject.FindObjectOfType<AudioManager>().Stop("Fire");
         }
         else if (!dashScript.isDashing && !dashScript.isPlanning)
         {
