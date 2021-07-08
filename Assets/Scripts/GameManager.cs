@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 
 {
+    public TimeManager timeScript;
     public GameObject finish;
     public Scene currentScene;
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         CountEnemies();
         Debug.Log(enemyCount);
 
-        if (Input.GetKeyDown(KeyCode.Space) && buildIndex == 0)
+        if(Input.GetKeyDown(KeyCode.Space) && buildIndex == 0)
         {
             isComplete = true;
             CheckScene();
@@ -36,6 +37,15 @@ public class GameManager : MonoBehaviour
         if(enemyCount <= 0)
         {
             finish.SetActive(true);
+        }
+
+        if(buildIndex == 0)
+        {
+            timeScript.enabled = false;
+        }
+        else
+        {
+            timeScript.enabled = true;
         }
     }
 
@@ -58,5 +68,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+        currentScene = SceneManager.GetActiveScene();
+        buildIndex = currentScene.buildIndex;
     }
 }

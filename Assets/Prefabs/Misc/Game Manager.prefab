@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1482230657681396242}
-  - component: {fileID: 1482230657681396243}
   - component: {fileID: 5418984353953231508}
+  - component: {fileID: 1482230657681396243}
+  - component: {fileID: 4777845670314988291}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Manager
@@ -32,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1482230657681396243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482230657681396268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a68e9e4b59901d42a26244b80fc8d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
-  slowdownFactor: 0.05
-  slowdownLength: 2
 --- !u!114 &5418984353953231508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +45,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c6581d37a9957428b746a3582f95e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finish: {fileID: 0}
   currentScene:
     m_Handle: 0
   buildIndex: 0
+  enemyCount: 0
+  isComplete: 0
+--- !u!114 &1482230657681396243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482230657681396268}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a68e9e4b59901d42a26244b80fc8d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashScript: {fileID: 4829200572956947690, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
+  slowdownFactor: 0.05
+  slowdownLength: 2
+--- !u!114 &4777845670314988291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482230657681396268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbf0cf076d71494ca56f647b95e95ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BGM
+    clip: {fileID: 8300000, guid: a4510a89aee278a46af3aeb1090d4314, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
