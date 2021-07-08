@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b87d07b83dcf36428553d506f38c6ed, type: 2}
+  - {fileID: 2100000, guid: a4843d1a102c0ff4db2a8371c74495b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,6 +205,10 @@ MonoBehaviour:
   moveScript: {fileID: 0}
   agent: {fileID: 0}
   enemyType: 0
+  heavyDissolveMat: {fileID: 2100000, guid: 90d6d016001715c49ab2977012e22a27, type: 2}
+  mediumDissolveMat: {fileID: 2100000, guid: a4843d1a102c0ff4db2a8371c74495b4, type: 2}
+  heavyDissolve: 0.38
+  mediumDissolve: 0
 --- !u!114 &5352350680752657176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,8 +223,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveScript: {fileID: 0}
   attackScript: {fileID: 0}
+  healthScript: {fileID: 0}
   dashScript: {fileID: 0}
   player: {fileID: 0}
+  agent: {fileID: 0}
   playerDistance: 0
   farDistance: 0
   nearDistance: 0
@@ -250,6 +256,7 @@ MonoBehaviour:
   strafeTime: 3
   yAngle: {x: 0, y: 0.2, z: 0}
   retreat: {x: 0, y: 0, z: 0}
+  recentDash: 0
   strafeToggle: 0
 --- !u!114 &3113545503038941500
 MonoBehaviour:
@@ -300,6 +307,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   playerBody: {fileID: 4829200572956947691, guid: c24ead6d98d5cce48aef417350188a59, type: 3}
   enemyBody: {fileID: 1323064653398651429}
+  destroyDelay: 1
   nudgeForce: 100
   knockMultiplier: 3
   reactionRadius: 2
@@ -454,7 +462,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0b87d07b83dcf36428553d506f38c6ed, type: 2}
+  - {fileID: 2100000, guid: 90d6d016001715c49ab2977012e22a27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
