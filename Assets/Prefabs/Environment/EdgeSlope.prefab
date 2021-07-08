@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 747200753426642675}
   - component: {fileID: 3470940299792402904}
   - component: {fileID: 1349881065371175564}
+  - component: {fileID: 8310036653708661619}
+  - component: {fileID: 4520259275226530388}
   m_Layer: 0
   m_Name: EdgeSlope
   m_TagString: Untagged
@@ -81,3 +83,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8310036653708661619
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695649118368242664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3861478300804232965, guid: 42e08575954c12b49b8103e1e79eff08, type: 3}
+--- !u!65 &4520259275226530388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695649118368242664}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.400525, y: 6.6041284, z: 1.5276455}
+  m_Center: {x: 0, y: 0, z: 0}
