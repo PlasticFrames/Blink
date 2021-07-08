@@ -36,7 +36,7 @@ public class PowerCollision : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player") && !dashScript.isDashing)
         {
-            //playerBody = other.gameObject.GetComponent<Rigidbody>(); 
+            playerBody = other.gameObject.GetComponent<Rigidbody>(); 
             playerBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
             StartCoroutine(healthScript.MakeInvulnerable());
         }
