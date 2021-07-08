@@ -13,10 +13,12 @@ public class GameManager : MonoBehaviour
     public int buildIndex;
     public int enemyCount;
 
-    public bool isComplete = true;
+    public bool isComplete = false;
 
     void Start() 
     {
+        currentScene = SceneManager.GetActiveScene();
+        buildIndex = currentScene.buildIndex;
         finish = GameObject.FindWithTag("Finish").gameObject.transform.GetChild(0).gameObject;
     }
 
@@ -25,8 +27,9 @@ public class GameManager : MonoBehaviour
         CountEnemies();
         Debug.Log(enemyCount);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && buildIndex == 0)
         {
+            isComplete = true;
             CheckScene();
         }
 
@@ -36,19 +39,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void CheckScene()
+    void CountEnemies()
+    {
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+    }
+
+    public void CheckScene()
     {
         currentScene = SceneManager.GetActiveScene();
         buildIndex = currentScene.buildIndex;
 
-        if (buildIndex == 0)
+        if (isComplete && buildIndex < 2)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(buildIndex + 1);
+            isComplete = false;
         }
-    }
-
-    void CountEnemies()
-    {
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
