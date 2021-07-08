@@ -47,6 +47,7 @@ public class PowerCollision : MonoBehaviour
             enemyCollision = other.gameObject.GetComponent<EnemyCollision>();
             enemyBody = other.gameObject.GetComponent<Rigidbody>();
 
+            GameObject.FindObjectOfType<AudioManager>().Play("Power");
             enemyBody.AddExplosionForce(nudgeForce * knockMultiplier, forceOrigin, reactionRadius, 0, ForceMode.Impulse);
 
             if(triggerScript.isPushed)

@@ -4120,43 +4120,23 @@ PrefabInstance:
       value: Game Manager
       objectReference: {fileID: 0}
     - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 331d22957aac5b04d8f2162ea4abec9e, type: 3}
-    - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[4].loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[4].name
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 59474757ab1eab34d8cab2ece8d4cce9, type: 3}
-    - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 367a260bf165536438e58636419faadf, type: 3}
-    - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[6].name
-      value: Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[1].volume
+      propertyPath: sounds.Array.data[4].volume
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 1
+      propertyPath: sounds.Array.data[6].volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[4].volume
-      value: 1
+      propertyPath: sounds.Array.data[8].volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
-      propertyPath: sounds.Array.data[5].volume
+      propertyPath: sounds.Array.data[9].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777845670314988291, guid: d45a5265fd67a7a4baed35a0a0d9c163, type: 3}
+      propertyPath: sounds.Array.data[10].volume
       value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []

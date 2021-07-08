@@ -87,6 +87,15 @@ public class EnemyAttacks : MonoBehaviour
     {
         for (int i = 0; i < ringSize; i++)
         {
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             bulletOffset.transform.Rotate(ringRot, Space.World);
         }
@@ -97,6 +106,12 @@ public class EnemyAttacks : MonoBehaviour
         bulletOffset.transform.rotation = transform.rotation;
         for (int i = 0; i < spreadSize; i++)
         {
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             bulletOffset.transform.Rotate((moveScript.yAngle * spreadRotation) * Time.deltaTime);
         }
@@ -106,6 +121,7 @@ public class EnemyAttacks : MonoBehaviour
     {
         for (int i = 0; i < burstSize; i++)
         {
+            GameObject.FindObjectOfType<AudioManager>().Play("Fire");
             Instantiate(bulletBody, bulletOffset.transform.position, bulletOffset.transform.rotation);
             yield return new WaitForSeconds(burstRate);
         }        

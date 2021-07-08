@@ -41,7 +41,7 @@ public class EnemyTrigger : MonoBehaviour
         playerDistance = farDistance + 1;
         nearDistance = farDistance / 2; 
 
-        GameObject.FindObjectOfType<AudioManager>().Play("Start");
+        GameObject.FindObjectOfType<AudioManager>().Play("Idle");
     }
 
     void Update()
@@ -105,7 +105,7 @@ public class EnemyTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !dashScript.isDashing)
         {
             GameObject.FindObjectOfType<AudioManager>().Play("Active");
         }  
@@ -121,7 +121,7 @@ public class EnemyTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !dashScript.isDashing)
         {
             GameObject.FindObjectOfType<AudioManager>().Play("Idle");
         }  

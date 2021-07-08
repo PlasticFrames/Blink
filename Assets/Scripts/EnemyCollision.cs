@@ -89,6 +89,7 @@ public class EnemyCollision : MonoBehaviour
 
     void DashReaction()
     {
+        GameObject.FindObjectOfType<AudioManager>().Play("Collide");
         forceOrigin = player.transform.position;
         triggerScript.isPushed = true;
 
@@ -112,6 +113,7 @@ public class EnemyCollision : MonoBehaviour
     public IEnumerator DelayDestroy()
     {
         yield return new WaitForSeconds(destroyDelay);
+        GameObject.FindObjectOfType<AudioManager>().Play("Destroy");
         Instantiate(explosion, bulletOffset.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

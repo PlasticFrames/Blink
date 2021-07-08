@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     public Vector3 moveDirection;
     public Vector3 velocity;
 
-    public bool isRunning;
+    //public bool isRunning;
 
     void Start()
     {
@@ -41,7 +41,6 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             playerBody.MovePosition(transform.position + input * Time.deltaTime * speed);
-            GameObject.FindObjectOfType<AudioManager>().Play("Run");
         }
     }
 

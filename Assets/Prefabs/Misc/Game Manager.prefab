@@ -86,9 +86,9 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Dash
-    clip: {fileID: 8300000, guid: 84e427d6b66ab4066b6a4dcd0ce819ee, type: 3}
-    volume: 0.5
-    pitch: 1
+    clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+    volume: 1
+    pitch: 0.5
     loop: 0
     source: {fileID: 0}
   - name: Run
@@ -117,7 +117,31 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Idle
     clip: {fileID: 8300000, guid: 367a260bf165536438e58636419faadf, type: 3}
-    volume: 0.5
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire
+    clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Destroy
+    clip: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Collide
+    clip: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Power
+    clip: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
