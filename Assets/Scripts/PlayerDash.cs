@@ -77,11 +77,6 @@ public class PlayerDash: MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && isPlanning)
         {
-            //pushRange.SetActive(true);
-        }
-
-        if (Input.GetMouseButtonUp(0) && isPlanning)
-        {
             //pushRange.SetActive(false);
             dashDestination = dashAim.transform.position;
             dashAimReticuleBlue.Play();
@@ -91,11 +86,18 @@ public class PlayerDash: MonoBehaviour
             SetDestination();
         }
 
+        if (Input.GetMouseButtonDown(0) && isPlanning && dashCharges <= 0)
+        {
+            GameObject.FindObjectOfType<AudioManager>().Play("Denied");
+        }
+
         if (Input.GetMouseButtonDown(1) && isPlanning)
         {
             UndoDestination();
         }
         
+
+
         if(dashCharges == 0)
         {
             dashAimReticuleRed.Play();
@@ -176,7 +178,7 @@ public class PlayerDash: MonoBehaviour
         if (dashCharges > 0)
         {
             Instantiate(dashMark, dashDestination, markRotation);
-            Instantiate(dashMark, dashDestination, markRotation);
+            //Instantiate(dashMark, dashDestination, markRotation);
             aimOrigin = dashDestination;
             savedOrigins.Add(aimOrigin);
             currentDash++;
@@ -209,6 +211,7 @@ public class PlayerDash: MonoBehaviour
             if (gameObject != null)
             {
                 yield return LerpDash (gameObject.transform.position, dashSpeed);
+                GameObject.FindObjectOfType<AudioManager>().Play("Dash");
                 currentDash++;
             } 
         }

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
         if(buildIndex == 0 && Input.GetKeyDown(KeyCode.Space))
         {
+            GameObject.FindObjectOfType<AudioManager>().Play("Dash");
             ChooseScene();
         }
 
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
 
         if(isComplete)
         {
-            //ChooseScene();
+            ChooseScene();
         }
     }
 

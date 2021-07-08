@@ -40,6 +40,8 @@ public class EnemyTrigger : MonoBehaviour
         farDistance = GetComponent<SphereCollider>().radius;
         playerDistance = farDistance + 1;
         nearDistance = farDistance / 2; 
+
+        GameObject.FindObjectOfType<AudioManager>().Play("Start");
     }
 
     void Update()
@@ -98,6 +100,15 @@ public class EnemyTrigger : MonoBehaviour
         isIdle = true;
         isFar = false;
         isNear = false;
+
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameObject.FindObjectOfType<AudioManager>().Play("Active");
+        }  
     }
 
     private void OnTriggerStay(Collider other)  //Updates player distance when player is inside trigger
@@ -106,6 +117,14 @@ public class EnemyTrigger : MonoBehaviour
         {
             playerDistance = Vector3.Distance(transform.position, player.transform.position);
         }     
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameObject.FindObjectOfType<AudioManager>().Play("Idle");
+        }  
     }
 
     IEnumerator DisablePushed()
