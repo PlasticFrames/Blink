@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    GroundCheck groundScript;
+
     public Rigidbody playerBody;
     public Transform runCam;
 
@@ -15,10 +17,12 @@ public class PlayerMove : MonoBehaviour
     public Vector3 moveDirection;
     public Vector3 velocity;
 
-    //public bool isRunning;
+    public Vector3 input;
+    public Vector3 dir;
 
     void Start()
     {
+        groundScript = GetComponentInChildren<GroundCheck>();
         playerBody = GetComponent<Rigidbody>();
         runCam = Camera.main.transform;
 
@@ -31,8 +35,8 @@ public class PlayerMove : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical") * verticalBoost);
-        Vector3 dir = new Vector3(h, 0f, v).normalized;
+        input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical") * verticalBoost);
+        dir = new Vector3(h, 0f, v).normalized;
 
         if(dir.magnitude >= 0.1f)
         {
@@ -46,16 +50,7 @@ public class PlayerMove : MonoBehaviour
 
     /*void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-        {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-
-        if (isRunning)
+        if(input.magnitude >= 0.1f)
         {
             GameObject.FindObjectOfType<AudioManager>().Play("Run");
         }
