@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1519036461388963413}
   m_Layer: 0
   m_Name: Dash_Sphere
-  m_TagString: Untagged
+  m_TagString: Dash Recharge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
